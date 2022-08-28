@@ -1,0 +1,17 @@
+# Local/private config goes in the include
+[include]
+	path = ~/.gitconfig.local
+[user]
+	name = Niklas Ravnsborg
+	email = niklasravnsborg@gmail.com
+[alias]
+	l = !git --no-pager log --oneline -n 15
+	st = status
+[commit]
+	gpgsign = true
+[core]
+	excludesfile = ~/.gitignore
+[init]
+	defaultBranch = main
+[pull]
+	rebase = true
