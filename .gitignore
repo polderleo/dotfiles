@@ -1,0 +1,6 @@
+.DS_Store
+*.iml
+.idea
+pnpm-lock.yaml
+node_modules/
+vendor/
