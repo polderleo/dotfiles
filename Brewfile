@@ -174,6 +174,8 @@ brew "php@7.4"
 brew "phpunit"
 # Object-relational database system
 brew "postgresql@14"
+# Protocol buffers (Google's data interchange format)
+brew "protobuf"
 # Cloud native development platform
 brew "pulumi"
 # Rsync for cloud storage
@@ -216,6 +218,8 @@ cask "basictex"
 cask "bitwarden"
 # Virtual Audio Driver
 cask "blackhole-2ch"
+# Web debugging Proxy application
+cask "charles"
 # Calendar for professionals and teams
 cask "cron"
 # Server and cloud storage browser
@@ -224,6 +228,8 @@ cask "cyberduck"
 cask "emacs"
 # Web browser
 cask "firefox"
+# UI toolkit for building applications for mobile, web and desktop
+cask "flutter"
 # GIT client
 cask "fork"
 # Set of tools to manage resources and applications hosted on Google Cloud
@@ -233,6 +239,10 @@ cask "gpg-suite"
 cask "hummingbird"
 # HTTP and GraphQL Client
 cask "insomnia"
+# Keyboard customizer
+cask "karabiner-elements"
+# App to manage software development and track bugs
+cask "linear-linear"
 # Open-source firewall to block unknown outgoing connections
 cask "lulu"
 # Minimal installer for conda
@@ -243,10 +253,14 @@ cask "missive"
 cask "ngrok"
 # Markdown files editor
 cask "nota"
+# App to write, plan, collaborate, and get organized
+cask "notion"
 # Collaboration platform for API development
 cask "postman"
 # QuickLook generator for Markdown files
 cask "qlmarkdown"
+# Control your tools with a few keystrokes
+cask "raycast"
 # Instant messaging application focusing on security
 cask "signal"
 # Team communication and collaboration software
@@ -259,3 +273,5 @@ cask "stats"
 cask "telegram"
 # Open-source code editor
 cask "visual-studio-code"
+# Multimedia player
+cask "vlc"
