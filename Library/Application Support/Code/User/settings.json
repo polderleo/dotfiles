@@ -1,0 +1,89 @@
+{
+  "editor.fontFamily": "Hack",
+  "editor.fontSize": 14,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "terminal.integrated.lineHeight": 1.5,
+  "editor.lineHeight": 26,
+  "files.exclude": {
+    "**/.classpath": true,
+    "**/.factorypath": true,
+    "**/.project": true,
+    "**/.settings": true
+  },
+  "[markdown]": {
+    "files.trimTrailingWhitespace": false,
+    "editor.formatOnSave": false
+  },
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "editor.lightbulb.enabled": false,
+  "editor.renderWhitespace": "boundary",
+  "gitlens.codeLens.enabled": false,
+  "search.useGlobalIgnoreFiles": true,
+  "markdown.preview.lineHeight": 1.25,
+  "workbench.startupEditor": "none",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "editor.minimap.enabled": false,
+  "go.useLanguageServer": true,
+  "workbench.activityBar.visible": true,
+  "editor.insertSpaces": false,
+  "editor.detectIndentation": true,
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "extensions.ignoreRecommendations": true,
+  "editor.tabSize": 2,
+  "editor.wordWrapColumn": 100,
+  "workbench.colorTheme": "Default Light+",
+  "github.copilot.enable": {
+    "*": false,
+    "yaml": true,
+    "plaintext": true,
+    "markdown": false
+  },
+  "gitlens.advanced.messages": {
+    "suppressLineUncommittedWarning": true
+  },
+  "editor.formatOnSave": true,
+  "vim.gdefault": true,
+  "vim.easymotion": true,
+  "vim.sneak": true,
+  "liveshare.presence": true,
+  "editor.inlineSuggest.enabled": true,
+  "markdown.preview.scrollPreviewWithEditor": false,
+  "search.exclude": {
+    "**/bower_components": false,
+    "**/node_modules": false,
+    "#**/node_modules": true
+  },
+  "terminal.integrated.shellIntegration.history": 0,
+  "terminal.integrated.scrollback": 50000,
+  "git.confirmSync": false,
+  "git.enableCommitSigning": true,
+  "vim.disableExtension": true,
+  "terminal.integrated.persistentSessionScrollback": 1000,
+  "go.toolsManagement.autoUpdate": true,
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "eslint.format.enable": true,
+  "[typescript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "tabnine.experimentalAutoImports": true,
+  "GitLive.Issue tracker integration": "Disabled",
+  "terminal.integrated.fontSize": 14
+}
