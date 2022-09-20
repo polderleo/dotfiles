@@ -2,4 +2,5 @@ Brewfile
 .DS_Store
 macos/
 setup.sh
+macos_setup.sh
 .git
