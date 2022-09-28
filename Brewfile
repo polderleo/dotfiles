@@ -154,8 +154,6 @@ brew "libiconv"
 brew "libxml2"
 # C XSLT library for GNOME
 brew "libxslt"
-# Library for database change tracking
-brew "liquibase"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 # HTTP/2 C Library
@@ -178,24 +176,16 @@ brew "postgresql@14"
 brew "protobuf"
 # Cloud native development platform
 brew "pulumi"
-# Rsync for cloud storage
-brew "rclone"
-# Generate C-based recognizers from regular expressions
-brew "re2c"
-# Persistent key-value database, with built-in net interface
-brew "redis"
 # Fast, efficient and secure backup program
 brew "restic"
-# Powerful, clean, object-oriented scripting language
-brew "ruby"
-# Install various Ruby versions and implementations
-brew "ruby-build"
 # Prints a steam locomotive if you type sl instead of ls
 brew "sl"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "stow"
 # Nodejs-based tool for optimizing SVG vector graphics files
 brew "svgo"
+# Terminal multiplexer
+brew "tmux"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
 # Extraction utility for .zip compressed archives
@@ -212,20 +202,20 @@ brew "zsh"
 brew "nextdns/tap/nextdns"
 # A swiss army knife for Pulumi development
 brew "pulumi/tap/pulumictl"
-# Compact TeX distribution as alternative to the full TeX Live / MacTeX
-cask "basictex"
 # Desktop password and login vault
 cask "bitwarden"
 # Virtual Audio Driver
 cask "blackhole-2ch"
-# Web debugging Proxy application
-cask "charles"
+# E-books management software
+cask "calibre"
 # Calendar for professionals and teams
 cask "cron"
 # Server and cloud storage browser
 cask "cyberduck"
 # Text editor
 cask "emacs"
+# Collaborative team software
+cask "figma"
 # Web browser
 cask "firefox"
 # UI toolkit for building applications for mobile, web and desktop
@@ -236,17 +226,10 @@ cask "fork"
 cask "google-cloud-sdk"
 # Tools to protect your emails and files
 cask "gpg-suite"
-cask "hummingbird"
-# HTTP and GraphQL Client
-cask "insomnia"
-# Keyboard customizer
-cask "karabiner-elements"
 # App to manage software development and track bugs
 cask "linear-linear"
 # Open-source firewall to block unknown outgoing connections
 cask "lulu"
-# Minimal installer for conda
-cask "miniconda"
 # Team inbox and chat tool
 cask "missive"
 # Reverse proxy, secure introspectable tunnels to localhost
