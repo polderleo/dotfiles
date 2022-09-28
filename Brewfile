@@ -3,6 +3,7 @@ tap "finestructure/hummingbird"
 tap "heroku/brew"
 tap "homebrew/bundle"
 tap "homebrew/cask"
+tap "homebrew/cask-fonts"
 tap "homebrew/core"
 tap "homebrew/services"
 tap "nektos/tap"
@@ -178,6 +179,8 @@ brew "restic"
 brew "sl"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "stow"
+# Version control system designed to be a better CVS
+brew "subversion"
 # Nodejs-based tool for optimizing SVG vector graphics files
 brew "svgo"
 # Terminal multiplexer
@@ -212,6 +215,20 @@ cask "figma"
 cask "firefox"
 # UI toolkit for building applications for mobile, web and desktop
 cask "flutter"
+cask "font-anonymous-pro"
+cask "font-hack"
+cask "font-inter"
+# Typeface made for developers
+cask "font-jetbrains-mono"
+# Geometric sans-serif multi-purpose font
+cask "font-kumbh-sans"
+# Expanded by font bureau with a range of 8 weights
+cask "font-lexend"
+cask "font-montserrat"
+cask "font-open-sans"
+# Font with a mechanical skeleton and the forms are largely geometric
+cask "font-roboto"
+cask "font-source-code-pro"
 # GIT client
 cask "fork"
 # Set of tools to manage resources and applications hosted on Google Cloud
