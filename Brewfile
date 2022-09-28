@@ -116,16 +116,12 @@ brew "gnu-tar"
 brew "gnupg", link: false
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
-# Version Control Visualization Tool
-brew "gource"
 # Framework for layout and rendering of i18n text
 brew "pango"
 # Library to render SVG files using Cairo
 brew "librsvg"
 # Graph visualization software from AT&T and Bell Labs
 brew "graphviz"
-# Kubernetes package manager
-brew "helm"
 # Improved top (interactive process viewer)
 brew "htop"
 # User-friendly cURL replacement (command-line HTTP client)
@@ -144,8 +140,6 @@ brew "libraw"
 brew "imagemagick"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
-# Kubernetes command-line interface
-brew "kubernetes-cli"
 # BSD-style licensed readline alternative
 brew "libedit"
 # Conversion library
@@ -154,6 +148,8 @@ brew "libiconv"
 brew "libxml2"
 # C XSLT library for GNOME
 brew "libxslt"
+# Mac App Store command-line interface
+brew "mas"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 # HTTP/2 C Library
@@ -194,10 +190,6 @@ brew "unzip"
 brew "watch"
 # Internet file retriever
 brew "wget"
-# General-purpose lossless data-compression library
-brew "zlib"
-# UNIX shell (command interpreter)
-brew "zsh"
 # NextDNS DNS/53 to DoH Proxy
 brew "nextdns/tap/nextdns"
 # A swiss army knife for Pulumi development
@@ -212,8 +204,8 @@ cask "calibre"
 cask "cron"
 # Server and cloud storage browser
 cask "cyberduck"
-# Text editor
-cask "emacs"
+# Client for the Dropbox cloud storage service
+cask "dropbox"
 # Collaborative team software
 cask "figma"
 # Web browser
@@ -226,10 +218,14 @@ cask "fork"
 cask "google-cloud-sdk"
 # Tools to protect your emails and files
 cask "gpg-suite"
+# Tool to optimize images to a smaller size
+cask "imageoptim"
 # App to manage software development and track bugs
 cask "linear-linear"
 # Open-source firewall to block unknown outgoing connections
 cask "lulu"
+# Meet, chat, call, and collaborate in just one place
+cask "microsoft-teams"
 # Team inbox and chat tool
 cask "missive"
 # Reverse proxy, secure introspectable tunnels to localhost
@@ -238,6 +234,8 @@ cask "ngrok"
 cask "nota"
 # App to write, plan, collaborate, and get organized
 cask "notion"
+# Knowledge base that works on top of a local folder of plain text Markdown files
+cask "obsidian"
 # Collaboration platform for API development
 cask "postman"
 # QuickLook generator for Markdown files
@@ -254,7 +252,25 @@ cask "spotify"
 cask "stats"
 # Messaging app with a focus on speed and security
 cask "telegram"
+# Automatic time-tracking application
+cask "timemator"
+# To-do list
+cask "todoist"
 # Open-source code editor
 cask "visual-studio-code"
 # Multimedia player
 cask "vlc"
+# Video communication and virtual meeting platform
+cask "zoom"
+mas "Affinity Designer", id: 824171161
+mas "Affinity Photo", id: 824183456
+mas "Betternet VPN", id: 1028905953
+mas "ColorSlurp", id: 1287239339
+mas "Craft", id: 1487937127
+mas "Keynote", id: 409183694
+mas "Listy", id: 1496035097
+mas "Metronome", id: 1629209970
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+mas "The Unarchiver", id: 425424353
+mas "Xcode", id: 497799835
