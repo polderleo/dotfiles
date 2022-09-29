@@ -12,7 +12,7 @@ path=("$HOME/go/bin" $path) # Add Go
 path=("$HOME/bin/flutter/bin" $path) # Add Flutter
 path=("$HOMEBREW_PREFIX/Caskroom/flutter/3.3.1/flutter/.pub-cache/bin" $path) # Add Flutter pub cache
 path=("$HOME/.composer/vendor/bin" $path) # Add PHP Composer
-path=("$HOME/.gem/ruby/2.6.0/bin" $path) # Add Gems
+path=("$HOME/.gem/bin" $path) # Add Gems
 path=("$HOME/.deno/bin" $path) # Add Deno
 path=("$(npm config get prefix)/bin" $path) # Add npm bin
 export PATH
