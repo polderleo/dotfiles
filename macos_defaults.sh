@@ -6,6 +6,12 @@ defaults write com.apple.AppleMultitouchTrackpad DragLock -bool false
 defaults write com.apple.AppleMultitouchTrackpad Dragging -bool false
 defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true
 
+# Keyboard: enable key repeat when pressing and holding a key
+defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+
+# Dock: disable workspace auto-switching
+defaults write com.apple.dock workspaces-auto-swoosh -bool false
+
 # Finder: show all filename extensions
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
