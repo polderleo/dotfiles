@@ -14,16 +14,8 @@ path=("/usr/local/Caskroom/flutter/3.3.1/flutter/.pub-cache/bin" $path) # Add Fl
 path=("$HOME/.composer/vendor/bin" $path) # Add PHP Composer
 path=("$HOME/.gem/ruby/2.6.0/bin" $path) # Add Gems
 path=("$HOME/.deno/bin" $path) # Add Deno
-path=("$HOME/.asdf/shims" $path) # Add asdf shims
 path=("$(npm config get prefix)/bin" $path) # Add npm bin
 export PATH
-
-# Load java
-. ~/.asdf/plugins/java/set-java-home.zsh
-
-# Load asdf
-$(brew --prefix asdf)/asdf.sh
-$(brew --prefix asdf)/etc/bash_completion.d/asdf.bash
 
 # The next lines sources autocomplete scripts for Google Cloud SDK.
 autoload -U +X compinit && compinit
