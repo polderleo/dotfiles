@@ -165,6 +165,8 @@ brew "protobuf"
 brew "pulumi"
 # Fast, efficient and secure backup program
 brew "restic"
+# Powerful, clean, object-oriented scripting language
+brew "ruby", link: true
 # Prints a steam locomotive if you type sl instead of ls
 brew "sl"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
