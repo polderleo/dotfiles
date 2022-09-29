@@ -35,8 +35,6 @@ brew "libtool"
 brew "libyaml"
 # ODBC 3 connectivity for UNIX
 brew "unixodbc"
-# Extendable version manager with support for Ruby, Node.js, Erlang & more
-brew "asdf"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 # Parser generator
