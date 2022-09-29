@@ -3,4 +3,5 @@ Brewfile
 macos/
 setup.sh
 macos_setup.sh
+macos_defaults.sh
 .git
