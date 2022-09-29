@@ -13,8 +13,6 @@ tap "pulumi/tap"
 brew "act"
 # Plugin manager for zsh, inspired by oh-my-zsh and vundle
 brew "antigen"
-# Image manipulation library
-brew "jpeg", link: true
 # Library for manipulating PNG images
 brew "libpng"
 # New file format for still image compression
@@ -25,22 +23,10 @@ brew "asciiquarium"
 brew "autoconf"
 # Tool for generating GNU Standards-compliant Makefiles
 brew "automake"
-# GNU multiple precision arithmetic library
-brew "gmp"
-# GNU File, Shell, and Text utilities
-brew "coreutils"
-# Generic library support script
-brew "libtool"
-# YAML Parser
-brew "libyaml"
-# ODBC 3 connectivity for UNIX
-brew "unixodbc"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 # Parser generator
 brew "bison"
-# C/C++ and Java libraries for Unicode and globalization
-brew "icu4c"
 # Software library to render fonts
 brew "freetype"
 # GNU internationalization (i18n) and localization (l10n) library
@@ -49,8 +35,6 @@ brew "gettext"
 brew "glib"
 # Manage compile and link flags for libraries
 brew "pkg-config"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.9"
 # Statistics utility to count lines of code
 brew "cloc"
 # Console Matrix
@@ -59,10 +43,18 @@ brew "cmatrix"
 brew "libssh2"
 # Get a file from an HTTP, HTTPS or FTP server
 brew "curl"
+# Generic library support script
+brew "libtool"
+# ODBC 3 connectivity for UNIX
+brew "unixodbc"
 # Libraries to talk to Microsoft SQL Server and Sybase databases
 brew "freetds"
 # Graphics library to dynamically manipulate images
 brew "gd"
+# GNU multiple precision arithmetic library
+brew "gmp"
+# C/C++ and Java libraries for Unicode and globalization
+brew "icu4c"
 # Network authentication protocol
 brew "krb5"
 # Postgres C API library
@@ -77,6 +69,8 @@ brew "oniguruma"
 brew "php"
 # Dependency Manager for PHP
 brew "composer"
+# GNU File, Shell, and Text utilities
+brew "coreutils"
 # Secure runtime for JavaScript and TypeScript
 brew "deno"
 # Pack, ship and run any application as a lightweight container
@@ -91,8 +85,6 @@ brew "harfbuzz"
 brew "little-cms2"
 # Image processing and image analysis library
 brew "leptonica"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.10"
 # OCR (Optical Character Recognition) engine
 brew "tesseract"
 # Play, record, convert, and stream audio and video
@@ -103,6 +95,8 @@ brew "gawk"
 brew "gh"
 # Interpreter for PostScript and PDF
 brew "ghostscript"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.10"
 # Quickly rewrite git repository history
 brew "git-filter-repo"
 # Extensions to follow Vincent Driessen's branching model
@@ -129,14 +123,12 @@ brew "httpie"
 brew "shared-mime-info"
 # ISO/IEC 23008-12:2017 HEIF file format decoder and encoder
 brew "libheif"
-# Tool Command Language
-brew "tcl-tk"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.8"
 # Library for reading RAW files from digital photo cameras
 brew "libraw"
 # Tools and libraries to manipulate images in many formats
 brew "imagemagick"
+# Image manipulation library
+brew "jpeg", link: true
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # BSD-style licensed readline alternative
@@ -147,6 +139,8 @@ brew "libiconv"
 brew "libxml2"
 # C XSLT library for GNOME
 brew "libxslt"
+# YAML Parser
+brew "libyaml"
 # Mac App Store command-line interface
 brew "mas"
 # Ambitious Vim-fork focused on extensibility and agility
@@ -161,8 +155,6 @@ brew "node"
 brew "openssl@3"
 # Swiss-army knife of markup format conversion
 brew "pandoc"
-# General-purpose scripting language
-brew "php@7.4"
 # Programmer-oriented testing framework for PHP
 brew "phpunit"
 # Object-relational database system
@@ -181,6 +173,8 @@ brew "stow"
 brew "subversion"
 # Nodejs-based tool for optimizing SVG vector graphics files
 brew "svgo"
+# Tool Command Language
+brew "tcl-tk"
 # Terminal multiplexer
 brew "tmux"
 # Display directories as trees (with optional color/HTML output)
