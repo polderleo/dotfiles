@@ -9,8 +9,7 @@ export HISTCONTROL=ignorespace
 
 # Change PATH
 path=("$HOME/go/bin" $path) # Add Go
-path=("$HOME/bin/flutter/bin" $path) # Add Flutter
-path=("$HOMEBREW_PREFIX/Caskroom/flutter/3.3.1/flutter/.pub-cache/bin" $path) # Add Flutter pub cache
+path=("$HOME/.pub-cache/bin" $path) # Add dart pub cache
 path=("$HOME/.composer/vendor/bin" $path) # Add PHP Composer
 path=("$HOME/.gem/bin" $path) # Add Gems
 path=("$HOME/.deno/bin" $path) # Add Deno
