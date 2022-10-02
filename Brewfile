@@ -271,6 +271,8 @@ cask "telegram"
 cask "timemator"
 # To-do list
 cask "todoist"
+# Utility to hide the notch
+cask "topnotch"
 # Open-source code editor
 cask "visual-studio-code"
 # Multimedia player
