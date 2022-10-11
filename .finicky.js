@@ -10,7 +10,7 @@ module.exports = {
   handlers: [
     {
       match: "meet.google.com/*",
-      browser: "Chromium"
+      browser: "Google Chrome"
     },
     {
       match: "open.spotify.com/*",

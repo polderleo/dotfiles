@@ -203,8 +203,6 @@ cask "cron"
 cask "cyberduck"
 # Client for the Dropbox cloud storage service
 cask "dropbox"
-# Google Chromium, sans integration with Google
-cask "eloston-chromium"
 # Collaborative team software
 cask "figma"
 # Utility for customizing which browser to start
@@ -229,6 +227,8 @@ cask "font-roboto"
 cask "font-source-code-pro"
 # GIT client
 cask "fork"
+# Web browser
+cask "google-chrome"
 # Set of tools to manage resources and applications hosted on Google Cloud
 cask "google-cloud-sdk"
 # Tools to protect your emails and files
