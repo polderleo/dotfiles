@@ -265,6 +265,8 @@ cask "slack"
 cask "spotify"
 # System monitor for the menu bar
 cask "stats"
+# Native GUI tool for relational databases
+cask "tableplus"
 # Messaging app with a focus on speed and security
 cask "telegram"
 # Automatic time-tracking application
