@@ -89,6 +89,8 @@ brew "leptonica"
 brew "tesseract"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
+# Platform built on V8 to build network applications
+brew "node", link: false
 # GNU awk utility
 brew "gawk"
 # GitHub command-line tool
@@ -150,7 +152,7 @@ brew "nghttp2"
 # Port scanning utility for large networks
 brew "nmap"
 # Platform built on V8 to build network applications
-brew "node"
+brew "node@16", link: true
 # Cryptography and SSL/TLS Toolkit
 brew "openssl@3"
 # Swiss-army knife of markup format conversion
