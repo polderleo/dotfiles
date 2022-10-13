@@ -73,8 +73,6 @@ brew "composer"
 brew "coreutils"
 # Secure runtime for JavaScript and TypeScript
 brew "deno"
-# Pack, ship and run any application as a lightweight container
-brew "docker"
 # Perl lib for reading and writing EXIF metadata
 brew "exiftool"
 # GNU Transport Layer Security (TLS) Library
@@ -203,6 +201,8 @@ cask "calibre"
 cask "cron"
 # Server and cloud storage browser
 cask "cyberduck"
+# App to build and share containerized applications and microservices
+cask "docker"
 # Client for the Dropbox cloud storage service
 cask "dropbox"
 # Collaborative team software
