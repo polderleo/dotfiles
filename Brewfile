@@ -160,7 +160,7 @@ brew "pandoc"
 # Programmer-oriented testing framework for PHP
 brew "phpunit"
 # Object-relational database system
-brew "postgresql@14"
+brew "postgresql@14", restart_service: true
 # Protocol buffers (Google's data interchange format)
 brew "protobuf"
 # Cloud native development platform
@@ -253,6 +253,8 @@ cask "nota"
 cask "notion"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
+# Preference Pane for controlling PostgreSQL database servers
+cask "postgrespreferencepane"
 # Collaboration platform for API development
 cask "postman"
 # QuickLook generator for Markdown files
