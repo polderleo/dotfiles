@@ -89,6 +89,8 @@ brew "tesseract"
 brew "ffmpeg"
 # Platform built on V8 to build network applications
 brew "node", link: false
+# Firebase command-line tools
+brew "firebase-cli"
 # GNU awk utility
 brew "gawk"
 # GitHub command-line tool
