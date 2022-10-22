@@ -1,6 +1,7 @@
 Brewfile
 .DS_Store
 macos/
+uBlock
 setup.sh
 macos_setup.sh
 macos_defaults.sh
