@@ -27,6 +27,10 @@ module.exports = {
     {
       match: /notion\.so\/.*[a-f0-9]{32}/,
       browser: "Notion"
+    },
+    {
+      match: "mail.missiveapp.com/*",
+      browser: "Missive"
     }
   ]
 }
