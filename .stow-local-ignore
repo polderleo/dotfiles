@@ -1,6 +1,7 @@
 Brewfile
 .DS_Store
 macos/
+openpgp
 uBlock
 keyboard
 setup.sh
