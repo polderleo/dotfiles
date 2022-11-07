@@ -2,6 +2,7 @@ Brewfile
 .DS_Store
 macos/
 uBlock
+keyboard
 setup.sh
 macos_setup.sh
 macos_defaults.sh
