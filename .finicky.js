@@ -31,6 +31,10 @@ module.exports = {
     {
       match: "mail.missiveapp.com/*",
       browser: "Missive"
+    },
+    {
+      match: "www.figma.com/file/*",
+      browser: "Figma"
     }
   ]
 }
