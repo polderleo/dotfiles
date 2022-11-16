@@ -107,8 +107,6 @@ brew "git-flow"
 brew "gnu-sed"
 # GNU version of the tar archiving utility
 brew "gnu-tar"
-# GNU Pretty Good Privacy (PGP) package
-brew "gnupg", link: false
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
 # Framework for layout and rendering of i18n text
@@ -207,6 +205,8 @@ cask "calibre"
 cask "cron"
 # Server and cloud storage browser
 cask "cyberduck"
+# Voice and text chat software
+cask "discord"
 # App to build and share containerized applications and microservices
 cask "docker"
 # Client for the Dropbox cloud storage service
@@ -260,12 +260,16 @@ cask "ngrok"
 cask "nota"
 # App to write, plan, collaborate, and get organized
 cask "notion"
+# Calculator and converter application
+cask "numi"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
 # Preference Pane for controlling PostgreSQL database servers
 cask "postgrespreferencepane"
 # Collaboration platform for API development
 cask "postman"
+# VPN client focusing on security
+cask "protonvpn"
 # QuickLook generator for Markdown files
 cask "qlmarkdown"
 # Control your tools with a few keystrokes
@@ -298,7 +302,6 @@ cask "vlc"
 cask "warp"
 # Video communication and virtual meeting platform
 cask "zoom"
-mas "Betternet VPN", id: 1028905953
 mas "ColorSlurp", id: 1287239339
 mas "Craft", id: 1487937127
 mas "Keynote", id: 409183694
