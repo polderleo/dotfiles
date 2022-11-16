@@ -193,6 +193,10 @@ brew "wget"
 brew "nextdns/tap/nextdns"
 # A swiss army knife for Pulumi development
 brew "pulumi/tap/pulumictl"
+# Professional graphic design software
+cask "affinity-designer"
+# Professional image editing software
+cask "affinity-photo"
 # Desktop password and login vault
 cask "bitwarden"
 # Virtual Audio Driver
@@ -215,6 +219,7 @@ cask "finicky"
 cask "firefox"
 # UI toolkit for building applications for mobile, web and desktop
 cask "flutter"
+# Programming font
 cask "font-anonymous-pro"
 cask "font-hack"
 cask "font-inter"
@@ -237,6 +242,8 @@ cask "google-chrome"
 cask "google-cloud-sdk"
 # Tools to protect your emails and files
 cask "gpg-suite"
+# Desktop wrapper for HTTPie
+cask "httpie"
 # Tool to optimize images to a smaller size
 cask "imageoptim"
 # App to manage software development and track bugs
@@ -275,6 +282,8 @@ cask "stats"
 cask "tableplus"
 # Messaging app with a focus on speed and security
 cask "telegram"
+# Unpacks archive files
+cask "the-unarchiver"
 # Automatic time-tracking application
 cask "timemator"
 # To-do list
@@ -285,17 +294,17 @@ cask "topnotch"
 cask "visual-studio-code"
 # Multimedia player
 cask "vlc"
+# Rust-based terminal
+cask "warp"
 # Video communication and virtual meeting platform
 cask "zoom"
-mas "Affinity Designer", id: 824171161
-mas "Affinity Photo", id: 824183456
 mas "Betternet VPN", id: 1028905953
 mas "ColorSlurp", id: 1287239339
 mas "Craft", id: 1487937127
 mas "Keynote", id: 409183694
 mas "Listy", id: 1496035097
 mas "Metronome", id: 1629209970
+mas "Notes SE", id: 1610634186
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
-mas "The Unarchiver", id: 425424353
 mas "Xcode", id: 497799835
