@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Trackpad: enable tap to click
 defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
 

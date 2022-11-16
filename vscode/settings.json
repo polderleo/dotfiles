@@ -1,8 +1,7 @@
 {
-  "editor.fontFamily": "Hack",
+  "editor.fontFamily": "JetBrains Mono",
   "editor.fontSize": 14,
   "files.trimFinalNewlines": true,
-  "files.trimTrailingWhitespace": true,
   "files.insertFinalNewline": true,
   "editor.suggestSelection": "first",
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
@@ -40,8 +39,6 @@
   },
   "extensions.ignoreRecommendations": true,
   "editor.tabSize": 2,
-  "editor.wordWrapColumn": 100,
-  "workbench.colorTheme": "Default Light+",
   "github.copilot.enable": {
     "*": false,
     "yaml": true,
@@ -51,7 +48,6 @@
   "gitlens.advanced.messages": {
     "suppressLineUncommittedWarning": true
   },
-  "editor.formatOnSave": true,
   "vim.gdefault": true,
   "vim.easymotion": true,
   "vim.sneak": true,
@@ -71,19 +67,41 @@
   "terminal.integrated.persistentSessionScrollback": 1000,
   "go.toolsManagement.autoUpdate": true,
   "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "vscode.json-language-features"
   },
   "eslint.format.enable": true,
   "[typescript]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
   "[javascript]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    "editor.defaultFormatter": "vscode.typescript-language-features"
   },
   "[typescriptreact]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
   "tabnine.experimentalAutoImports": true,
   "GitLive.Issue tracker integration": "Disabled",
-  "terminal.integrated.fontSize": 14
+  "terminal.integrated.fontSize": 14,
+  "[dart]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.rulers": [
+      80,
+      100,
+      120
+    ],
+    "editor.selectionHighlight": true,
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "editor.suggestSelection": "first",
+    "editor.tabCompletion": "onlySnippets",
+    "editor.wordBasedSuggestions": false
+  },
+  "editor.hover.delay": 1000,
+  "editor.wordWrapColumn": 140,
+  "editor.guides.bracketPairs": "active",
+  "dart.debugExternalPackageLibraries": false,
+  "dart.debugSdkLibraries": false,
+  "editor.fontLigatures": true,
+  "window.autoDetectColorScheme": true,
+  "workbench.colorTheme": "Default Light+"
 }
