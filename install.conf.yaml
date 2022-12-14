@@ -12,3 +12,4 @@
     ~/.tmux.conf: tmux/.tmux.conf
     ~/.vimrc: vim/.vimrc
     ~/.zshrc: zsh/.zshrc
+    ~/.fzf.zsh: zsh/.fzf.zsh
