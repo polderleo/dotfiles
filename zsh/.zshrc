@@ -38,7 +38,7 @@ antigen theme petermbenjamin/purity
 antigen apply
 
 # Disable svgo path conversion by default
-alias svgo="svgo --config=~/.svgoconfig.js"
+alias svgo="svgo --config=$HOME/.svgoconfig.js"
 
 # kubectl alias
 alias kc="kubectl"
