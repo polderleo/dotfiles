@@ -42,3 +42,6 @@ alias svgo="svgo --config=$HOME/.svgoconfig.js"
 
 # kubectl alias
 alias kc="kubectl"
+
+# Enable fuzzy history search
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

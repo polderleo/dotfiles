@@ -91,6 +91,8 @@ brew "tesseract"
 brew "ffmpeg"
 # Firebase command-line tools
 brew "firebase-cli"
+# Command-line fuzzy finder written in Go
+brew "fzf"
 # GNU awk utility
 brew "gawk"
 # GitHub command-line tool
