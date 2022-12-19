@@ -8,7 +8,7 @@
     ~/.gitconfig: git/.gitconfig
     ~/.gitignore: git/.gitignore
     ~/.ssh/config: ssh/config
-    ~/.svgoconfig.js: svgo/.svgoconfig.js
+    ~/.svgo.config.js: svgo/.svgo.config.js
     ~/.tmux.conf: tmux/.tmux.conf
     ~/.vimrc: vim/.vimrc
     ~/.zshrc: zsh/.zshrc
