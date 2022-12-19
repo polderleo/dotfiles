@@ -91,6 +91,10 @@ brew "tesseract"
 brew "ffmpeg"
 # Firebase command-line tools
 brew "firebase-cli"
+# User-friendly command-line shell for UNIX-like operating systems
+brew "fish"
+# Plugin manager for the Fish shell
+brew "fisher"
 # Command-line fuzzy finder written in Go
 brew "fzf"
 # GNU awk utility
@@ -171,6 +175,8 @@ brew "restic"
 brew "ruby", link: true
 # Prints a steam locomotive if you type sl instead of ls
 brew "sl"
+# Cross-shell prompt for astronauts
+brew "starship"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "stow"
 # Version control system designed to be a better CVS
@@ -213,6 +219,8 @@ cask "discord"
 cask "docker"
 # Client for the Dropbox cloud storage service
 cask "dropbox"
+# Reimagine your terminal
+cask "fig"
 # Collaborative team software
 cask "figma"
 # Utility for customizing which browser to start
@@ -227,6 +235,8 @@ cask "font-hack"
 cask "font-inter"
 # Typeface made for developers
 cask "font-jetbrains-mono"
+# Developer targeted fonts with a high number of glyphs
+cask "font-jetbrains-mono-nerd-font"
 # Geometric sans-serif multi-purpose font
 cask "font-kumbh-sans"
 # Expanded by font bureau with a range of 8 weights
@@ -248,6 +258,8 @@ cask "gpg-suite"
 cask "httpie"
 # Tool to optimize images to a smaller size
 cask "imageoptim"
+# Terminal emulator as alternative to Apple's Terminal app
+cask "iterm2"
 # App to manage software development and track bugs
 cask "linear-linear"
 # Open-source firewall to block unknown outgoing connections
