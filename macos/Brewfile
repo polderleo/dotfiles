@@ -77,6 +77,8 @@ brew "deno"
 brew "dotbot"
 # Perl lib for reading and writing EXIF metadata
 brew "exiftool"
+# Simple, fast and user-friendly alternative to find
+brew "fd"
 # GNU Transport Layer Security (TLS) Library
 brew "gnutls"
 # OpenType text shaping engine
@@ -147,6 +149,8 @@ brew "libxml2"
 brew "libxslt"
 # YAML Parser
 brew "libyaml"
+# Rainbows and unicorns in your console!
+brew "lolcat"
 # Mac App Store command-line interface
 brew "mas"
 # Ambitious Vim-fork focused on extensibility and agility
@@ -156,7 +160,7 @@ brew "nghttp2"
 # Port scanning utility for large networks
 brew "nmap"
 # Platform built on V8 to build network applications
-brew "node@18", link: true
+brew "node@18"
 # Cryptography and SSL/TLS Toolkit
 brew "openssl@3"
 # Swiss-army knife of markup format conversion
@@ -322,7 +326,7 @@ mas "GarageBand", id: 682658836
 mas "Keynote", id: 409183694
 mas "Listy", id: 1496035097
 mas "Metronome", id: 1629209970
-mas "Notes SE", id: 1610634186
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
+mas "Sticky", id: 1610634186
 mas "Xcode", id: 497799835
