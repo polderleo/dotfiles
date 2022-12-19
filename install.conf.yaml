@@ -13,3 +13,5 @@
     ~/.vimrc: vim/.vimrc
     ~/.zshrc: zsh/.zshrc
     ~/.fzf.zsh: zsh/.fzf.zsh
+    ~/.env.sh: shell/.env.sh
+    ~/.aliases.sh: shell/.aliases.sh
