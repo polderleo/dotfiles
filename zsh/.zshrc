@@ -7,22 +7,10 @@ source $HOMEBREW_PREFIX/share/antigen/antigen.zsh
 # https://dev.to/epranka/hide-the-exported-env-variables-from-the-history-49ni
 export HISTCONTROL=ignorespace
 
-# Change PATH
-path=("$HOME/go/bin" $path) # Add Go
-path=("$HOME/.pub-cache/bin" $path) # Add dart pub cache
-path=("$HOME/.composer/vendor/bin" $path) # Add PHP Composer
-path=("$HOME/.gem/bin" $path) # Add Gems
-path=("$HOME/.deno/bin" $path) # Add Deno
-path=("$(npm config get prefix)/bin" $path) # Add npm bin
-export PATH
-
 # The next lines sources autocomplete scripts for Google Cloud SDK.
 autoload -U +X compinit && compinit
 source "$HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
 source "$HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
-
-# Set Gem home
-export GEM_HOME="$HOME/.gem"
 
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
@@ -37,11 +25,11 @@ antigen theme petermbenjamin/purity
 # Tell Antigen that you're done
 antigen apply
 
-# Disable svgo path conversion by default
-alias svgo="svgo --config=$HOME/.svgoconfig.js"
+# Set PATH and environment
+source ~/.env.sh
 
-# kubectl alias
-alias kc="kubectl"
+# Set aliases
+source ~/.aliases.sh
 
 # Enable fuzzy history search
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
