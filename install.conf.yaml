@@ -12,6 +12,7 @@
     ~/.tmux.conf: tmux/.tmux.conf
     ~/.vimrc: vim/.vimrc
     ~/.zshrc: zsh/.zshrc
+    ~/.zsh_plugins.txt: zsh/.zsh_plugins.txt
     ~/.fzf.zsh: zsh/.fzf.zsh
     ~/.env.sh: shell/.env.sh
     ~/.aliases.sh: shell/.aliases.sh
