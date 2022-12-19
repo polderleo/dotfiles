@@ -4,7 +4,7 @@ module.exports = {
       name: "preset-default",
       params: {
         overrides: {
-          // convertPathData: false,
+          convertPathData: false,
         },
       },
     },
