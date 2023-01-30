@@ -9,10 +9,11 @@ $character${custom.iterm_prompt_marker}\
 [custom.iterm_prompt_marker]
 when = '[ "$TERM_PROGRAM" = "iTerm.app" ]'
 format = "\u001b\\]133;A\u0007"
+ignore_timeout = true
 
 [time]
 disabled = false
-format = 'at ⏰ [\[$time\]]($style)'
+format = 'at ⏰ [\[$time\]]($style) '
 
 [fill]
 symbol = ' '
