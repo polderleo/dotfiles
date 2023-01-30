@@ -1,5 +1,6 @@
 # Fig pre block. Keep at the top of this file.
 [[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
+
 # Load Antidote
 source $HOMEBREW_PREFIX/opt/antidote/share/antidote/antidote.zsh
 source ~/.zsh_plugins.zsh
@@ -16,6 +17,9 @@ source ~/.aliases.sh
 
 # Enable fuzzy history search
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Init starship
+eval "$(starship init zsh)"
 
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"

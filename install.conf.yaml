@@ -19,3 +19,4 @@
     ~/.docker/config.json: docker/config.json
     ~/.env.sh: shell/.env.sh
     ~/.aliases.sh: shell/.aliases.sh
+    ~/.config/starship.toml: starship/starship.toml
