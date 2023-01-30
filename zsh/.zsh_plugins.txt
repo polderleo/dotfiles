@@ -2,4 +2,5 @@
 
 zsh-users/zsh-syntax-highlighting
 zsh-users/zsh-autosuggestions
+agkozak/zsh-z
 mbhynes/fzf-gcloud
