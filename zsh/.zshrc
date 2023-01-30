@@ -18,6 +18,9 @@ source ~/.aliases.sh
 # Enable fuzzy history search
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# Enable iTerm2 shell integration
+source ~/.iterm2_shell_integration.zsh
+
 # Init starship
 eval "$(starship init zsh)"
 
