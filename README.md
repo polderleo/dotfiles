@@ -1,6 +1,7 @@
 ## Setup
 
 - Run `install.sh`.
+- Change default shell: `chsh -s $(which fish)`
 - Import uBlock setting via the import features in browser
 
 ## Brew
