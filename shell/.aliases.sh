@@ -7,6 +7,7 @@ alias svgo="svgo --config=$HOME/.svgo.config.js"
 alias kc="kubectl"
 
 # exa alias
-alias ls='exa --icons --group-directories-first'
-alias ll='exa -l --icons --no-user --group-directories-first  --time-style long-iso'
-alias la='exa -la --icons --no-user --group-directories-first  --time-style long-iso'
+alias ls='exa     --icons --classify --group-directories-first'
+alias ll='exa -l  --icons --classify --group-directories-first --header --group --created --modified --octal-permissions --time-style long-iso --git'
+alias la='exa -la --icons --classify --group-directories-first --header --group --created --modified --octal-permissions --time-style long-iso --git'
+alias lt='exa     --icons --classify --group-directories-first --tree --level=2'
