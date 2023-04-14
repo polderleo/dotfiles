@@ -2,7 +2,7 @@
 // Search for integration on GitHub: https://github.com/search?q=filename%3A.finicky.js+Spotify&type=Code
 
 module.exports = {
-  defaultBrowser: "Firefox",
+  defaultBrowser: "Arc",
   options: {
     hideIcon: true,
     checkForUpdate: false
@@ -10,15 +10,11 @@ module.exports = {
   handlers: [
     {
       match: "meet.google.com/*",
-      browser: "Google Chrome"
+      browser: "Arc"
     },
     {
       match: "open.spotify.com/*",
       browser: "Spotify",
-    },
-    {
-      match: "linear.app/plan3t/*",
-      browser: "Linear",
     },
     {
       match: "*.zoom.us/j/*",
@@ -30,7 +26,7 @@ module.exports = {
     },
     {
       match: "mail.missiveapp.com/*",
-      browser: "Firefox"
+      browser: "Missive"
     },
     {
       match: "www.figma.com/file/*",
