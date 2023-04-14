@@ -20,6 +20,7 @@ symbol = ' '
 
 [memory_usage]
 disabled = false
+threshold = 0
 format = '$symbol[$ram]($style) '
 
 [sudo]
