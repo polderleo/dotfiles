@@ -153,8 +153,6 @@ brew "libxslt"
 brew "libyaml"
 # Rainbows and unicorns in your console!
 brew "lolcat"
-# Mac App Store command-line interface
-brew "mas"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 # HTTP/2 C Library
@@ -322,13 +320,3 @@ cask "vlc"
 cask "warp"
 # Video communication and virtual meeting platform
 cask "zoom"
-mas "ColorSlurp", id: 1287239339
-mas "Craft", id: 1487937127
-mas "GarageBand", id: 682658836
-mas "Keynote", id: 409183694
-mas "Listy", id: 1496035097
-mas "Metronome", id: 1629209970
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
-mas "Sticky", id: 1610634186
-mas "Xcode", id: 497799835
