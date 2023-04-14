@@ -15,6 +15,8 @@ brew "act"
 brew "antidote"
 # Library for manipulating PNG images
 brew "libpng"
+# Color management engine supporting ICC profiles
+brew "little-cms2"
 # New file format for still image compression
 brew "jpeg-xl"
 # Aquarium animation in ASCII art
@@ -85,10 +87,10 @@ brew "fd"
 brew "gnutls"
 # OpenType text shaping engine
 brew "harfbuzz"
-# Color management engine supporting ICC profiles
-brew "little-cms2"
 # Image processing and image analysis library
 brew "leptonica"
+# Framework for layout and rendering of i18n text
+brew "pango"
 # OCR (Optical Character Recognition) engine
 brew "tesseract"
 # Play, record, convert, and stream audio and video
@@ -119,8 +121,6 @@ brew "gnu-sed"
 brew "gnu-tar"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
-# Framework for layout and rendering of i18n text
-brew "pango"
 # Library to render SVG files using Cairo
 brew "librsvg"
 # Graph visualization software from AT&T and Bell Labs
@@ -249,6 +249,7 @@ cask "font-kumbh-sans"
 cask "font-lexend"
 cask "font-montserrat"
 cask "font-open-sans"
+cask "font-palanquin"
 # Font with a mechanical skeleton and the forms are largely geometric
 cask "font-roboto"
 cask "font-source-code-pro"
@@ -258,20 +259,26 @@ cask "fork"
 cask "google-cloud-sdk"
 # Tools to protect your emails and files
 cask "gpg-suite"
-# Desktop wrapper for HTTPie
+# Testing client for REST, GraphQL, and HTTP APIs
 cask "httpie"
 # Tool to optimize images to a smaller size
 cask "imageoptim"
 # Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
-# App to manage software development and track bugs
-cask "linear-linear"
+# Privacy-first, open-source platform for knowledge sharing and management
+cask "logseq"
 # Open-source firewall to block unknown outgoing connections
 cask "lulu"
+# File system integration
+cask "macfuse"
 # Meet, chat, call, and collaborate in just one place
 cask "microsoft-teams"
 # Team inbox and chat tool
 cask "missive"
+# Smooths scrolling and set mouse scroll directions independently
+cask "mos"
+# Open-source music notation software
+cask "musescore"
 # Reverse proxy, secure introspectable tunnels to localhost
 cask "ngrok"
 # Markdown files editor
