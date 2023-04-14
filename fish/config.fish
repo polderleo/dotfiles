@@ -1,4 +1,5 @@
 set fish_greeting
+set sponge_purge_only_on_exit true
 
 # Set PATH and environment
 bass source ~/.env.sh
