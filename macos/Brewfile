@@ -209,6 +209,8 @@ brew "pulumi/tap/pulumictl"
 cask "affinity-designer"
 # Professional image editing software
 cask "affinity-photo"
+# Chromium based browser
+cask "arc"
 # Desktop password and login vault
 cask "bitwarden"
 # Virtual Audio Driver
@@ -254,8 +256,6 @@ cask "font-roboto"
 cask "font-source-code-pro"
 # GIT client
 cask "fork"
-# Web browser
-cask "google-chrome"
 # Set of tools to manage resources and applications hosted on Google Cloud
 cask "google-cloud-sdk"
 # Tools to protect your emails and files
