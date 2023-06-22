@@ -17,3 +17,6 @@ alias sed='gsed'
 
 # tar alias
 alias tar='gtar'
+
+# public wifi login
+alias wifi='nextdns deactivate; open http://neverssl.com; read -P "Continue? "; nextdns activate'
