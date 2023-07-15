@@ -24,9 +24,18 @@ PATH=$PATH:$HOME/.gem/bin
  
 # Add Deno
 PATH=$PATH:$HOME/.deno/bin
- 
+
+# Add .NET tools
+PATH=$PATH:$HOME/.dotnet/tools
+
 # Add npm bin
 PATH=$PATH:$(npm config get prefix)/bin
 
+# Add conda
+PATH=$PATH:$HOMEBREW_PREFIX/anaconda3/bin
+
 # Set Gem home
-export GEM_HOME="$HOME/.gem"
+export GEM_HOME=$HOME/.gem
+
+# Set .NET root
+export DOTNET_ROOT=$HOMEBREW_PREFIX/opt/dotnet@6/libexec/
