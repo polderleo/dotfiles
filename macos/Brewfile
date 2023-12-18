@@ -237,10 +237,11 @@ cask "firefox"
 cask "flutter"
 # Programming font
 cask "font-anonymous-pro"
-cask "font-hack"
+cask "font-dm-sans"
+# Developer targeted fonts with a high number of glyphs
+cask "font-hack-nerd-font"
+# Variable font designed for display
 cask "font-inter"
-# Typeface made for developers
-cask "font-jetbrains-mono"
 # Developer targeted fonts with a high number of glyphs
 cask "font-jetbrains-mono-nerd-font"
 # Geometric sans-serif multi-purpose font
@@ -250,9 +251,13 @@ cask "font-lexend"
 cask "font-montserrat"
 cask "font-open-sans"
 cask "font-palanquin"
+cask "font-poppins"
 # Font with a mechanical skeleton and the forms are largely geometric
 cask "font-roboto"
-cask "font-source-code-pro"
+# Developer targeted fonts with a high number of glyphs
+cask "font-sauce-code-pro-nerd-font"
+cask "font-source-sans-3"
+cask "font-space-grotesk"
 # GIT client
 cask "fork"
 # Set of tools to manage resources and applications hosted on Google Cloud
