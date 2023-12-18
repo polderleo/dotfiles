@@ -6,11 +6,11 @@ alias svgo="svgo --config=$HOME/.svgo.config.js"
 # kubectl alias
 alias kc="kubectl"
 
-# exa alias
-alias ls='exa     --icons --classify --group-directories-first'
-alias ll='exa -l  --icons --classify --group-directories-first --header --group --created --modified --octal-permissions --time-style long-iso --git'
-alias la='exa -la --icons --classify --group-directories-first --header --group --created --modified --octal-permissions --time-style long-iso --git'
-alias lt='exa     --icons --classify --group-directories-first --tree --level=2'
+# eza alias
+alias ls='eza     --icons --classify --group-directories-first'
+alias ll='eza -l  --icons --classify --group-directories-first --header --group --created --modified --octal-permissions --time-style long-iso --git'
+alias la='eza -la --icons --classify --group-directories-first --header --group --created --modified --octal-permissions --time-style long-iso --git'
+alias lt='eza     --icons --classify --group-directories-first --tree --level=2'
 
 # sed alias
 alias sed='gsed'
