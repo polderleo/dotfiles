@@ -1,12 +1,12 @@
 #!/bin/bash
 
 # Intel Mac
-if [ -d "/usr/local/Homebrew" ] ; then
+if [ -d "/usr/local/Homebrew" ]; then
 	eval "$(/usr/local/Homebrew/bin/brew shellenv)"
 fi
 
 # Apple Silicon
-if [ -d "/opt/homebrew" ] ; then
+if [ -d "/opt/homebrew" ]; then
 	eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
@@ -15,13 +15,13 @@ PATH=$PATH:$HOME/go/bin
 
 # Add dart pub cache
 PATH=$PATH:$HOME/.pub-cache/bin
- 
+
 # Add PHP Composer
 PATH=$PATH:$HOME/.composer/vendor/bin
- 
+
 # Add Gems
 PATH=$PATH:$HOME/.gem/bin
- 
+
 # Add Deno
 PATH=$PATH:$HOME/.deno/bin
 
@@ -30,6 +30,9 @@ PATH=$PATH:$HOME/.dotnet/tools
 
 # Add npm bin
 PATH=$PATH:$(npm config get prefix)/bin
+
+# Add bun bin
+PATH=$PATH:$HOME/.bun/bin
 
 # Add conda
 PATH=$PATH:$HOMEBREW_PREFIX/anaconda3/bin
