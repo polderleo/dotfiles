@@ -1,4 +1,7 @@
 tap "adoptopenjdk/openjdk"
+tap "azure/azd"
+tap "azure/functions"
+tap "dapr/tap"
 tap "finestructure/hummingbird"
 tap "heroku/brew"
 tap "homebrew/bundle"
@@ -28,6 +31,8 @@ brew "asciiquarium"
 brew "autoconf"
 # Tool for generating GNU Standards-compliant Makefiles
 brew "automake"
+# Microsoft Azure CLI 2.0
+brew "azure-cli"
 # C library implementing the SSH2 protocol
 brew "libssh2"
 # Regular expressions library
@@ -206,6 +211,12 @@ brew "watch"
 brew "wget"
 # Process YAML, JSON, XML, CSV and properties documents from the CLI
 brew "yq"
+# Azure Developer CLI
+brew "azure/azd/azd"
+# Azure Functions Core Tools 4.0
+brew "azure/functions/azure-functions-core-tools@4"
+# Client for Dapr.
+brew "dapr/tap/dapr-cli"
 # Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
 brew "oven-sh/bun/bun"
 # A swiss army knife for Pulumi development
