@@ -8,8 +8,9 @@ tap "homebrew/core"
 tap "homebrew/services"
 tap "nektos/tap"
 tap "nextdns/tap"
+tap "oven-sh/bun"
 tap "pulumi/tap"
-# Run your GitHub Actions locally 🚀
+# Run your GitHub Actions locally
 brew "act"
 # Plugin manager for zsh, inspired by antigen and antibody
 brew "antidote"
@@ -19,12 +20,18 @@ brew "libpng"
 brew "little-cms2"
 # New file format for still image compression
 brew "jpeg-xl"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@3"
 # Aquarium animation in ASCII art
 brew "asciiquarium"
 # Automatic configure script builder
 brew "autoconf"
 # Tool for generating GNU Standards-compliant Makefiles
 brew "automake"
+# C library implementing the SSH2 protocol
+brew "libssh2"
+# Regular expressions library
+brew "oniguruma"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 # Parser generator
@@ -41,10 +48,6 @@ brew "pkg-config"
 brew "cloc"
 # Console Matrix
 brew "cmatrix"
-# C library implementing the SSH2 protocol
-brew "libssh2"
-# Get a file from an HTTP, HTTPS or FTP server
-brew "curl"
 # Generic library support script
 brew "libtool"
 # ODBC 3 connectivity for UNIX
@@ -65,8 +68,6 @@ brew "libpq"
 brew "libsodium"
 # C library for reading, creating, and modifying zip archives
 brew "libzip"
-# Regular expressions library
-brew "oniguruma"
 # General-purpose scripting language
 brew "php"
 # Dependency Manager for PHP
@@ -75,6 +76,8 @@ brew "composer"
 brew "coreutils"
 # Secure runtime for JavaScript and TypeScript
 brew "deno"
+# YAML Parser
+brew "libyaml"
 # Tool that bootstraps your dotfiles
 brew "dotbot"
 # Perl lib for reading and writing EXIF metadata
@@ -128,7 +131,7 @@ brew "graphviz"
 # Improved top (interactive process viewer)
 brew "htop"
 # User-friendly cURL replacement (command-line HTTP client)
-brew "httpie"
+brew "httpie", link: false
 # Database of common MIME types
 brew "shared-mime-info"
 # ISO/IEC 23008-12:2017 HEIF file format decoder and encoder
@@ -149,10 +152,10 @@ brew "libiconv"
 brew "libxml2"
 # C XSLT library for GNOME
 brew "libxslt"
-# YAML Parser
-brew "libyaml"
 # Rainbows and unicorns in your console!
 brew "lolcat"
+# Fast Cross-Platform Package Manager
+brew "micromamba"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 # HTTP/2 C Library
@@ -160,11 +163,13 @@ brew "nghttp2"
 # Port scanning utility for large networks
 brew "nmap"
 # Platform built on V8 to build network applications
+brew "node@16"
+# Platform built on V8 to build network applications
 brew "node@18"
-# Cryptography and SSL/TLS Toolkit
-brew "openssl@3"
 # Swiss-army knife of markup format conversion
 brew "pandoc"
+# Tool to automatically fix PHP coding standards issues
+brew "php-cs-fixer"
 # Programmer-oriented testing framework for PHP
 brew "phpunit"
 # Object-relational database system
@@ -199,8 +204,10 @@ brew "unzip"
 brew "watch"
 # Internet file retriever
 brew "wget"
-# NextDNS DNS/53 to DoH Proxy
-brew "nextdns/tap/nextdns"
+# Process YAML, JSON, XML, CSV and properties documents from the CLI
+brew "yq"
+# Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
+brew "oven-sh/bun/bun"
 # A swiss army knife for Pulumi development
 brew "pulumi/tap/pulumictl"
 # Professional graphic design software
@@ -219,6 +226,8 @@ cask "calibre"
 cask "cron"
 # Server and cloud storage browser
 cask "cyberduck"
+# Database version management tool
+cask "dbngin"
 # Voice and text chat software
 cask "discord"
 # App to build and share containerized applications and microservices
@@ -272,12 +281,8 @@ cask "imageoptim"
 cask "iterm2"
 # Privacy-first, open-source platform for knowledge sharing and management
 cask "logseq"
-# Open-source firewall to block unknown outgoing connections
-cask "lulu"
 # File system integration
 cask "macfuse"
-# Meet, chat, call, and collaborate in just one place
-cask "microsoft-teams"
 # Team inbox and chat tool
 cask "missive"
 # Smooths scrolling and set mouse scroll directions independently
@@ -296,18 +301,18 @@ cask "numi"
 cask "obsidian"
 # Preference Pane for controlling PostgreSQL database servers
 cask "postgrespreferencepane"
-# Collaboration platform for API development
-cask "postman"
 # VPN client focusing on security
 cask "protonvpn"
+# HTTP debugging proxy
+cask "proxyman"
 # QuickLook generator for Markdown files
 cask "qlmarkdown"
 # Control your tools with a few keystrokes
 cask "raycast"
+# Move and resize windows using keyboard shortcuts or snap areas
+cask "rectangle"
 # Instant messaging application focusing on security
 cask "signal"
-# Team communication and collaboration software
-cask "slack"
 # Music streaming service
 cask "spotify"
 # System monitor for the menu bar
@@ -330,5 +335,7 @@ cask "visual-studio-code"
 cask "vlc"
 # Rust-based terminal
 cask "warp"
+# Network protocol analyzer
+cask "wireshark"
 # Video communication and virtual meeting platform
 cask "zoom"
