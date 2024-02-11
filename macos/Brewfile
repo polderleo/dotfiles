@@ -328,6 +328,8 @@ cask "qlmarkdown"
 cask "raycast"
 # Move and resize windows using keyboard shortcuts or snap areas
 cask "rectangle"
+# Print driver for printing documents directly to a pdf file
+cask "rwts-pdfwriter"
 # Instant messaging application focusing on security
 cask "signal"
 # Music streaming service

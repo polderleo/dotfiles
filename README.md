@@ -29,10 +29,6 @@ Add password to keychain: `ssh-add --apple-use-keychain ~/.ssh/id_ed25519`
 - Clear DNS cache: `sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder`
 - Reactivate NextDNS: `nextdns activate`
 
-## PDF Printer Driver
-
-Install PDFWriter: https://github.com/rodyager/RWTS-PDFwriter
-
 ## Install Fish
 
 https://gist.github.com/gagarine/cf3f65f9be6aa0e105b184376f765262
