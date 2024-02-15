@@ -10,5 +10,8 @@ source ~/.aliases.sh
 # Init starship
 starship init fish | source
 
+# Init zoxide
+zoxide init --cmd cd fish | source
+
 # Enable iTerm2 shell integration
 source ~/.iterm2_shell_integration.fish

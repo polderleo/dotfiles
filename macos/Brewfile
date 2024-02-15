@@ -217,6 +217,8 @@ brew "watch"
 brew "wget"
 # Process YAML, JSON, XML, CSV and properties documents from the CLI
 brew "yq"
+# Shell extension to navigate your filesystem faster
+brew "zoxide"
 # Azure Developer CLI
 brew "azure/azd/azd"
 # Azure Functions Core Tools 4.0
