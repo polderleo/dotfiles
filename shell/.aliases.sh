@@ -12,6 +12,9 @@ alias ll='eza -l  --icons --classify --group-directories-first --header --group 
 alias la='eza -la --icons --classify --group-directories-first --header --group --created --modified --octal-permissions --time-style long-iso --git'
 alias lt='eza     --icons --classify --group-directories-first --tree --level=2'
 
+# bat alias (bat will behave like cat, when no interactivity is detected - so it's is safe)
+alias cat='bat'
+
 # sed alias
 alias sed='gsed'
 
