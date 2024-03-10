@@ -8,8 +8,10 @@ defaults write com.apple.AppleMultitouchTrackpad DragLock -bool false
 defaults write com.apple.AppleMultitouchTrackpad Dragging -bool false
 defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true
 
-# Keyboard: enable key repeat when pressing and holding a key
+# Keyboard: enable key repeat when pressing and holding a key and set a fast repeat rate
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+defaults write NSGlobalDomain InitialKeyRepeat -int 16
+defaults write NSGlobalDomain KeyRepeat -int 2
 
 # Dock: disable workspace auto-switching
 defaults write com.apple.dock workspaces-auto-swoosh -bool false
@@ -34,6 +36,3 @@ defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
 # Finder: when performing a search, search the current folder by default
 defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
-
-# Safari: Show Develop menu
-defaults write com.apple.Safari IncludeDevelopMenu -bool true
