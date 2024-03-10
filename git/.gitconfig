@@ -11,6 +11,7 @@
 	gpgsign = true
 [core]
 	excludesfile = ~/.gitignore
+	editor = hx
 [init]
 	defaultBranch = main
 [pull]
