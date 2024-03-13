@@ -243,6 +243,8 @@ cask "blackhole-2ch"
 cask "calibre"
 # Calendar for professionals and teams
 cask "cron"
+# AI-powered productivity tool for the command-line
+cask "codewhisperer"
 # Server and cloud storage browser
 cask "cyberduck"
 # Database version management tool
@@ -253,8 +255,6 @@ cask "discord"
 cask "docker"
 # Client for the Dropbox cloud storage service
 cask "dropbox"
-# Reimagine your terminal
-cask "fig"
 # Collaborative team software
 cask "figma"
 # Utility for customizing which browser to start
