@@ -2,6 +2,7 @@ theme = "ayu_mirage"
 
 [editor]
 line-number = "relative"
+scroll-lines = 1
 
 [editor.file-picker]
 hidden = false
