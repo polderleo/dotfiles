@@ -15,6 +15,8 @@
     ~/.tmux.conf: tmux/.tmux.conf
     ~/.vimrc: vim/.vimrc
     ~/.config/helix/config.toml: helix/config.toml
+    ~/.config/gitui/key_bindings.ron: gitui/key_bindings.ron
+    ~/.config/gitui/theme.ron: gitui/theme.ron
     ~/.zshrc: zsh/.zshrc
     ~/.zsh_plugins.txt: zsh/.zsh_plugins.txt
     ~/.fzf.zsh: zsh/.fzf.zsh
