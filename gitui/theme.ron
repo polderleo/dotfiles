@@ -1,0 +1,9 @@
+(
+    selection_bg: Some(LightYellow),
+	selection_fg: Some(Black),
+	cmdbar_bg: Some(LightYellow),
+	command_fg: Some(Black),
+	cmdbar_extra_lines_bg: Some(LightYellow),
+	push_gauge_bg: Some(LightYellow),
+	push_gauge_fg: Some(Black),
+)
