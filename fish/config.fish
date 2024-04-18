@@ -13,5 +13,8 @@ starship init fish | source
 # Init zoxide
 zoxide init --cmd cd fish | source
 
+# Init Atuin
+atuin init fish | source
+
 # Enable iTerm2 shell integration
 source ~/.iterm2_shell_integration.fish

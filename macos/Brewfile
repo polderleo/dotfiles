@@ -27,6 +27,8 @@ brew "aom"
 brew "openssl@3"
 # Aquarium animation in ASCII art
 brew "asciiquarium"
+# Improved shell history for zsh, bash, fish and nushell
+brew "atuin"
 # Automatic configure script builder
 brew "autoconf"
 # Tool for generating GNU Standards-compliant Makefiles
