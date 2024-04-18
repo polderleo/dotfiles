@@ -1,0 +1,14 @@
+# Enable automatic sync
+auto_sync = true
+
+# When pressing the up-key, search for history commands in the current directory
+filter_mode_shell_up_key_binding = "directory"
+
+# Don't immediately execute the command
+enter_accept = false
+
+[sync]
+# Enable sync v2 by default
+# This ensures that sync v2 is enabled for new installs only
+# In a later release it will become the default across the board
+records = true
