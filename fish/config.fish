@@ -18,3 +18,8 @@ atuin init fish | source
 
 # Enable iTerm2 shell integration
 source ~/.iterm2_shell_integration.fish
+
+# This adds a blank line after each command output for better readability
+function fish_postexec --on-event fish_postexec
+    echo
+end
