@@ -22,9 +22,6 @@ PATH=$PATH:$HOME/.composer/vendor/bin
 # Add Gems
 PATH=$PATH:$HOME/.gem/bin
 
-# Add Deno
-PATH=$PATH:$HOME/.deno/bin
-
 # Add .NET tools
 PATH=$PATH:$HOME/.dotnet/tools
 
@@ -33,9 +30,6 @@ PATH=$PATH:$(npm config get prefix)/bin
 
 # Add bun bin
 PATH=$PATH:$HOME/.bun/bin
-
-# Add conda
-PATH=$PATH:$HOMEBREW_PREFIX/anaconda3/bin
 
 # Set Gem home
 export GEM_HOME=$HOME/.gem
