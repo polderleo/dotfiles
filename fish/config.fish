@@ -2,7 +2,10 @@ set fish_greeting
 set sponge_purge_only_on_exit true
 
 # Set PATH and environment
-bass source ~/.env.sh
+# If TERM_PROGRAM is not tmux, since tmux will already have sourced the environment
+if test -z "$TMUX" -a "$TERM_PROGRAM" != tmux
+    source ~/dotfiles/fish/env.fish
+end
 
 # Set aliases
 source ~/.aliases.sh
