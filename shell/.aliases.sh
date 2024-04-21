@@ -13,7 +13,8 @@ alias la='eza -la --icons --classify --group-directories-first --header --group 
 alias lt='eza     --icons --classify --group-directories-first --tree --level=2'
 
 # bat alias (bat will behave like cat, when no interactivity is detected - so it's is safe)
-alias cat='bat --theme="Coldark-Dark"'
+alias bat='bat --theme="Coldark-Dark"'
+alias cat='bat'
 
 # sed alias
 alias sed='gsed'
