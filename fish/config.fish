@@ -10,6 +10,9 @@ source ~/.aliases.sh
 # Init starship
 starship init fish | source
 
+# Add correct new lines for starship prompt
+_spaced_prompts
+
 # Init zoxide
 zoxide init --cmd cd fish | source
 
@@ -19,7 +22,3 @@ atuin init fish | source
 # Enable iTerm2 shell integration
 source ~/.iterm2_shell_integration.fish
 
-# This adds a blank line after each command output for better readability
-function fish_postexec --on-event fish_postexec
-    echo
-end
