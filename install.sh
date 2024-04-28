@@ -3,9 +3,6 @@
 # Install homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-# Install dependencies with brew
-brew bundle --file=macos/Brewfile
-
 echo "Link config files to home"
 dotbot -c install.conf.yaml
 
