@@ -1,0 +1,44 @@
+[env]
+# ensure correct color in helix
+TERM = "xterm-256color"
+
+[font]
+normal.family = "JetBrainsMonoNL Nerd Font Mono"
+size = 14
+
+[window]
+decorations = "buttonless"
+dynamic_padding = true
+startup_mode = "maximized"
+option_as_alt = "OnlyLeft"
+
+[window.padding]
+x = 20
+y = 20
+
+[colors.primary]
+background = '#1f2430'
+foreground = '#cbccc6'
+bright_foreground = '#f28779'
+
+# Normal colors
+[colors.normal]
+black = '#212733'
+red = '#f08778'
+green = '#53bf97'
+yellow = '#fdcc60'
+blue = '#60b8d6'
+magenta = '#ec7171'
+cyan = '#98e6ca'
+white = '#fafafa'
+
+# Brightened
+[colors.bright]
+black = '#686868'
+red = '#f58c7d'
+green = '#58c49c'
+yellow = '#ffd165'
+blue = '#65bddb'
+magenta = '#f17676'
+cyan = '#9debcf'
+white = '#ffffff'

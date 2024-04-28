@@ -15,6 +15,7 @@
     ~/.tmux.conf: tmux/.tmux.conf
     ~/.vimrc: vim/.vimrc
     ~/.config/nix/nix.conf: nix/nix.conf
+    ~/.config/alacritty/alacritty.toml: alacritty/alacritty.toml
     ~/.config/atuin/config.toml: atuin/config.toml
     ~/.config/helix/config.toml: helix/config.toml
     ~/.config/gitui/key_bindings.ron: gitui/key_bindings.ron

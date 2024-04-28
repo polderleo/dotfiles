@@ -102,6 +102,7 @@
       # Applications
       "affinity-designer" # Professional graphic design software
       "affinity-photo" # Professional image editing software
+      "alacritty" # GPU-accelerated terminal emulator
       "arc" # Chromium based browser
       "bitwarden" # Desktop password and login vault
       "blackhole-2ch" # Virtual Audio Driver
