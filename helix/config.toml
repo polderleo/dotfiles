@@ -3,6 +3,20 @@ theme = "ayu_mirage"
 [editor]
 line-number = "relative"
 scroll-lines = 1
+cursorline = true
+
+[editor.whitespace.render]
+space = "all"
+tab = "all"
+nbsp = "none"
+nnbsp = "none"
+newline = "none"
+
+[editor.soft-wrap]
+enable = true
+
+[editor.indent-guides]
+render = true
 
 [editor.file-picker]
 hidden = false
@@ -11,3 +25,23 @@ hidden = false
 insert = "bar"
 normal = "block"
 select = "underline"
+
+[editor.statusline]
+left = ["file-name", "file-type", "file-encoding"]
+right = [
+  "mode",
+  "spinner",
+  "diagnostics",
+  "workspace-diagnostics",
+  "selections",
+  "primary-selection-length",
+  "position",
+  "position-percentage",
+  "spacer"
+]
+
+[keys.normal]
+A-j = ["extend_to_line_bounds", "delete_selection", "paste_after"]
+A-k = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before"]
+"C-d" = ["half_page_down", "goto_window_center"]
+"C-u" = ["half_page_up", "goto_window_center"]
