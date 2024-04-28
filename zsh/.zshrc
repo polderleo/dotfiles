@@ -26,6 +26,9 @@ eval "$(starship init zsh)"
 # Init zoxide
 eval "$(zoxide init --cmd cd zsh)"
 
+# Init Atuin
+eval "$(atuin init zsh --disable-ctrl-r --disable-up-arrow)"
+
 # This adds a blank line before each command output for better readability
 function precmd {
     echo
