@@ -4,6 +4,23 @@ auto_sync = true
 # When pressing the up-key, search for history commands in the current directory
 filter_mode_shell_up_key_binding = "directory"
 
+# Configure whether or not to show the help row, which includes the current Atuin
+# version (and whether an update is available), a keymap hint, and the total
+# amount of commands in your history.
+show_help = true
+
+invert = true
+
+keymap_mode = "vim-normal"
+
+filter_mode = "directory"
+
+# inline_height = 40
+style = "compact"
+
+# use numbers with ctrl
+# ctrl_n_shortcuts = true
+
 # Don't immediately execute the command
 enter_accept = false
 
