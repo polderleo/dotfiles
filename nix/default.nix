@@ -32,22 +32,16 @@
 
     brews = [
       "act" # Run your GitHub Actions locally
-      "antidote" # Plugin manager for zsh, inspired by antigen and antibody
       "asciiquarium" # Aquarium animation in ASCII art
-      "atuin" # Improved shell history for zsh, bash, fish and nushell
       "azure-cli" # Microsoft Azure CLI 2.0
-      "bat" # Clone of cat(1) with syntax highlighting and Git integration
       "cloc" # Statistics utility to count lines of code
       "cmatrix" # Console Matrix
       "php" # General-purpose scripting language
       "composer" # Dependency Manager for PHP
-      "eza" # Modern, maintained replacement for ls
       "fd" # Simple, fast and user-friendly alternative to find
       "ffmpeg" # Play, record, convert, and stream audio and video
       "firebase-cli" # Firebase command-line tools
-      "fish" # User-friendly command-line shell for UNIX-like operating systems
       "fisher" # Plugin manager for the Fish shell
-      "fzf" # Command-line fuzzy finder written in Go
       "gh" # GitHub command-line tool
       "python@3.10" # Interpreted, interactive, object-oriented programming language
       "gitui" # Blazing fast terminal-ui for git written in rust
@@ -70,13 +64,11 @@
       "restic" # Fast, efficient and secure backup program
       "ruby" # Powerful, clean, object-oriented scripting language
       "sl" # Prints a steam locomotive if you type sl instead of ls
-      "starship" # Cross-shell prompt for astronauts
       "svgo" # Nodejs-based tool for optimizing SVG vector graphics files
       "tmux" # Terminal multiplexer
       "tree" # Display directories as trees (with optional color/HTML output)
       "watch" # Executes a program periodically, showing output fullscreen
       "yq" # Process YAML, JSON, XML, CSV and properties documents from the CLI
-      "zoxide" # Shell extension to navigate your filesystem faster
       "azure/azd/azd" # Azure Developer CLI
       "azure/functions/azure-functions-core-tools@4" # Azure Functions Core Tools 4.0
       "dapr/tap/dapr-cli" # Client for Dapr.
