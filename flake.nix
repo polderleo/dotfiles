@@ -21,12 +21,12 @@
     darwinConfigurations."Niklas-Machbuch" = darwin.lib.darwinSystem {
       system = "aarch64-darwin"; # "x86_64-darwin" if you're using a pre M1 mac
       modules = [
-        ./default.nix
+        ./nix/default.nix
         home-manager.darwinModules.home-manager
         {
           home-manager = {
             useGlobalPkgs = true;
-            users.nik = import ./home.nix;
+            users.nik = import ./nix/home.nix;
           };
         }
       ];

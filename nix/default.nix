@@ -41,7 +41,6 @@
       "cmatrix" # Console Matrix
       "php" # General-purpose scripting language
       "composer" # Dependency Manager for PHP
-      "dotbot" # Tool that bootstraps your dotfiles
       "eza" # Modern, maintained replacement for ls
       "fd" # Simple, fast and user-friendly alternative to find
       "ffmpeg" # Play, record, convert, and stream audio and video
