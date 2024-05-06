@@ -1,5 +1,0 @@
-# run `antidote bundle` after change
-
-zsh-users/zsh-syntax-highlighting
-zsh-users/zsh-autosuggestions
-mbhynes/fzf-gcloud

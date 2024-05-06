@@ -10,14 +10,8 @@ end
 # Set aliases
 source ~/.aliases.sh
 
-# Init starship
-starship init fish | source
-
 # Add correct new lines for starship prompt
 _spaced_prompts
-
-# Init zoxide
-zoxide init --cmd cd fish | source
 
 # Init Atuin
 atuin init fish --disable-ctrl-r --disable-up-arrow | source
