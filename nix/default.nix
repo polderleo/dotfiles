@@ -3,6 +3,12 @@
   # Make sure the nix daemon always runs
   services.nix-daemon.enable = true;
 
+  # Create sourcings for zsh and fish
+  programs.zsh.enable = true;
+  programs.fish.enable = true;
+
+  users.users.nik.home = "/Users/nik";
+
   homebrew = {
     enable = true;
 
