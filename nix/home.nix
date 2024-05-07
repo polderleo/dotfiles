@@ -1,4 +1,13 @@
 { pkgs, config, ... }:
+let
+  shellAliases = {
+    lg = "lazygit";
+    man = "batman";
+    nix-switch = "nix run nix-darwin -- switch --flake ~/dotfiles";
+    svgo = "svgo --config=$HOME/.svgo.config.js";
+    wifi = "nextdns deactivate; open http://neverssl.com; read -P 'Continue? '; nextdns activate";
+  };
+in
 with config.lib.file;
 let
   dotfilesDirectory = "/Users/nik/dotfiles";
@@ -42,7 +51,6 @@ in
   ];
 
   home.file = {
-    ".aliases.sh" = dotfile "shell/.aliases.sh";
     ".env.sh" = dotfile "shell/.env.sh";
 
     ".docker/config.json" = dotfile "docker/config.json";
@@ -72,6 +80,7 @@ in
   programs.fish = {
     enable = true;
     shellInitLast = builtins.readFile ../fish/config.fish;
+    shellAliases = shellAliases;
   };
 
   programs.zsh = {
@@ -90,9 +99,6 @@ in
       # https://dev.to/epranka/hide-the-exported-env-variables-from-the-history-49ni
       export HISTCONTROL=ignorespace
 
-      # Set aliases
-      source ~/.aliases.sh
-
       # Bind Alt+Left and Alt+Right to move between words
       bindkey "^[[1;3C" forward-word
       bindkey "^[[1;3D" backward-word
@@ -100,6 +106,8 @@ in
       # This adds a blank line before each command output for better readability
       function precmd { echo }
     '';
+
+    shellAliases = shellAliases;
 
     antidote = {
       enable = true;
