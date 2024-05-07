@@ -25,50 +25,23 @@
       "heroku/brew"
       "homebrew/cask-fonts"
       "nektos/tap"
-      "nextdns/tap"
       "oven-sh/bun"
-      "pulumi/tap"
     ];
 
     brews = [
-      "act" # Run your GitHub Actions locally
-      "asciiquarium" # Aquarium animation in ASCII art
       "azure-cli" # Microsoft Azure CLI 2.0
-      "cloc" # Statistics utility to count lines of code
-      "cmatrix" # Console Matrix
-      "php" # General-purpose scripting language
       "composer" # Dependency Manager for PHP
-      "fd" # Simple, fast and user-friendly alternative to find
-      "ffmpeg" # Play, record, convert, and stream audio and video
       "firebase-cli" # Firebase command-line tools
       "fisher" # Plugin manager for the Fish shell
-      "gh" # GitHub command-line tool
-      "python@3.10" # Interpreted, interactive, object-oriented programming language
-      "gitui" # Blazing fast terminal-ui for git written in rust
-      "gnu-sed" # GNU implementation of the famous stream editor
-      "gnu-tar" # GNU version of the tar archiving utility
       "go" # Open source programming language to build simple/reliable/efficient software
-      "helix" # Post-modern modal text editor
-      "htop" # Improved top (interactive process viewer)
-      "httpie" # User-friendly cURL replacement (command-line HTTP client)
-      "imagemagick" # Tools and libraries to manipulate images in many formats
-      "lolcat" # Rainbows and unicorns in your console!
-      "micromamba" # Fast Cross-Platform Package Manager
       "node@18" # Platform built on V8 to build network applications
-      "nushell" # Modern shell for the GitHub era
-      "pandoc" # Swiss-army knife of markup format conversion
       "php-cs-fixer" # Tool to automatically fix PHP coding standards issues
+      "php" # General-purpose scripting language
       "phpunit" # Programmer-oriented testing framework for PHP
       "postgresql@14" # Object-relational database system
-      "pulumi" # Cloud native development platform
-      "restic" # Fast, efficient and secure backup program
+      "python@3.10" # Interpreted, interactive, object-oriented programming language
       "ruby" # Powerful, clean, object-oriented scripting language
-      "sl" # Prints a steam locomotive if you type sl instead of ls
-      "svgo" # Nodejs-based tool for optimizing SVG vector graphics files
-      "tmux" # Terminal multiplexer
-      "tree" # Display directories as trees (with optional color/HTML output)
-      "watch" # Executes a program periodically, showing output fullscreen
-      "yq" # Process YAML, JSON, XML, CSV and properties documents from the CLI
+
       "azure/azd/azd" # Azure Developer CLI
       "azure/functions/azure-functions-core-tools@4" # Azure Functions Core Tools 4.0
       "dapr/tap/dapr-cli" # Client for Dapr.
