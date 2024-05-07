@@ -7,9 +7,6 @@ if test -z "$TMUX" -a "$TERM_PROGRAM" != tmux
     source ~/dotfiles/fish/env.fish
 end
 
-# Set aliases
-source ~/.aliases.sh
-
 # Add correct new lines for starship prompt
 _spaced_prompts
 
