@@ -9,6 +9,38 @@ in
 {
   home.stateVersion = "23.11";
 
+  home.packages = with pkgs; [
+    act # Run GitHub Actions locally
+    cloc # Count lines of code
+    fd # Alternative to find
+    ffmpeg # Play, record, convert, and stream audio and video
+    gh # GitHub command-line tool
+    gitui # Terminal ui for git
+    gnused # GNU version of the famous stream editor
+    gnutar # GNU version of the tar archiving utility
+    helix # Post-modern modal text editor
+    htop # Improved top (interactive process viewer)
+    httpie # User-friendly HTTP client
+    imagemagick # Manipulate images in many formats
+    micromamba # Environment manager
+    nextdns # DNS resolver
+    nodePackages.svgo # Optimize SVGs
+    nushell # Modern alternative shell
+    pandoc # Document conversion
+    pulumi-bin # Cloud native development platform
+    restic # Backup program
+    tmux # Terminal multiplexer
+    tree # Display directories as trees
+    watch # Execute a program periodically
+    yq # Process YAML, JSON, XML, CSV and properties documents
+
+    # Fun
+    asciiquarium # Aquarium animation
+    cmatrix # Matrix animation
+    lolcat # Rainbow colors
+    sl # Steam locomotive
+  ];
+
   home.file = {
     ".aliases.sh" = dotfile "shell/.aliases.sh";
     ".env.sh" = dotfile "shell/.env.sh";
