@@ -113,6 +113,14 @@ in
 
   programs.fzf = {
     enable = true;
-    enableFishIntegration = false; # We use PatrickF1/fzf.fish
+    enableFishIntegration = false;
+    package = pkgs.fzf.overrideAttrs (oldAttrs: {
+      # The normal postInstall script installs shell integrations.
+      # I don't want them, because I use the fish plugin `PatrickF1/fzf.fish`.
+      postInstall = ''
+        install bin/fzf-tmux $out/bin
+        installManPage man/man1/fzf.1 man/man1/fzf-tmux.1
+      '';
+    });
   };
 }
