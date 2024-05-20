@@ -77,7 +77,6 @@
       "bitwarden" # Desktop password and login vault
       "blackhole-2ch" # Virtual Audio Driver
       "calibre" # E-books management software
-      "codewhisperer" # AI-powered productivity tool for the command-line
       "cyberduck" # Server and cloud storage browser
       "dbngin" # Database version management tool
       "discord" # Voice and text chat software
