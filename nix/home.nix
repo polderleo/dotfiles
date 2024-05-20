@@ -38,6 +38,7 @@ in
     pandoc # Document conversion
     pulumi-bin # Cloud native development platform
     restic # Backup program
+    tlrc # client for tldr: collaborative cheatsheets for console commands
     tmux # Terminal multiplexer
     tree # Display directories as trees
     watch # Execute a program periodically
@@ -118,6 +119,14 @@ in
     };
   };
 
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+    config = {
+      hide_env_diff = true;
+    };
+  };
+
   # Universal prompt
   programs.starship = {
     enable = true;
@@ -134,6 +143,19 @@ in
   programs.eza = {
     enable = true;
     icons = true;
+    git = true;
+    extraOptions = [
+      "--classify"
+      "--group-directories-first"
+      "--header"
+      "--group"
+      "--created"
+      "--modified"
+      "--octal-permissions"
+
+      "--time-style"
+      "long-iso"
+    ];
   };
 
   # Modern replacement for 'cd'
@@ -171,6 +193,9 @@ in
       promptToReturnFromSubprocess = false;
       gui = {
         nerdFontsVersion = 3;
+        statusPanelView = "allBranchesLog";
+        showCommandLog = false;
+        showBottomLine = true;
         theme = {
           activeBorderColor = [ "#ee99a0" "bold" ];
           inactiveBorderColor = [ "#a5adcb" ];
