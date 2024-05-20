@@ -3,7 +3,7 @@
 TERM = "xterm-256color"
 
 [font]
-normal.family = "JetBrainsMonoNL Nerd Font Mono"
+normal.family = "JetBrainsMonoNL Nerd Font"
 size = 14
 
 [window]
@@ -20,6 +20,14 @@ y = 20
 background = '#1f2430'
 foreground = '#cbccc6'
 bright_foreground = '#f28779'
+
+[[hints.enabled]]
+command = 'open'
+hyperlinks = true
+post_processing = true
+persist = true
+mouse = { enabled = true, mods = "Command" }
+regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
 
 # Normal colors
 [colors.normal]
