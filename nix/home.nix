@@ -68,6 +68,7 @@ in
     ".config/gitui/key_bindings.ron" = dotfile "gitui/key_bindings.ron";
     ".config/gitui/theme.ron" = dotfile "gitui/theme.ron";
     ".config/helix/config.toml" = dotfile "helix/config.toml";
+    ".config/helix/themes/my_theme.toml" = dotfile "helix/my_theme.toml";
     ".config/nix/nix.conf" = dotfile "nix/nix.conf";
     ".config/starship.toml" = dotfile "starship/starship.toml";
 

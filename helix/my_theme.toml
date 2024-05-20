@@ -1,0 +1,13 @@
+# https://github.com/helix-editor/helix/blob/master/runtime/themes/ayu_mirage.toml
+
+inherits = "ayu_mirage"
+
+# Override the theming for "keyword"s:
+"ui.linenr" = "dark_gray_brighter"
+"ui.virtual.whitespace" = "dark_gray_brighter"
+
+# Override colors in the palette:
+[palette]
+gray = "#6E7C8E" # brightend for higher contrast, was #565b66
+dark_gray_brighter = "#4F5867" # added for higher contrast
+dark_gray = "#323843" # not changed
