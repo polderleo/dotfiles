@@ -10,6 +10,10 @@ with lib;
 
 let
   home = "/Users/nik";
+  appicon = name: {
+    path = "/Applications/${name}.app";
+    icon = "${home}/dotfiles/macos/icons/${name}.icns";
+  };
 in
 {
 
@@ -76,7 +80,25 @@ in
   programs.zsh.enable = true;
   programs.fish.enable = true;
 
-  users.users.nik.home = "/Users/nik";
+  users.users.nik.home = home;
+
+  environment.customIcons = {
+    enable = true;
+    icons = map appicon [
+      "calibre"
+      "ImageOptim"
+      "kitty"
+      "LogSeq"
+      "Microsoft Excel"
+      "Microsoft OneNote"
+      "Microsoft Teams"
+      "Microsoft Word"
+      "Notion"
+      "Spotify"
+      "Telegram"
+      "Visual Studio Code"
+    ];
+  };
 
   system.defaults.finder = {
     FXPreferredViewStyle = "Nlsv"; # Always open everything in list view
