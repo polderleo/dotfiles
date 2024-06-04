@@ -91,6 +91,7 @@
       "gpg-suite" # Tools to protect your emails and files
       "httpie" # Testing client for REST, GraphQL, and HTTP APIs
       "imageoptim" # Tool to optimise images to a smaller size
+      "kitty" # GPU-based terminal emulator
       "logseq" # Privacy-first, open-source platform for knowledge sharing and management
       "macfuse" # File system integration
       "missive" # Team inbox and chat tool
