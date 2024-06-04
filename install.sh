@@ -9,9 +9,6 @@ fish -c "fisher update"
 echo "Install zsh dependencies"
 antidote load
 
-echo "Setup iTerm2"
-./iterm/setup.sh
-
 echo "Configure macOS"
 ./macos/defaults.sh
 

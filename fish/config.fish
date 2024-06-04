@@ -13,7 +13,3 @@ _spaced_prompts
 # Init Atuin
 atuin init fish --disable-ctrl-r --disable-up-arrow | source
 bind \ca _atuin_search
-
-# Enable iTerm2 shell integration
-source ~/.iterm2_shell_integration.fish
-

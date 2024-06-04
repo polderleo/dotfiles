@@ -3,7 +3,7 @@
 
 format = """
 $all$fill$memory_usage$time$line_break\
-$character${custom.iterm_prompt_marker}\
+$character\
 """
 
 add_newline = false
@@ -11,11 +11,6 @@ add_newline = false
 [character]
 success_symbol = '[➜](bold green) '
 error_symbol = '[✗](bold red) '
-
-[custom.iterm_prompt_marker]
-when = '[ "$TERM_PROGRAM" = "iTerm.app" ]'
-format = "\u001b\\]133;A\u0007"
-ignore_timeout = true
 
 [time]
 disabled = false
