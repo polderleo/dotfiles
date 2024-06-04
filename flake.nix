@@ -9,6 +9,9 @@
       url = "github:niklasravnsborg/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    darwin-custom-icons = {
+      url = "github:ryanccn/nix-darwin-custom-icons";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -28,6 +31,7 @@
     {
       nixpkgs,
       darwin,
+      darwin-custom-icons,
       home-manager,
       sops-nix,
       ...
@@ -51,6 +55,7 @@
         modules = [
           ./nix/darwin.nix
           sops-nix.darwinModules.sops
+          darwin-custom-icons.darwinModules.default
           home-manager.darwinModules.home-manager
           {
             home-manager = {
