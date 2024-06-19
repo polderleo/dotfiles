@@ -13,3 +13,12 @@ _spaced_prompts
 # Init Atuin
 atuin init fish --disable-ctrl-r --disable-up-arrow | source
 bind \ca _atuin_search
+
+function ya
+    set tmp (mktemp -t "yazi-cwd.XXXXX")
+    yazi $argv --cwd-file="$tmp"
+    if set cwd (cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+        builtin cd -- "$cwd"
+    end
+    rm -f -- "$tmp"
+end

@@ -74,6 +74,12 @@ in
     ".config/nix/nix.conf" = dotfile "nix/nix.conf";
     ".config/starship.toml" = dotfile "starship/starship.toml";
 
+    # Yazi
+    ".config/yazi/theme.toml" = dotfile "yazi/theme.toml";
+    ".config/yazi/yazi.toml" = dotfile "yazi/yazi.toml";
+    ".config/yazi/keymap.toml" = dotfile "yazi/keymap.toml";
+    ".config/yazi/init.lua" = dotfile "yazi/init.lua";
+
     "Library/LaunchAgents/Timemator.restart.plist" = dotfile "macos/Timemator.restart.plist";
   };
 
@@ -126,6 +132,10 @@ in
     config = {
       hide_env_diff = true;
     };
+  };
+
+  programs.yazi = {
+    enable = true;
   };
 
   # Universal prompt
