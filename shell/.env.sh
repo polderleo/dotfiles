@@ -10,24 +10,6 @@ if [ -d "/opt/homebrew" ]; then
 	eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-# Add Go
-PATH=$PATH:$HOME/go/bin
-
-# Add dart pub cache
-PATH=$PATH:$HOME/.pub-cache/bin
-
-# Add PHP Composer
-PATH=$PATH:$HOME/.composer/vendor/bin
-
-# Add Gems
-PATH=$PATH:$HOME/.gem/bin
-
-# Add .NET tools
-PATH=$PATH:$HOME/.dotnet/tools
-
-# Add npm bin
-PATH=$PATH:$(npm config get prefix)/bin
-
 # Add bun bin
 PATH=$PATH:$HOME/.bun/bin
 
