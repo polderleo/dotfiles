@@ -37,7 +37,6 @@ in
     nodePackages.svgo # Optimize SVGs
     nushell # Modern alternative shell
     pandoc # Document conversion
-    pulumi-bin # Cloud native development platform
     restic # Backup program
     tlrc # client for tldr: collaborative cheatsheets for console commands
     tmux # Terminal multiplexer

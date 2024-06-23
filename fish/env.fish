@@ -12,35 +12,9 @@ if test -d "/opt/homebrew"
     eval (/opt/homebrew/bin/brew shellenv)
 end
 
-# Add Go
-set -a PATH $HOME/go/bin
-
-# Add dart pub cache
-set -a PATH $HOME/.pub-cache/bin
-
-# Add PHP Composer
-set -a PATH $HOME/.composer/vendor/bin
-
-# Add Gems
-set -a PATH $HOME/.gem/bin
-
-# Add Deno
-# set -a PATH $HOME/.deno/bin
-
-# Add .NET tools
-set -a PATH $HOME/.dotnet/tools
-
-# Add npm bin
-# set -a PATH (npm config get prefix)/bin
 
 # Add bun bin
 set -a PATH $HOME/.bun/bin
-
-# Set Gem home
-set -gx GEM_HOME $HOME/.gem
-
-# Set .NET root
-set -gx DOTNET_ROOT $HOMEBREW_PREFIX/opt/dotnet@6/libexec/
 
 # Disable brew auto update
 set -gx HOMEBREW_NO_AUTO_UPDATE true

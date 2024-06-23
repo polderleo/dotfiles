@@ -49,35 +49,11 @@
     };
 
     taps = [
-      "azure/azd"
-      "azure/functions"
-      "dapr/tap"
-      "finestructure/hummingbird"
-      "heroku/brew"
       "homebrew/cask-fonts"
-      "nektos/tap"
-      "oven-sh/bun"
     ];
 
     brews = [
-      "azure-cli" # Microsoft Azure CLI 2.0
-      "composer" # Dependency Manager for PHP
-      "firebase-cli" # Firebase command-line tools
       "fisher" # Plugin manager for the Fish shell
-      "go" # Open source programming language to build simple/reliable/efficient software
-      "node@18" # Platform built on V8 to build network applications
-      "php-cs-fixer" # Tool to automatically fix PHP coding standards issues
-      "php" # General-purpose scripting language
-      "phpunit" # Programmer-oriented testing framework for PHP
-      "postgresql@14" # Object-relational database system
-      "python@3.10" # Interpreted, interactive, object-oriented programming language
-      "ruby" # Powerful, clean, object-oriented scripting language
-
-      "azure/azd/azd" # Azure Developer CLI
-      "azure/functions/azure-functions-core-tools@4" # Azure Functions Core Tools 4.0
-      "dapr/tap/dapr-cli" # Client for Dapr.
-      "oven-sh/bun/bun" # Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
-      "pulumi/tap/pulumictl" # A swiss army knife for Pulumi development
     ];
 
     casks = [
