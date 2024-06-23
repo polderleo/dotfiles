@@ -12,9 +12,15 @@
 [core]
 	excludesfile = ~/.gitignore
 	editor = hx
+	pager = delta
 [init]
 	defaultBranch = main
 [pull]
 	rebase = true
 [merge]
 	conflictStyle = zdiff3
+[delta]
+	side-by-side = true
+	syntax-theme = Coldark-Dark
+[interactive]
+    diffFilter = delta --color-only
