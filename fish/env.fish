@@ -47,3 +47,6 @@ set -gx HOMEBREW_NO_AUTO_UPDATE true
 
 # Set Helix editor
 set -gx EDITOR hx
+
+# Set Docker default platform - fixes issue with M1 Macs
+set -gx DOCKER_DEFAULT_PLATFORM linux/amd64
