@@ -21,6 +21,7 @@ in
   home.packages = with pkgs; [
     act # Run GitHub Actions locally
     cloc # Count lines of code
+    delta # Syntax-highlighter for git and diff output
     fd # Alternative to find
     ffmpeg # Play, record, convert, and stream audio and video
     gh # GitHub command-line tool
@@ -202,6 +203,12 @@ in
     enable = true;
     settings = {
       promptToReturnFromSubprocess = false;
+      git = {
+        paging = {
+          colorArg = "always";
+          pager = "delta --no-gitconfig --paging=never --dark --syntax-theme=Coldark-Dark";
+        };
+      };
       gui = {
         nerdFontsVersion = 3;
         statusPanelView = "allBranchesLog";
