@@ -25,3 +25,5 @@ function ya
     end
     rm -f -- "$tmp"
 end
+
+eval "$(micromamba shell hook --shell fish)"
