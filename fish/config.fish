@@ -14,6 +14,9 @@ _spaced_prompts
 atuin init fish --disable-ctrl-r --disable-up-arrow | source
 bind \ca _atuin_search
 
+# Config any-nix-shell
+any-nix-shell fish | source
+
 function ya
     set tmp (mktemp -t "yazi-cwd.XXXXX")
     yazi $argv --cwd-file="$tmp"
