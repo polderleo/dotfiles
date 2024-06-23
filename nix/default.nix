@@ -9,6 +9,37 @@
 
   users.users.nik.home = "/Users/nik";
 
+  system.defaults.finder =
+    {
+      FXPreferredViewStyle = "Nlsv"; # Always open everything in list view
+      ShowStatusBar = true; # Show status bar
+      ShowPathbar = true; # Show path bar
+      _FXSortFoldersFirst = true; # Keep folders on top when sorting by name
+      FXEnableExtensionChangeWarning = false; # Disable the warning when changing a file extension
+      FXDefaultSearchScope = "SCcf"; # When performing a search, search the current folder by default
+    };
+
+  system.defaults.trackpad = {
+    Clicking = true; # Enable tap to click
+    TrackpadThreeFingerDrag = true; # Enable three finger drag
+  };
+
+  system.defaults.NSGlobalDomain = {
+    # Enable key repeat when pressing and holding a key and set a fast repeat rate
+    ApplePressAndHoldEnabled = false;
+    InitialKeyRepeat = 16;
+    KeyRepeat = 2;
+
+    AppleShowAllExtensions = true; # Show all filename extensions in Finder
+
+    AppleSpacesSwitchOnActivate = false; # Disable switching to a space when an application is activated
+  };
+
+  system.defaults.dock =
+    {
+      autohide = true; # automatically hide and show the Dock
+    };
+
   homebrew = {
     enable = true;
 
