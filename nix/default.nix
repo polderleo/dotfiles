@@ -137,7 +137,6 @@
       "proxyman" # HTTP debugging proxy
       "qlmarkdown" # Quick Look generator for Markdown files
       "raycast" # Control your tools with a few keystrokes
-      "rectangle" # Move and resize windows using keyboard shortcuts or snap areas
       "rwts-pdfwriter" # Print driver for printing documents directly to a pdf file
       "signal" # Instant messaging application focusing on security
       "spotify" # Music streaming service
