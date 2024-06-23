@@ -41,3 +41,6 @@ set -gx GEM_HOME $HOME/.gem
 
 # Set .NET root
 set -gx DOTNET_ROOT $HOMEBREW_PREFIX/opt/dotnet@6/libexec/
+
+# Disable brew auto update
+set -gx HOMEBREW_NO_AUTO_UPDATE true
