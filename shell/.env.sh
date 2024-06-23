@@ -39,3 +39,6 @@ export DOTNET_ROOT=$HOMEBREW_PREFIX/opt/dotnet@6/libexec/
 
 # Disable brew auto update
 export HOMEBREW_NO_AUTO_UPDATE=true
+
+# Set Helix editor
+export EDITOR=hx
