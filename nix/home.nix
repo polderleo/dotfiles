@@ -6,6 +6,7 @@ let
     nix-switch = "nix run nix-darwin -- switch --flake ~/dotfiles";
     svgo = "svgo --config=$HOME/.svgo.config.js";
     wifi = "nextdns deactivate; open http://neverssl.com; read -P 'Continue? '; nextdns activate";
+    ffmpeg = "ffmpeg -hide_banner";
   };
 in
 with config.lib.file;
@@ -23,7 +24,7 @@ in
     cloc # Count lines of code
     delta # Syntax-highlighter for git and diff output
     fd # Alternative to find
-    ffmpeg # Play, record, convert, and stream audio and video
+    ffmpeg_7 # Play, record, convert, and stream audio and video
     gh # GitHub command-line tool
     gitui # Terminal ui for git
     gnused # GNU version of the famous stream editor
