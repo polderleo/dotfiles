@@ -209,6 +209,7 @@ in
         };
       };
       gui = {
+        scrollHeight = 1;
         nerdFontsVersion = 3;
         statusPanelView = "allBranchesLog";
         showCommandLog = false;
@@ -225,6 +226,9 @@ in
           searchingActiveBorderColor = [ "#eed49f" ];
         };
         authorColors = { "*" = "#b7bdf8"; };
+      };
+      update = {
+        method = "never";
       };
     };
   };
