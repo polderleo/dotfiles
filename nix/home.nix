@@ -20,6 +20,7 @@ in
 
   home.packages = with pkgs; [
     act # Run GitHub Actions locally
+    any-nix-shell
     cloc # Count lines of code
     delta # Syntax-highlighter for git and diff output
     fd # Alternative to find
