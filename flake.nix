@@ -2,7 +2,7 @@
   description = "Niklas dotfiles";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     darwin = {
       # nix will normally use the nixpkgs defined in home-managers inputs, we only want one copy of nixpkgs though
       url = "github:niklasravnsborg/nix-darwin";
