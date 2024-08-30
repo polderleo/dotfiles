@@ -27,6 +27,31 @@
           home-manager = {
             useGlobalPkgs = true;
             users.nik = import ./nix/home.nix;
+
+            # pass arguments to home.nix
+            extraSpecialArgs = {
+              configDir = "/Users/nik/dotfiles";
+            };
+          };
+        }
+      ];
+    };
+
+    nixosConfigurations."Niklas-Workstation" = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        ./nixos/configuration.nix
+        home-manager.nixosModules.home-manager
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            users.nik = import ./nix/home.nix;
+
+            # pass arguments to home.nix
+            extraSpecialArgs = {
+              configDir = "/home/nik/dotfiles";
+            };
           };
         }
       ];

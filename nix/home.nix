@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, config, configDir, ... }:
 let
   shellAliases = {
     lg = "lazygit";
@@ -10,9 +10,8 @@ let
 in
 with config.lib.file;
 let
-  dotfilesDirectory = "/Users/nik/dotfiles";
   dotfile = file: {
-    source = mkOutOfStoreSymlink "${dotfilesDirectory}/${file}";
+    source = mkOutOfStoreSymlink "${configDir}/${file}";
   };
 in
 {
