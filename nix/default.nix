@@ -53,10 +53,6 @@
       "homebrew/cask-fonts"
     ];
 
-    brews = [
-      "fisher" # Plugin manager for the Fish shell
-    ];
-
     casks = [
       # Fonts
       "font-dm-sans"

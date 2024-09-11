@@ -66,7 +66,6 @@ in
 
     ".config/alacritty/alacritty.toml" = dotfile "alacritty/alacritty.toml";
     ".config/atuin/config.toml" = dotfile "atuin/config.toml";
-    ".config/fish/fish_plugins" = dotfile "fish/fish_plugins";
     ".config/gitui/key_bindings.ron" = dotfile "gitui/key_bindings.ron";
     ".config/gitui/theme.ron" = dotfile "gitui/theme.ron";
     ".config/helix/config.toml" = dotfile "helix/config.toml";
@@ -91,6 +90,62 @@ in
     enable = true;
     shellInitLast = builtins.readFile ../fish/config.fish;
     shellAliases = shellAliases;
+    plugins = [
+      {
+        name = "fzf.fish";
+        src = pkgs.fetchFromGitHub {
+          owner = "PatrickF1";
+          repo = "fzf.fish";
+          rev = "v10.3";
+          sha256 = "sha256-T8KYLA/r/gOKvAivKRoeqIwE2pINlxFQtZJHpOy9GMM=";
+        };
+      }
+      {
+        name = "sponge";
+        src = pkgs.fetchFromGitHub {
+          owner = "meaningful-ooo";
+          repo = "sponge";
+          rev = "1.1.0";
+          sha256 = "sha256-MdcZUDRtNJdiyo2l9o5ma7nAX84xEJbGFhAVhK+Zm1w=";
+        };
+      }
+      {
+        name = "google-cloud-sdk-fish-completion";
+        src = pkgs.fetchFromGitHub {
+          owner = "lgathy";
+          repo = "google-cloud-sdk-fish-completion";
+          rev = "bc24b0bf7da2addca377d89feece4487ca0b1e9c";
+          sha256 = "sha256-BIbzdxAj3mrf340l4hNkXwA13rIIFnC6BxM6YuJ7/w8=";
+        };
+      }
+      {
+        name = "autopair.fish";
+        src = pkgs.fetchFromGitHub {
+          owner = "jorgebucaran";
+          repo = "autopair.fish";
+          rev = "1.0.4";
+          sha256 = "sha256-s1o188TlwpUQEN3X5MxUlD/2CFCpEkWu83U9O+wg3VU=";
+        };
+      }
+      {
+        name = "grc";
+        src = pkgs.fetchFromGitHub {
+          owner = "orefalo";
+          repo = "grc";
+          rev = "68e4325c1f261dfa5153937e7670fde046a0fe56";
+          sha256 = "sha256-iHlxCEKYyKHlIpyOz4bwTQ6R0lr7FqZb54/wuWfWQfg=";
+        };
+      }
+      {
+        name = "spaced-prompts.fish";
+        src = pkgs.fetchFromGitHub {
+          owner = "niklasravnsborg";
+          repo = "spaced-prompts.fish";
+          rev = "0.1.1";
+          sha256 = "sha256-J0RdvUwn+r39jNFNus9XYDjwhf8Qh/nZqtRo/BpShh4=";
+        };
+      }
+    ];
   };
 
   programs.zsh = {
