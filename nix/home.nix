@@ -187,6 +187,16 @@ in
     };
   };
 
+  programs.gpg = {
+    enable = true;
+    publicKeys = [
+      {
+        source = ../gpg/niklasravnsborg.asc;
+        trust = 5;
+      }
+    ];
+  };
+
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;

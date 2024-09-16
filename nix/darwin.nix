@@ -154,7 +154,6 @@ in
       "flutter" # UI toolkit for building applications for mobile, web and desktop
       "fork" # GIT client
       "google-cloud-sdk" # Set of tools to manage resources and applications hosted on Google Cloud
-      "gpg-suite" # Tools to protect your emails and files
       "httpie" # Testing client for REST, GraphQL, and HTTP APIs
       "imageoptim" # Tool to optimise images to a smaller size
       "kitty" # GPU-based terminal emulator
