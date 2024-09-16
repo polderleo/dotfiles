@@ -56,7 +56,6 @@ in
   home.file = {
     ".env.sh" = dotfile "shell/.env.sh";
 
-    ".docker/config.json" = dotfile "docker/config.json";
     ".finicky.js" = dotfile "finicky/.finicky.js";
     ".gitconfig" = dotfile "git/.gitconfig";
     ".gitignore" = dotfile "git/.gitignore";
