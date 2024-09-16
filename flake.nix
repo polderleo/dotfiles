@@ -39,11 +39,6 @@
           home-manager = {
             useGlobalPkgs = true;
             users.nik = import ./nix/home.nix;
-
-            # pass arguments to home.nix
-            extraSpecialArgs = {
-              configDir = "/Users/nik/dotfiles";
-            };
           };
         }
       ];
@@ -59,11 +54,6 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             users.nik = import ./nix/home.nix;
-
-            # pass arguments to home.nix
-            extraSpecialArgs = {
-              configDir = "/home/nik/dotfiles";
-            };
           };
         }
       ];
