@@ -81,6 +81,13 @@ in
     "Library/LaunchAgents/Timemator.restart.plist" = lib.optionalAttrs pkgs.stdenv.isDarwin (dotfile "macos/Timemator.restart.plist");
   };
 
+  home.activation.copyKeyboardLayout = lib.optionalAttrs pkgs.stdenv.isDarwin (
+    config.lib.dag.entryAfter [ "writeBoundary" ] ''
+      mkdir -p ~/Library/Keyboard\ Layouts/
+      cp -R ${configDir}/macos/niklas.keylayout ~/Library/Keyboard\ Layouts/
+    ''
+  );
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 

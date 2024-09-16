@@ -6,9 +6,6 @@
 echo "Install zsh dependencies"
 antidote load
 
-echo "Install custom keyboard"
-./macos/keyboard.sh
-
 echo "Fix GPG pinentry"
 ./macos/pinentry.sh
 
