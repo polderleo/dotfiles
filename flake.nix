@@ -32,7 +32,7 @@
       system = "aarch64-darwin"; # "x86_64-darwin" if you're using a pre M1 mac
       specialArgs = { inherit inputs; };
       modules = [
-        ./nix/default.nix
+        ./nix/darwin.nix
         home-manager.darwinModules.home-manager
         sops-nix.darwinModules.sops
         {

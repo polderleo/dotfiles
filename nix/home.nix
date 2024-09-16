@@ -1,4 +1,5 @@
-{ pkgs, config, configDir, ... }:
+{ pkgs, config, configDir, lib, ... }:
+with lib;
 let
   shellAliases = {
     lg = "lazygit";
@@ -8,11 +9,8 @@ let
     wifi = "nextdns deactivate; open http://neverssl.com; read -P 'Continue? '; nextdns activate";
     ffmpeg = "ffmpeg -hide_banner";
   };
-in
-with config.lib.file;
-let
   dotfile = file: {
-    source = mkOutOfStoreSymlink "${configDir}/${file}";
+    source = config.lib.file.mkOutOfStoreSymlink "${configDir}/${file}";
   };
 in
 {
@@ -80,7 +78,7 @@ in
     ".config/yazi/keymap.toml" = dotfile "yazi/keymap.toml";
     ".config/yazi/init.lua" = dotfile "yazi/init.lua";
 
-    "Library/LaunchAgents/Timemator.restart.plist" = dotfile "macos/Timemator.restart.plist";
+    "Library/LaunchAgents/Timemator.restart.plist" = lib.optionalAttrs pkgs.stdenv.isDarwin (dotfile "macos/Timemator.restart.plist");
   };
 
   # Let Home Manager install and manage itself.

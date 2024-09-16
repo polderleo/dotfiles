@@ -6,9 +6,6 @@
 echo "Install zsh dependencies"
 antidote load
 
-echo "Configure macOS"
-./macos/defaults.sh
-
 echo "Install custom keyboard"
 ./macos/keyboard.sh
 
