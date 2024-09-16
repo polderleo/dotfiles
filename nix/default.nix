@@ -127,4 +127,6 @@
       "zoom" # Video communication and virtual meeting platform
     ];
   };
+
+  system.stateVersion = 5;
 }
