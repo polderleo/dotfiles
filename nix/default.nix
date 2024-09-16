@@ -28,18 +28,41 @@ in
 
   services.nextdns.enable = true;
   launchd.daemons.nextdns = {
-    command = (configFile:
-      mkForce
-        "/bin/sh -c '${pkgs.nextdns}/bin/nextdns run --config-file=${configFile}'"
-    ) config.sops.secrets.nextdns-config.path;
-    serviceConfig = {
-      RunAtLoad = mkForce null;
-      KeepAlive = mkForce {
-        PathState = {
-          "${config.sops.defaultSecretsMountPoint}/sops-nix-secretfs" = true;
-        };
-      };
-    };
+    command = mkForce (toString (pkgs.writeShellScript "nextdns-config-watch"
+      ''
+        trap 'kill $(jobs -p); exit' SIGINT
+
+        while true; do
+          # Start long-running nextdns process in the background
+          ${pkgs.nextdns}/bin/nextdns run --config-file=${config.sops.secrets.nextdns-config.path} &
+          nextdns_pid=$!
+
+          # Monitor symlink and config file in background
+          # fswatch will exit if those paths are modified
+          ${pkgs.fswatch}/bin/fswatch -1 ${config.sops.secrets.nextdns-config.path} > /dev/null &
+          ${pkgs.fswatch}/bin/fswatch -1 -L ${config.sops.defaultSymlinkPath} > /dev/null &
+
+          # This will wait for at least one process to exit
+          wait -n
+          exit_code=$?
+
+          # Check if the nextdns process has exited
+          if ! ps -p $nextdns_pid > /dev/null; then
+            echo "Process has exited with code $exit_code. Exiting script."
+            exit $exit_code
+          fi
+
+          # Kill all other running processes
+          echo "A monitored file was modified. Restarting."
+          pids=$(jobs -p)
+          kill $pids 2> /dev/null
+          wait $pids
+
+          # Before restarting the loop, let's sleep for 100 ms
+          sleep 0.1
+        done
+      ''
+    ));
   };
 
   # Create sourcings for zsh and fish
