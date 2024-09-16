@@ -1,7 +1,46 @@
-{ pkgs, ... }: {
+{ inputs, pkgs, lib, config, ... }:
+
+with lib;
+
+let
+  home = "/Users/nik";
+  secretsPath = builtins.toString inputs.dotfiles-secrets;
+in
+{
 
   # Make sure the nix daemon always runs
   services.nix-daemon.enable = true;
+
+  sops = {
+    defaultSopsFile = "${secretsPath}/secrets.yaml";
+    age = {
+      keyFile = "${home}/Library/Application Support/sops/age/keys.txt";
+    };
+
+    # We need to specify the mount point in order to be able to configure a service to wait for the secrets to be mounted
+    defaultSecretsMountPoint = "/var/root/sops-nix/secrets.d";
+    defaultSymlinkPath = "/var/root/sops-nix/secrets";
+
+    secrets = {
+      nextdns-config = { };
+    };
+  };
+
+  services.nextdns.enable = true;
+  launchd.daemons.nextdns = {
+    command = (configFile:
+      mkForce
+        "/bin/sh -c '${pkgs.nextdns}/bin/nextdns run --config-file=${configFile}'"
+    ) config.sops.secrets.nextdns-config.path;
+    serviceConfig = {
+      RunAtLoad = mkForce null;
+      KeepAlive = mkForce {
+        PathState = {
+          "${config.sops.defaultSecretsMountPoint}/sops-nix-secretfs" = true;
+        };
+      };
+    };
+  };
 
   # Create sourcings for zsh and fish
   programs.zsh.enable = true;
