@@ -1,4 +1,4 @@
-{ pkgs, config, configDir, lib, ... }:
+{ pkgs, config, lib, ... }:
 with lib;
 let
   shellAliases = {
@@ -9,6 +9,7 @@ let
     wifi = "nextdns deactivate; open http://neverssl.com; read -P 'Continue? '; nextdns activate";
     ffmpeg = "ffmpeg -hide_banner";
   };
+  configDir = "${config.home.homeDirectory}/dotfiles";
   dotfile = file: {
     source = config.lib.file.mkOutOfStoreSymlink "${configDir}/${file}";
   };
