@@ -20,6 +20,23 @@
         "type": "github"
       }
     },
+    "dotfiles-secrets": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1726480113,
+        "narHash": "sha256-dleCH/3gr7S9dBJJ8UG318EfhZ3vA0kma2FIV9Surc4=",
+        "ref": "refs/heads/main",
+        "rev": "3aa86a4ea95ded36e68ea49ec99e9f73950a8acb",
+        "shallow": true,
+        "type": "git",
+        "url": "ssh://git@github.com/niklasravnsborg/dotfiles-secrets"
+      },
+      "original": {
+        "shallow": true,
+        "type": "git",
+        "url": "ssh://git@github.com/niklasravnsborg/dotfiles-secrets"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -56,11 +73,54 @@
         "type": "github"
       }
     },
+    "nixpkgs-stable": {
+      "locked": {
+        "lastModified": 1726478052,
+        "narHash": "sha256-fj37H20816vokTqYTDcVMIvwvIjq9CceU33edCqIxX8=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "c9f334394ee879381cbb9768fc11dad14ae767fe",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "release-24.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "darwin": "darwin",
+        "dotfiles-secrets": "dotfiles-secrets",
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "nixpkgs-stable": "nixpkgs-stable",
+        "sops-nix": "sops-nix"
+      }
+    },
+    "sops-nix": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "nixpkgs-stable": [
+          "nixpkgs-stable"
+        ]
+      },
+      "locked": {
+        "lastModified": 1725540253,
+        "narHash": "sha256-AsmDvrx0TAWbPdGI2ag36Mfrohx5E2fBRVlpj664U0k=",
+        "owner": "Mic92",
+        "repo": "sops-nix",
+        "rev": "c3cff455d08edf687d89c2c82c9d79c305df9307",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Mic92",
+        "ref": "nix-darwin",
+        "repo": "sops-nix",
+        "type": "github"
       }
     }
   },

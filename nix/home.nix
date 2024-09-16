@@ -20,6 +20,7 @@ in
 
   home.packages = with pkgs; [
     act # Run GitHub Actions locally
+    age # Secure file encryption
     any-nix-shell
     cloc # Count lines of code
     delta # Syntax-highlighter for git and diff output
@@ -34,11 +35,11 @@ in
     httpie # User-friendly HTTP client
     imagemagick # Manipulate images in many formats
     micromamba # Environment manager
-    nextdns # DNS resolver
     nodePackages.svgo # Optimize SVGs
     nushell # Modern alternative shell
     pandoc # Document conversion
     restic # Backup program
+    sops # Editor of encrypted files
     tlrc # client for tldr: collaborative cheatsheets for console commands
     tmux # Terminal multiplexer
     tree # Display directories as trees
