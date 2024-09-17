@@ -121,6 +121,11 @@ in
       "homebrew/cask-fonts"
     ];
 
+    brews = [
+      # Although we already have it in home-manager, this gpg binary is the only one that Fork can find
+      "gnupg"
+    ];
+
     casks = [
       # Fonts
       "font-dm-sans"
