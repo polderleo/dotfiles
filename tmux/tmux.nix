@@ -14,6 +14,7 @@
         plugin = tmuxPlugins.better-mouse-mode;
         extraConfig = ''
           set -g @scroll-speed-num-lines-per-scroll 1
+          set -g @emulate-scroll-for-no-mouse-alternate-buffer on
         '';
       }
     ];
