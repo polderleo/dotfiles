@@ -1,5 +1,4 @@
 { pkgs, config, lib, ... }:
-with lib;
 let
   shellAliases = {
     lg = "lazygit";
@@ -40,7 +39,6 @@ in
     restic # Backup program
     sops # Editor of encrypted files
     tlrc # client for tldr: collaborative cheatsheets for console commands
-    tmux # Terminal multiplexer
     tree # Display directories as trees
     watch # Execute a program periodically
     yq # Process YAML, JSON, XML, CSV and properties documents
@@ -52,6 +50,10 @@ in
     sl # Steam locomotive
   ];
 
+  imports = [
+    (import ../tmux/tmux.nix { inherit pkgs configDir; })
+  ];
+
   home.file = {
     ".env.sh" = dotfile "shell/.env.sh";
 
@@ -60,7 +62,6 @@ in
     ".gitignore" = dotfile "git/.gitignore";
     ".ssh/config" = dotfile "ssh/config";
     ".svgo.config.js" = dotfile "svgo/.svgo.config.js";
-    ".tmux.conf" = dotfile "tmux/.tmux.conf";
     ".vimrc" = dotfile "vim/.vimrc";
 
     ".config/alacritty/alacritty.toml" = dotfile "alacritty/alacritty.toml";

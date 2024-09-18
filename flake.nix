@@ -24,40 +24,45 @@
     };
   };
 
-  outputs = { nixpkgs, darwin, home-manager, sops-nix, ... }@inputs: {
+  outputs = { nixpkgs, darwin, home-manager, sops-nix, ... }@inputs:
+    let sharedModules = [ ./tmux/tmux-module.nix ];
+    in
+    {
 
-    formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.nixpkgs-fmt;
+      formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.nixpkgs-fmt;
 
-    darwinConfigurations."Niklas-Machbuch" = darwin.lib.darwinSystem {
-      system = "aarch64-darwin"; # "x86_64-darwin" if you're using a pre M1 mac
-      specialArgs = { inherit inputs; };
-      modules = [
-        ./nix/darwin.nix
-        home-manager.darwinModules.home-manager
-        sops-nix.darwinModules.sops
-        {
-          home-manager = {
-            useGlobalPkgs = true;
-            users.nik = import ./nix/home.nix;
-          };
-        }
-      ];
+      darwinConfigurations."Niklas-Machbuch" = darwin.lib.darwinSystem {
+        system = "aarch64-darwin"; # "x86_64-darwin" if you're using a pre M1 mac
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./nix/darwin.nix
+          sops-nix.darwinModules.sops
+          home-manager.darwinModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              users.nik = import ./nix/home.nix;
+              inherit sharedModules;
+            };
+          }
+        ];
+      };
+
+      nixosConfigurations."Niklas-Workstation" = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./nixos/configuration.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.nik = import ./nix/home.nix;
+              inherit sharedModules;
+            };
+          }
+        ];
+      };
+
     };
-
-    nixosConfigurations."Niklas-Workstation" = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-        ./nixos/configuration.nix
-        home-manager.nixosModules.home-manager
-        {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            users.nik = import ./nix/home.nix;
-          };
-        }
-      ];
-    };
-
-  };
 }
