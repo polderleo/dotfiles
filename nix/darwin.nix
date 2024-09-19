@@ -1,4 +1,10 @@
-{ inputs, pkgs, lib, config, ... }:
+{
+  inputs,
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 with lib;
 
@@ -28,41 +34,43 @@ in
 
   services.nextdns.enable = true;
   launchd.daemons.nextdns = {
-    command = mkForce (toString (pkgs.writeShellScript "nextdns-config-watch"
-      ''
-        trap 'kill $(jobs -p); exit' SIGINT
+    command = mkForce (
+      toString (
+        pkgs.writeShellScript "nextdns-config-watch" ''
+          trap 'kill $(jobs -p); exit' SIGINT
 
-        while true; do
-          # Start long-running nextdns process in the background
-          ${pkgs.nextdns}/bin/nextdns run --config-file=${config.sops.secrets.nextdns-config.path} &
-          nextdns_pid=$!
+          while true; do
+            # Start long-running nextdns process in the background
+            ${pkgs.nextdns}/bin/nextdns run --config-file=${config.sops.secrets.nextdns-config.path} &
+            nextdns_pid=$!
 
-          # Monitor symlink and config file in background
-          # fswatch will exit if those paths are modified
-          ${pkgs.fswatch}/bin/fswatch -1 ${config.sops.secrets.nextdns-config.path} > /dev/null &
-          ${pkgs.fswatch}/bin/fswatch -1 -L ${config.sops.defaultSymlinkPath} > /dev/null &
+            # Monitor symlink and config file in background
+            # fswatch will exit if those paths are modified
+            ${pkgs.fswatch}/bin/fswatch -1 ${config.sops.secrets.nextdns-config.path} > /dev/null &
+            ${pkgs.fswatch}/bin/fswatch -1 -L ${config.sops.defaultSymlinkPath} > /dev/null &
 
-          # This will wait for at least one process to exit
-          wait -n
-          exit_code=$?
+            # This will wait for at least one process to exit
+            wait -n
+            exit_code=$?
 
-          # Check if the nextdns process has exited
-          if ! ps -p $nextdns_pid > /dev/null; then
-            echo "Process has exited with code $exit_code. Exiting script."
-            exit $exit_code
-          fi
+            # Check if the nextdns process has exited
+            if ! ps -p $nextdns_pid > /dev/null; then
+              echo "Process has exited with code $exit_code. Exiting script."
+              exit $exit_code
+            fi
 
-          # Kill all other running processes
-          echo "A monitored file was modified. Restarting."
-          pids=$(jobs -p)
-          kill $pids 2> /dev/null
-          wait $pids
+            # Kill all other running processes
+            echo "A monitored file was modified. Restarting."
+            pids=$(jobs -p)
+            kill $pids 2> /dev/null
+            wait $pids
 
-          # Before restarting the loop, let's sleep for 100 ms
-          sleep 0.1
-        done
-      ''
-    ));
+            # Before restarting the loop, let's sleep for 100 ms
+            sleep 0.1
+          done
+        ''
+      )
+    );
   };
 
   # Create sourcings for zsh and fish
@@ -71,15 +79,14 @@ in
 
   users.users.nik.home = "/Users/nik";
 
-  system.defaults.finder =
-    {
-      FXPreferredViewStyle = "Nlsv"; # Always open everything in list view
-      ShowStatusBar = true; # Show status bar
-      ShowPathbar = true; # Show path bar
-      _FXSortFoldersFirst = true; # Keep folders on top when sorting by name
-      FXEnableExtensionChangeWarning = false; # Disable the warning when changing a file extension
-      FXDefaultSearchScope = "SCcf"; # When performing a search, search the current folder by default
-    };
+  system.defaults.finder = {
+    FXPreferredViewStyle = "Nlsv"; # Always open everything in list view
+    ShowStatusBar = true; # Show status bar
+    ShowPathbar = true; # Show path bar
+    _FXSortFoldersFirst = true; # Keep folders on top when sorting by name
+    FXEnableExtensionChangeWarning = false; # Disable the warning when changing a file extension
+    FXDefaultSearchScope = "SCcf"; # When performing a search, search the current folder by default
+  };
 
   system.defaults.trackpad = {
     Clicking = true; # Enable tap to click
@@ -97,10 +104,9 @@ in
     AppleSpacesSwitchOnActivate = false; # Disable switching to a space when an application is activated
   };
 
-  system.defaults.dock =
-    {
-      autohide = true; # automatically hide and show the Dock
-    };
+  system.defaults.dock = {
+    autohide = true; # automatically hide and show the Dock
+  };
 
   homebrew = {
     enable = true;
