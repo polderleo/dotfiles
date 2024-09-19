@@ -1,4 +1,10 @@
-{ pkgs, config, lib, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
+
 let
   shellAliases = {
     lg = "lazygit";
@@ -80,7 +86,9 @@ in
     ".config/yazi/keymap.toml" = dotfile "yazi/keymap.toml";
     ".config/yazi/init.lua" = dotfile "yazi/init.lua";
 
-    "Library/LaunchAgents/Timemator.restart.plist" = lib.optionalAttrs pkgs.stdenv.isDarwin (dotfile "macos/Timemator.restart.plist");
+    "Library/LaunchAgents/Timemator.restart.plist" = lib.optionalAttrs pkgs.stdenv.isDarwin (
+      dotfile "macos/Timemator.restart.plist"
+    );
   };
 
   home.activation.copyKeyboardLayout = lib.optionalAttrs pkgs.stdenv.isDarwin (
@@ -288,7 +296,10 @@ in
         showCommandLog = false;
         showBottomLine = true;
         theme = {
-          activeBorderColor = [ "#ee99a0" "bold" ];
+          activeBorderColor = [
+            "#ee99a0"
+            "bold"
+          ];
           inactiveBorderColor = [ "#a5adcb" ];
           optionsTextColor = [ "#8aadf4" ];
           selectedLineBgColor = [ "#363a4f" ];
@@ -298,7 +309,9 @@ in
           defaultFgColor = [ "#cad3f5" ];
           searchingActiveBorderColor = [ "#eed49f" ];
         };
-        authorColors = { "*" = "#b7bdf8"; };
+        authorColors = {
+          "*" = "#b7bdf8";
+        };
       };
       update = {
         method = "never";

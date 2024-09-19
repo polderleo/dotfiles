@@ -24,16 +24,26 @@
     };
   };
 
-  outputs = { nixpkgs, darwin, home-manager, sops-nix, ... }@inputs:
-    let sharedModules = [ ./tmux/tmux-module.nix ];
+  outputs =
+    {
+      nixpkgs,
+      darwin,
+      home-manager,
+      sops-nix,
+      ...
+    }@inputs:
+    let
+      sharedModules = [ ./tmux/tmux-module.nix ];
     in
     {
 
-      formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.nixpkgs-fmt;
+      formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.nixfmt-rfc-style;
 
       darwinConfigurations."Niklas-Machbuch" = darwin.lib.darwinSystem {
         system = "aarch64-darwin"; # "x86_64-darwin" if you're using a pre M1 mac
-        specialArgs = { inherit inputs; };
+        specialArgs = {
+          inherit inputs;
+        };
         modules = [
           ./nix/darwin.nix
           sops-nix.darwinModules.sops

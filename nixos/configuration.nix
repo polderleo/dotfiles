@@ -2,13 +2,10 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-    ];
+  imports = [ ./hardware-configuration.nix ];
 
   # Use the systemd-boot EFI boot loader
   boot.loader.systemd-boot.enable = true;
@@ -57,7 +54,10 @@
   users.users.nik = {
     isNormalUser = true;
     description = "Niklas Ravnsborg";
-    extraGroups = [ "networkmanager" "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [
+      "networkmanager"
+      "wheel" # Enable ‘sudo’ for the user.
+    ];
     shell = pkgs.fish;
     packages = with pkgs; [
       kitty
@@ -89,7 +89,10 @@
   nixpkgs.config.allowUnfree = true;
 
   # Enable the Nix flake support
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # settings for stateful data, like file locations and database versions
   # Copy the NixOS configuration file and link it from the resulting system

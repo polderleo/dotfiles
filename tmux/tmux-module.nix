@@ -1,7 +1,12 @@
 # Copied and stripped down from:
 # https://github.com/nix-community/home-manager/blob/master/modules/programs/tmux.nix
 
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
 
@@ -35,7 +40,8 @@ let
         in
         {
           assertion = badPlugins == [ ];
-          message = ''Invalid tmux plugin (not prefixed with "tmuxplugins"): ''
+          message =
+            ''Invalid tmux plugin (not prefixed with "tmuxplugins"): ''
             + concatMapStringsSep ", " pluginName badPlugins;
         }
       )
@@ -46,12 +52,14 @@ let
       # Load plugins with Home Manager                #
       # --------------------------------------------- #
 
-      ${(concatMapStringsSep "\n\n" (p: ''
-        # ${pluginName p}
-        # ---------------------
-        ${p.extraConfig or ""}
-        run-shell ${if types.package.check p then p.rtp else p.plugin.rtp}
-      '') cfg.plugins)}
+      ${
+        (concatMapStringsSep "\n\n" (p: ''
+          # ${pluginName p}
+          # ---------------------
+          ${p.extraConfig or ""}
+          run-shell ${if types.package.check p then p.rtp else p.plugin.rtp}
+        '') cfg.plugins)
+      }
       # ============================================= #
     '';
   };
@@ -79,8 +87,10 @@ in
       };
 
       plugins = mkOption {
-        type = with types;
-          listOf (either package pluginModule) // {
+        type =
+          with types;
+          listOf (either package pluginModule)
+          // {
             description = "list of plugin packages or submodules";
           };
         description = ''
