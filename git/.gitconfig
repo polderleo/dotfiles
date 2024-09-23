@@ -17,6 +17,11 @@
 	rebase = true
 [merge]
 	conflictStyle = zdiff3
+	tool = vscode
+[mergetool "vscode"]
+	cmd = code --wait $MERGED
+[rerere]
+	enabled = true
 [delta]
 	side-by-side = true
 	syntax-theme = Coldark-Dark
