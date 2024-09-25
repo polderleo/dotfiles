@@ -117,10 +117,6 @@ in
       cleanup = "zap";
     };
 
-    taps = [
-      "homebrew/cask-fonts"
-    ];
-
     brews = [
       # Although we already have it in home-manager, this gpg binary is the only one that Fork can find
       "gnupg"
@@ -162,7 +158,6 @@ in
       "figma" # Collaborative team software
       "finicky" # Utility for customizing which browser to start
       "firefox" # Web browser
-      "flutter" # UI toolkit for building applications for mobile, web and desktop
       "fork" # GIT client
       "google-cloud-sdk" # Set of tools to manage resources and applications hosted on Google Cloud
       "httpie" # Testing client for REST, GraphQL, and HTTP APIs
