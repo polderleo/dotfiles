@@ -107,6 +107,27 @@ in
     autohide = true; # automatically hide and show the Dock
   };
 
+  system.keyboard = {
+    enableKeyMapping = true;
+    remapCapsLockToEscape = true;
+  };
+
+  system.activationScripts.postUserActivation = {
+    text = ''
+      # Set default shell to fish
+      sudo chsh -s /run/current-system/sw/bin/fish nik
+
+      # Disable "Select the previous input source", because I use Ctrl + Space in Tmux
+      defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 60 '<dict><key>enabled</key><false/></dict>'
+
+      # Disable "Show Spotlight search", because I use Cmd + Space for Raycast
+      defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 64 '<dict><key>enabled</key><false/></dict>'
+
+      # Activate settings so we don't have to restart
+      /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+    '';
+  };
+
   homebrew = {
     enable = true;
 
