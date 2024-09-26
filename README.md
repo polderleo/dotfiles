@@ -1,20 +1,22 @@
+# Niks dotfiles
+
+This is my personal dotfiles repository. It is managed with [Nix](https://nixos.org/) and [Nix-darwin](https://github.com/LnL7/nix-darwin). I use these dotfiles on macOS and on NixOS. But this guide is only for macOS.
+
 ## Setup
 
-- Run `install.sh`.
-- Change default shell: `chsh -s $(which fish)`
+- [Install Nix](https://github.com/DeterminateSystems/nix-installer)
+- [Install Homebrew](https://brew.sh/)
+- Clone this repo to `~/dotfiles`
+- Run `nix run nix-darwin -- switch --flake ~/dotfiles`
 - Import uBlock setting via the import features in browser
-
-## Brew
-
-Install from Brewfile: `brew bundle --file=~/dotfiles/macos/Brewfile`  
-Dump to Brewfile: `brew bundle dump --file=~/dotfiles/macos/Brewfile --describe --taps --brews --casks --force`  
-Match Brewfile: `brew bundle --file=~/dotfiles/macos/Brewfile cleanup --force`
-
-Housekeeping with Brew: https://mac.install.guide/homebrew/8.html
 
 ## System software update
 
 `softwareupdate -ia`
+
+## System cleanup
+
+`./cleanup.sh`
 
 ## SSH Setup
 
@@ -28,7 +30,3 @@ Add password to keychain: `ssh-add --apple-use-keychain ~/.ssh/id_ed25519`
 - Connect to network
 - Clear DNS cache: `sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder`
 - Reactivate NextDNS: `nextdns activate`
-
-## Install Fish
-
-https://gist.github.com/gagarine/cf3f65f9be6aa0e105b184376f765262
