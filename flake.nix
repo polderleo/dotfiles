@@ -33,7 +33,11 @@
       ...
     }@inputs:
     let
-      sharedModules = [ ./tmux/tmux-module.nix ];
+      sharedModules = [
+        inputs.sops-nix.homeManagerModules.sops
+        ./tmux/tmux-module.nix
+      ];
+      secretsPath = builtins.toString inputs.dotfiles-secrets;
     in
     {
 
@@ -42,7 +46,7 @@
       darwinConfigurations."Niklas-Machbuch" = darwin.lib.darwinSystem {
         system = "aarch64-darwin"; # "x86_64-darwin" if you're using a pre M1 mac
         specialArgs = {
-          inherit inputs;
+          inherit secretsPath;
         };
         modules = [
           ./nix/darwin.nix
@@ -53,6 +57,9 @@
               useGlobalPkgs = true;
               users.nik = import ./nix/home.nix;
               inherit sharedModules;
+              extraSpecialArgs = {
+                inherit secretsPath;
+              };
             };
           }
         ];
@@ -69,6 +76,9 @@
               useUserPackages = true;
               users.nik = import ./nix/home.nix;
               inherit sharedModules;
+              extraSpecialArgs = {
+                inherit secretsPath;
+              };
             };
           }
         ];

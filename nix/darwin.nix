@@ -1,8 +1,8 @@
 {
-  inputs,
   pkgs,
   lib,
   config,
+  secretsPath,
   ...
 }:
 
@@ -10,7 +10,6 @@ with lib;
 
 let
   home = "/Users/nik";
-  secretsPath = builtins.toString inputs.dotfiles-secrets;
 in
 {
 

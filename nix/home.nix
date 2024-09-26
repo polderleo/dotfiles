@@ -2,6 +2,7 @@
   pkgs,
   config,
   lib,
+  secretsPath,
   ...
 }:
 
@@ -15,7 +16,8 @@ let
     ffmpeg = "ffmpeg -hide_banner";
     cat = "bat -p";
   };
-  configDir = "${config.home.homeDirectory}/dotfiles";
+  homePath = config.home.homeDirectory;
+  configDir = "${homePath}/dotfiles";
   dotfile = file: {
     source = config.lib.file.mkOutOfStoreSymlink "${configDir}/${file}";
   };
@@ -92,12 +94,35 @@ in
     );
   };
 
+  sops = {
+    defaultSopsFile = "${secretsPath}/secrets.yaml";
+    age.keyFile = "${homePath}/Library/Application Support/sops/age/keys.txt";
+    secrets = {
+      "atuin/username" = { };
+      "atuin/password" = { };
+      "atuin/key" = {
+        path = "${homePath}/.local/share/atuin/key";
+      };
+    };
+  };
+
   home.activation.copyKeyboardLayout = lib.optionalAttrs pkgs.stdenv.isDarwin (
-    config.lib.dag.entryAfter [ "writeBoundary" ] ''
+    lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       mkdir -p ~/Library/Keyboard\ Layouts/
       cp -R ${configDir}/macos/niklas.keylayout ~/Library/Keyboard\ Layouts/
     ''
   );
+
+  home.activation.atuinLogin = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    if [ -e ${homePath}/.local/share/atuin/session ]; then
+      echo "Atuin session exists already"
+    else
+      echo "Logging in to Atuin server"
+      echo | ${pkgs.atuin}/bin/atuin login \
+        -u $(cat ${config.sops.secrets."atuin/username".path}) \
+        -p $(cat ${config.sops.secrets."atuin/password".path})
+    fi
+  '';
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
