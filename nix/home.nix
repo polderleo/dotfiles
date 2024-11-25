@@ -63,36 +63,36 @@ in
     (import ../tmux/tmux.nix { inherit pkgs configDir; })
   ];
 
-  home.file = {
-    ".env.sh" = dotfile "shell/.env.sh";
+  home.file =
+    {
+      ".env.sh" = dotfile "shell/.env.sh";
 
-    ".finicky.js" = dotfile "finicky/.finicky.js";
-    ".gitconfig" = dotfile "git/.gitconfig";
-    ".gitignore" = dotfile "git/.gitignore";
-    ".ssh/config" = dotfile "ssh/config";
-    ".svgo.config.js" = dotfile "svgo/.svgo.config.js";
-    ".vimrc" = dotfile "vim/.vimrc";
+      ".finicky.js" = dotfile "finicky/.finicky.js";
+      ".gitconfig" = dotfile "git/.gitconfig";
+      ".gitignore" = dotfile "git/.gitignore";
+      ".ssh/config" = dotfile "ssh/config";
+      ".svgo.config.js" = dotfile "svgo/.svgo.config.js";
+      ".vimrc" = dotfile "vim/.vimrc";
 
-    ".config/alacritty/alacritty.toml" = dotfile "alacritty/alacritty.toml";
-    ".config/atuin/config.toml" = dotfile "atuin/config.toml";
-    ".config/gitui/key_bindings.ron" = dotfile "gitui/key_bindings.ron";
-    ".config/gitui/theme.ron" = dotfile "gitui/theme.ron";
-    ".config/helix/config.toml" = dotfile "helix/config.toml";
-    ".config/helix/themes/my_theme.toml" = dotfile "helix/my_theme.toml";
-    ".config/kitty/kitty.conf" = dotfile "kitty/kitty.conf";
-    ".config/nix/nix.conf" = dotfile "nix/nix.conf";
-    ".config/starship.toml" = dotfile "starship/starship.toml";
+      ".config/alacritty/alacritty.toml" = dotfile "alacritty/alacritty.toml";
+      ".config/atuin/config.toml" = dotfile "atuin/config.toml";
+      ".config/gitui/key_bindings.ron" = dotfile "gitui/key_bindings.ron";
+      ".config/gitui/theme.ron" = dotfile "gitui/theme.ron";
+      ".config/helix/config.toml" = dotfile "helix/config.toml";
+      ".config/helix/themes/my_theme.toml" = dotfile "helix/my_theme.toml";
+      ".config/kitty/kitty.conf" = dotfile "kitty/kitty.conf";
+      ".config/nix/nix.conf" = dotfile "nix/nix.conf";
+      ".config/starship.toml" = dotfile "starship/starship.toml";
 
-    # Yazi
-    ".config/yazi/theme.toml" = dotfile "yazi/theme.toml";
-    ".config/yazi/yazi.toml" = dotfile "yazi/yazi.toml";
-    ".config/yazi/keymap.toml" = dotfile "yazi/keymap.toml";
-    ".config/yazi/init.lua" = dotfile "yazi/init.lua";
-
-    "Library/LaunchAgents/Timemator.restart.plist" = lib.optionalAttrs pkgs.stdenv.isDarwin (
-      dotfile "macos/Timemator.restart.plist"
-    );
-  };
+      # Yazi
+      ".config/yazi/theme.toml" = dotfile "yazi/theme.toml";
+      ".config/yazi/yazi.toml" = dotfile "yazi/yazi.toml";
+      ".config/yazi/keymap.toml" = dotfile "yazi/keymap.toml";
+      ".config/yazi/init.lua" = dotfile "yazi/init.lua";
+    }
+    // lib.optionalAttrs pkgs.stdenv.isDarwin {
+      "Library/LaunchAgents/Timemator.restart.plist" = dotfile "macos/Timemator.restart.plist";
+    };
 
   sops = {
     defaultSopsFile = "${secretsPath}/secrets.yaml";
@@ -106,23 +106,28 @@ in
     };
   };
 
-  home.activation.copyKeyboardLayout = lib.optionalAttrs pkgs.stdenv.isDarwin (
-    lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-      mkdir -p ~/Library/Keyboard\ Layouts/
-      cp -R ${configDir}/macos/niklas.keylayout ~/Library/Keyboard\ Layouts/
-    ''
-  );
+  home.activation =
+    {
+      atuinLogin = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+        if [ -e ${homePath}/.local/share/atuin/session ]; then
+          echo "Atuin session exists already"
+        else
+          echo "Logging in to Atuin server"
+          echo | ${pkgs.atuin}/bin/atuin login \
+            -u $(cat ${config.sops.secrets."atuin/username".path}) \
+            -p $(cat ${config.sops.secrets."atuin/password".path})
+        fi
+      '';
 
-  home.activation.atuinLogin = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    if [ -e ${homePath}/.local/share/atuin/session ]; then
-      echo "Atuin session exists already"
-    else
-      echo "Logging in to Atuin server"
-      echo | ${pkgs.atuin}/bin/atuin login \
-        -u $(cat ${config.sops.secrets."atuin/username".path}) \
-        -p $(cat ${config.sops.secrets."atuin/password".path})
-    fi
-  '';
+    }
+    // lib.optionalAttrs pkgs.stdenv.isDarwin {
+      copyKeyboardLayout = lib.optionalAttrs pkgs.stdenv.isDarwin (
+        lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+          mkdir -p ~/Library/Keyboard\ Layouts/
+          cp -R ${configDir}/macos/niklas.keylayout ~/Library/Keyboard\ Layouts/
+        ''
+      );
+    };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
