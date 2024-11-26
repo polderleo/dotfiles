@@ -150,6 +150,9 @@ in
     '';
   };
 
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
+
   homebrew = {
     enable = true;
 
@@ -158,6 +161,11 @@ in
       upgrade = true;
       cleanup = "zap";
     };
+
+    taps = [
+      # Upgrade casks with `brew cu -a`
+      "buo/cask-upgrade"
+    ];
 
     brews = [
       # Although we already have it in home-manager, this gpg binary is the only one that Fork can find
@@ -189,6 +197,7 @@ in
       "affinity-photo" # Professional image editing software
       "alacritty" # GPU-accelerated terminal emulator
       "arc" # Chromium based browser
+      "audacity" # Cross-platform audio software
       "bitwarden" # Desktop password and login vault
       "blackhole-2ch" # Virtual Audio Driver
       "calibre" # E-books management software
@@ -201,7 +210,6 @@ in
       "finicky" # Utility for customizing which browser to start
       "firefox" # Web browser
       "fork" # GIT client
-      "google-cloud-sdk" # Set of tools to manage resources and applications hosted on Google Cloud
       "httpie" # Testing client for REST, GraphQL, and HTTP APIs
       "imageoptim" # Tool to optimise images to a smaller size
       "kitty" # GPU-based terminal emulator
@@ -210,7 +218,6 @@ in
       "missive" # Team inbox and chat tool
       "mos" # Smooths scrolling and set mouse scroll directions independently
       "musescore" # Open-source music notation software
-      "ngrok" # Reverse proxy, secure introspectable tunnels to localhost
       "nota" # Markdown files editor
       "notion" # App to write, plan, collaborate, and get organised
       "numi" # Calculator and converter application
