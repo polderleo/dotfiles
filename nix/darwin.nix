@@ -26,10 +26,6 @@ in
       keyFile = "${home}/Library/Application Support/sops/age/keys.txt";
     };
 
-    # We need to specify the mount point in order to be able to configure a service to wait for the secrets to be mounted
-    defaultSecretsMountPoint = "/var/root/sops-nix/secrets.d";
-    defaultSymlinkPath = "/var/root/sops-nix/secrets";
-
     secrets = {
       nextdns-config = { };
     };
@@ -50,7 +46,7 @@ in
             # Monitor symlink and config file in background
             # fswatch will exit if those paths are modified
             ${pkgs.fswatch}/bin/fswatch -1 ${config.sops.secrets.nextdns-config.path} > /dev/null &
-            ${pkgs.fswatch}/bin/fswatch -1 -L ${config.sops.defaultSymlinkPath} > /dev/null &
+            ${pkgs.fswatch}/bin/fswatch -1 -L /run/secrets > /dev/null &
 
             # This will wait for at least one process to exit
             wait -n
