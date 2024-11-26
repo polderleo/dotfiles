@@ -32,8 +32,9 @@ in
   home.packages = with pkgs; [
     act # Run GitHub Actions locally
     age # Secure file encryption
-    any-nix-shell
+    any-nix-shell # Run nix-shell in any directory
     cloc # Count lines of code
+    cloudflared # Cloudflare tunnel
     delta # Syntax-highlighter for git and diff output
     fd # Alternative to find
     ffmpeg_7 # Play, record, convert, and stream audio and video
@@ -41,11 +42,13 @@ in
     gitui # Terminal ui for git
     gnused # GNU version of the famous stream editor
     gnutar # GNU version of the tar archiving utility
+    google-cloud-sdk # Manage resources and applications hosted on Google Cloud
     helix # Post-modern modal text editor
     htop # Improved top (interactive process viewer)
     httpie # User-friendly HTTP client
     imagemagick # Manipulate images in many formats
     micromamba # Environment manager
+    ngrok # Reverse proxy, secure tunnels to localhost
     nodePackages.svgo # Optimize SVGs
     nushell # Modern alternative shell
     pandoc # Document conversion
@@ -59,6 +62,7 @@ in
     # Fun
     asciiquarium # Aquarium animation
     cmatrix # Matrix animation
+    cowsay # Talking cow
     lolcat # Rainbow colors
     sl # Steam locomotive
   ];
