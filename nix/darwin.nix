@@ -33,6 +33,9 @@ in
 
   services.nextdns.enable = true;
   launchd.daemons.nextdns = {
+    # Uncomment to enable logging
+    # serviceConfig.StandardErrorPath = "/var/log/nextdns.log";
+    # serviceConfig.StandardOutPath = "/var/log/nextdns.log";
     command = mkForce (
       toString (
         pkgs.writeShellScript "nextdns-config-watch" ''
@@ -43,29 +46,36 @@ in
             ${pkgs.nextdns}/bin/nextdns run --config-file=${config.sops.secrets.nextdns-config.path} &
             nextdns_pid=$!
 
-            # Monitor symlink and config file in background
-            # fswatch will exit if those paths are modified
-            ${pkgs.fswatch}/bin/fswatch -1 ${config.sops.secrets.nextdns-config.path} > /dev/null &
-            ${pkgs.fswatch}/bin/fswatch -1 -L /run/secrets > /dev/null &
+            # If the tmpfs is not yet mounted, the file watchers won't trigger on change
+            # wait4path will exit when the path is mounted
+            if ! [ -d /run/secrets.d/ ]; then
+              echo "Secrets volume not yet mounted. This script will restart when it is."
+              /bin/wait4path /run/secrets.d/ &
+            fi
 
-            # This will wait for at least one process to exit
+            # Monitor symlink and config file in background
+            # fswatch will exit when those paths are modified
+            ${pkgs.fswatch}/bin/fswatch -1 ${config.sops.secrets.nextdns-config.path} > /dev/null &
+
+            # Wait for at least one process to exit
             wait -n
             exit_code=$?
 
             # Check if the nextdns process has exited
-            if ! ps -p $nextdns_pid > /dev/null; then
+            if ! /bin/ps -p $nextdns_pid > /dev/null; then
               echo "Process has exited with code $exit_code. Exiting script."
               exit $exit_code
             fi
 
             # Kill all other running processes
-            echo "A monitored file was modified. Restarting."
+            echo "A monitored file was changed. Restarting."
             pids=$(jobs -p)
             kill $pids 2> /dev/null
             wait $pids
 
             # Before restarting the loop, let's sleep for 100 ms
-            sleep 0.1
+            echo "Restarting in 100 ms..."
+            /bin/sleep 0.1
           done
         ''
       )
