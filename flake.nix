@@ -17,9 +17,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     sops-nix = {
-      url = "github:Mic92/sops-nix/nix-darwin";
+      url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nixpkgs-stable.follows = "nixpkgs-stable";
     };
     dotfiles-secrets = {
       url = "git+ssh://git@github.com/niklasravnsborg/dotfiles-secrets?shallow=1";
