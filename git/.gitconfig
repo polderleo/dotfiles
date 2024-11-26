@@ -3,8 +3,9 @@
 	email = niklasravnsborg@gmail.com
 	signingkey = 0C90DD8A0EE993DF8D587AF98360E6C58AE8F3ED
 [alias]
-	l = !git --no-pager log --oneline -n 15
-	st = status
+	l = log --oneline -n 20
+	st = status -s
+	go = checkout
 [commit]
 	gpgsign = true
 [core]
