@@ -75,6 +75,10 @@
     defaultSopsFile = "${secretsPath}/secrets.yaml";
     age.keyFile = "${config.users.users.nik.home}/.config/sops/age/keys.txt";
 
+    # Disable automatic key generation
+    age.sshKeyPaths = [ ];
+    gnupg.sshKeyPaths = [ ];
+
     secrets = {
       nextdns-config = { };
     };
