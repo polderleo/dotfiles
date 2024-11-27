@@ -71,8 +71,12 @@
 
       nixosConfigurations."Niklas-Workstation" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+        specialArgs = {
+          inherit secretsPath;
+        };
         modules = [
           ./nixos/configuration.nix
+          sops-nix.nixosModules.sops
           home-manager.nixosModules.home-manager
           {
             home-manager = {

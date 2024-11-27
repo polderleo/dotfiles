@@ -2,7 +2,13 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ pkgs, ... }:
+{
+  lib,
+  pkgs,
+  secretsPath,
+  config,
+  ...
+}:
 
 {
   imports = [ ./hardware-configuration.nix ];
@@ -64,6 +70,23 @@
 
   # Enable touchpad support
   services.libinput.enable = true;
+
+  sops = {
+    defaultSopsFile = "${secretsPath}/secrets.yaml";
+    age.keyFile = "${config.users.users.nik.home}/.config/sops/age/keys.txt";
+
+    secrets = {
+      nextdns-config = { };
+    };
+  };
+
+  services.nextdns.enable = true;
+  systemd.services.nextdns = {
+    serviceConfig = {
+      ExecStart = lib.mkForce "${pkgs.nextdns}/bin/nextdns run --auto-activate=true --config-file=${config.sops.secrets.nextdns-config.path}";
+    };
+    after = [ "sops-install-secrets.target" ];
+  };
 
   # Setup user accounts
   users.users.nik = {
