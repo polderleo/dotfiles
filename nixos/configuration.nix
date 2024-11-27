@@ -95,6 +95,16 @@
     after = [ "sops-install-secrets.target" ];
   };
 
+  # Enable OpenSSH daemon
+  services.openssh = {
+    enable = true;
+    settings = {
+      PermitRootLogin = "no";
+      PasswordAuthentication = false;
+      AllowUsers = [ "nik" ];
+    };
+  };
+
   # Setup user accounts
   users.users.nik = {
     isNormalUser = true;
