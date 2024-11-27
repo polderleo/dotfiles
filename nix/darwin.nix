@@ -22,9 +22,11 @@ in
 
   sops = {
     defaultSopsFile = "${secretsPath}/secrets.yaml";
-    age = {
-      keyFile = "${home}/Library/Application Support/sops/age/keys.txt";
-    };
+    age.keyFile = "${home}/Library/Application Support/sops/age/keys.txt";
+
+    # Disable automatic key generation
+    age.sshKeyPaths = [ ];
+    gnupg.sshKeyPaths = [ ];
 
     secrets = {
       nextdns-config = { };
