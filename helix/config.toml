@@ -5,6 +5,10 @@ line-number = "relative"
 scroll-lines = 1
 cursorline = true
 
+# Use correct colors over SSH
+# The same can be achieved with `export COLORTERM truecolor`
+true-color = true 
+
 [editor.whitespace.render]
 space = "all"
 tab = "all"
