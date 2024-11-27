@@ -104,7 +104,11 @@ in
 
   sops = {
     defaultSopsFile = "${secretsPath}/secrets.yaml";
-    age.keyFile = "${homePath}/Library/Application Support/sops/age/keys.txt";
+    age.keyFile =
+      if pkgs.stdenv.isDarwin then
+        "${homePath}/Library/Application Support/sops/age/keys.txt"
+      else
+        "${homePath}/.config/sops/age/keys.txt";
     secrets = {
       "atuin/username" = { };
       "atuin/password" = { };
