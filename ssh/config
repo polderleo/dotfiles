@@ -5,3 +5,6 @@ Host *
   IdentityFile ~/.ssh/id_ed25519
   # Prevent timeout https://www.simplified.guide/ssh/disable-timeout
   ServerAliveInterval 30
+Host workstation.niklasravnsborg.com
+  ForwardAgent yes
+  ProxyCommand cloudflared access ssh --hostname %h
