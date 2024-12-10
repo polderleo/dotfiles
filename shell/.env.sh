@@ -13,12 +13,6 @@ fi
 # Add bun bin
 PATH=$PATH:$HOME/.bun/bin
 
-# Set Gem home
-export GEM_HOME=$HOME/.gem
-
-# Set .NET root
-export DOTNET_ROOT=$HOMEBREW_PREFIX/opt/dotnet@6/libexec/
-
 # Disable brew auto update
 export HOMEBREW_NO_AUTO_UPDATE=true
 

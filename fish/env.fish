@@ -12,7 +12,6 @@ if test -d "/opt/homebrew"
     eval (/opt/homebrew/bin/brew shellenv)
 end
 
-
 # Add bun bin
 set -a PATH $HOME/.bun/bin
 
