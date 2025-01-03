@@ -9,6 +9,11 @@
       url = "github:niklasravnsborg/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-homebrew = {
+      url = "github:zhaofengli/nix-homebrew";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nix-darwin.follows = "darwin";
+    };
     darwin-custom-icons = {
       url = "github:ryanccn/nix-darwin-custom-icons";
     };
@@ -30,6 +35,7 @@
     {
       nixpkgs,
       darwin,
+      nix-homebrew,
       darwin-custom-icons,
       home-manager,
       sops-nix,
@@ -64,6 +70,13 @@
               extraSpecialArgs = {
                 inherit secretsPath;
               };
+            };
+          }
+          nix-homebrew.darwinModules.nix-homebrew
+          {
+            nix-homebrew = {
+              enable = true;
+              user = "nik";
             };
           }
         ];

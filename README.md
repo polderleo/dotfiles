@@ -5,7 +5,6 @@ This is my personal dotfiles repository. It is managed with [Nix](https://nixos.
 ## Setup
 
 - [Install Nix](https://github.com/DeterminateSystems/nix-installer)
-- [Install Homebrew](https://brew.sh/)
 - Clone this repo to `~/dotfiles`
 - Run `nix run nix-darwin -- switch --flake ~/dotfiles`
 - Import uBlock setting via the import features in browser
