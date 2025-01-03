@@ -218,6 +218,7 @@ in
       "finicky" # Utility for customizing which browser to start
       "firefox" # Web browser
       "fork" # GIT client
+      "ghostty" # Terminal emulator that uses platform-native UI and GPU acceleration
       "httpie" # Testing client for REST, GraphQL, and HTTP APIs
       "imageoptim" # Tool to optimise images to a smaller size
       "kitty" # GPU-based terminal emulator

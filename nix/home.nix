@@ -84,6 +84,7 @@ in
 
       ".config/alacritty/alacritty.toml" = dotfile "alacritty/alacritty.toml";
       ".config/atuin/config.toml" = dotfile "atuin/config.toml";
+      ".config/ghostty/config" = dotfile "ghostty/config";
       ".config/gitui/key_bindings.ron" = dotfile "gitui/key_bindings.ron";
       ".config/gitui/theme.ron" = dotfile "gitui/theme.ron";
       ".config/helix/config.toml" = dotfile "helix/config.toml";
