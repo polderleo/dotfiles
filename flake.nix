@@ -4,17 +4,16 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/release-24.05";
-    darwin = {
-      # nix will normally use the nixpkgs defined in home-managers inputs, we only want one copy of nixpkgs though
+    nix-darwin = {
       url = "github:niklasravnsborg/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-homebrew = {
       url = "github:zhaofengli/nix-homebrew";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nix-darwin.follows = "darwin";
+      inputs.nix-darwin.follows = "nix-darwin";
     };
-    darwin-custom-icons = {
+    nix-darwin-custom-icons = {
       url = "github:ryanccn/nix-darwin-custom-icons";
     };
     home-manager = {
@@ -32,48 +31,39 @@
   };
 
   outputs =
-    {
-      nixpkgs,
-      darwin,
-      nix-homebrew,
-      darwin-custom-icons,
-      home-manager,
-      sops-nix,
-      ...
-    }@inputs:
+    inputs:
     let
       sharedModules = [
         inputs.sops-nix.homeManagerModules.sops
         ./tmux/tmux-module.nix
       ];
       secretsPath = builtins.toString inputs.dotfiles-secrets;
+      homeManagerConfig = {
+        useGlobalPkgs = true;
+        users.nik = import ./nix/home.nix;
+        inherit sharedModules;
+        extraSpecialArgs = {
+          inherit secretsPath;
+        };
+      };
     in
     {
 
-      formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.nixfmt-rfc-style;
+      formatter.aarch64-darwin = inputs.legacyPackages.aarch64-darwin.nixfmt-rfc-style;
 
-      darwinConfigurations."Niklas-Machbuch" = darwin.lib.darwinSystem {
-        system = "aarch64-darwin"; # "x86_64-darwin" if you're using a pre M1 mac
+      darwinConfigurations."Niklas-Machbuch" = inputs.nix-darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
         specialArgs = {
           inherit secretsPath;
         };
         modules = [
           ./nix/darwin.nix
-          sops-nix.darwinModules.sops
-          darwin-custom-icons.darwinModules.default
-          home-manager.darwinModules.home-manager
+          inputs.sops-nix.darwinModules.sops
+          inputs.nix-darwin-custom-icons.darwinModules.default
+          inputs.home-manager.darwinModules.home-manager
+          inputs.nix-homebrew.darwinModules.nix-homebrew
           {
-            home-manager = {
-              useGlobalPkgs = true;
-              users.nik = import ./nix/home.nix;
-              inherit sharedModules;
-              extraSpecialArgs = {
-                inherit secretsPath;
-              };
-            };
-          }
-          nix-homebrew.darwinModules.nix-homebrew
-          {
+            home-manager = homeManagerConfig;
             nix-homebrew = {
               enable = true;
               user = "nik";
@@ -82,24 +72,18 @@
         ];
       };
 
-      nixosConfigurations."Niklas-Workstation" = nixpkgs.lib.nixosSystem {
+      nixosConfigurations."Niklas-Workstation" = inputs.nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
           inherit secretsPath;
         };
         modules = [
           ./nixos/configuration.nix
-          sops-nix.nixosModules.sops
-          home-manager.nixosModules.home-manager
+          inputs.sops-nix.nixosModules.sops
+          inputs.home-manager.nixosModules.home-manager
           {
-            home-manager = {
-              useGlobalPkgs = true;
+            home-manager = homeManagerConfig // {
               useUserPackages = true;
-              users.nik = import ./nix/home.nix;
-              inherit sharedModules;
-              extraSpecialArgs = {
-                inherit secretsPath;
-              };
             };
           }
         ];
