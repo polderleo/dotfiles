@@ -49,6 +49,7 @@ in
     htop # Improved top (interactive process viewer)
     httpie # User-friendly HTTP client
     imagemagick # Manipulate images in many formats
+    less # Pager program
     micromamba # Environment manager
     ngrok # Reverse proxy, secure tunnels to localhost
     nodePackages.svgo # Optimize SVGs
