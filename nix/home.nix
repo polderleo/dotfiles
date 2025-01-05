@@ -337,7 +337,7 @@ in
       git = {
         paging = {
           colorArg = "always";
-          pager = "delta --no-gitconfig --paging=never --dark --syntax-theme=Coldark-Dark";
+          pager = "delta --paging=never";
         };
       };
       gui = {
