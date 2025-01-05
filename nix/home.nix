@@ -85,7 +85,6 @@ in
       ".svgo.config.js" = dotfile "svgo/.svgo.config.js";
       ".vimrc" = dotfile "vim/.vimrc";
 
-      ".config/alacritty/alacritty.toml" = dotfile "alacritty/alacritty.toml";
       ".config/atuin/config.toml" = dotfile "atuin/config.toml";
       ".config/ghostty/config" = dotfile "ghostty/config";
       ".config/gitui/key_bindings.ron" = dotfile "gitui/key_bindings.ron";
