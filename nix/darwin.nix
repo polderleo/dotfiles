@@ -203,7 +203,6 @@ in
       # Applications
       "affinity-designer" # Professional graphic design software
       "affinity-photo" # Professional image editing software
-      "alacritty" # GPU-accelerated terminal emulator
       "arc" # Chromium based browser
       "audacity" # Cross-platform audio software
       "bitwarden" # Desktop password and login vault
