@@ -8,7 +8,9 @@
 
 let
   shellAliases = {
-    lg = "lazygit";
+    # Set the `TERM` env var to fix color display with `delta` as long as lazygit doesn't support Ghostty.
+    # Relevant Pull Request: https://github.com/jesseduffield/lazygit/pull/4149
+    lg = "TERM=xterm-256color lazygit";
     man = "batman";
     nix-switch =
       if pkgs.stdenv.isDarwin then
