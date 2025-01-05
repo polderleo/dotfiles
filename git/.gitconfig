@@ -25,5 +25,6 @@
 	enabled = true
 [delta]
 	syntax-theme = Coldark-Dark
+	pager = less --mouse
 [interactive]
 	diffFilter = delta --color-only
