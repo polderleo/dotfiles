@@ -105,13 +105,13 @@ in
       "Library/LaunchAgents/Timemator.restart.plist" = dotfile "macos/Timemator.restart.plist";
     };
 
+  # This sets the `XDG_CONFIG_HOME` environment variable to `~/.config`.
+  # For some programs (e.g. `sops`) on macOS this is needed, because they would otherwise look for their config files in `~/Library/Application Support`.
+  xdg.enable = true;
+
   sops = {
     defaultSopsFile = "${secretsPath}/secrets.yaml";
-    age.keyFile =
-      if pkgs.stdenv.isDarwin then
-        "${homePath}/Library/Application Support/sops/age/keys.txt"
-      else
-        "${homePath}/.config/sops/age/keys.txt";
+    age.keyFile = "${homePath}/.config/sops/age/keys.txt";
     secrets = {
       "atuin/username" = { };
       "atuin/password" = { };
