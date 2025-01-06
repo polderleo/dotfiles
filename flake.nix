@@ -46,12 +46,7 @@
           inherit secretsPath;
         };
       };
-    in
-    {
-
-      formatter.aarch64-darwin = inputs.legacyPackages.aarch64-darwin.nixfmt-rfc-style;
-
-      darwinConfigurations."Niklas-Machbuch" = inputs.nix-darwin.lib.darwinSystem {
+      darwinSystem = inputs.nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         specialArgs = {
           inherit secretsPath;
@@ -71,8 +66,7 @@
           }
         ];
       };
-
-      nixosConfigurations."Niklas-Workstation" = inputs.nixpkgs.lib.nixosSystem {
+      nixosSystem = inputs.nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
           inherit secretsPath;
@@ -88,6 +82,14 @@
           }
         ];
       };
+    in
+    {
+
+      formatter.aarch64-darwin = inputs.legacyPackages.aarch64-darwin.nixfmt-rfc-style;
+
+      darwinConfigurations."Barrakuda" = darwinSystem;
+      darwinConfigurations."Mantarochen" = darwinSystem;
+      nixosConfigurations."Quastenflosser" = nixosSystem;
 
     };
 }
