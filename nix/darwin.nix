@@ -220,6 +220,7 @@ in
       "fork" # GIT client
       "ghostty" # Terminal emulator that uses platform-native UI and GPU acceleration
       "httpie" # Testing client for REST, GraphQL, and HTTP APIs
+      "hyperkey" # Converts caps lock key to the hyper key
       "imageoptim" # Tool to optimise images to a smaller size
       "kitty" # GPU-based terminal emulator
       "logseq" # Privacy-first, open-source platform for knowledge sharing and management
@@ -232,6 +233,7 @@ in
       "notion" # App to write, plan, collaborate, and get organised
       "numi" # Calculator and converter application
       "obsidian" # Knowledge base that works on top of a local folder of plain text Markdown files
+      "phoenix" # Window and app manager scriptable with JavaScript
       "protonvpn" # VPN client focusing on security
       "proxyman" # HTTP debugging proxy
       "qlmarkdown" # Quick Look generator for Markdown files
