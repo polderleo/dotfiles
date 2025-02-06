@@ -205,6 +205,7 @@ in
       "affinity-photo" # Professional image editing software
       "arc" # Chromium based browser
       "audacity" # Cross-platform audio software
+      "beeper" # Universal chat app
       "bitwarden" # Desktop password and login vault
       "blackhole-2ch" # Virtual Audio Driver
       "calibre" # E-books management software
@@ -227,6 +228,7 @@ in
       "mos" # Smooths scrolling and set mouse scroll directions independently
       "musescore" # Open-source music notation software
       "nota" # Markdown files editor
+      "notion-calendar" # Calendar by Notion
       "notion" # App to write, plan, collaborate, and get organised
       "numi" # Calculator and converter application
       "obsidian" # Knowledge base that works on top of a local folder of plain text Markdown files
@@ -247,6 +249,7 @@ in
       "visual-studio-code" # Open-source code editor
       "vlc" # Multimedia player
       "warp" # Rust-based terminal
+      "windsurf" # VSCode-fork with AI integration
       "wireshark" # Network protocol analyzer
       "zoom" # Video communication and virtual meeting platform
     ];
