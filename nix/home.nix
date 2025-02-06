@@ -35,6 +35,7 @@ in
     act # Run GitHub Actions locally
     age # Secure file encryption
     any-nix-shell # Run nix-shell in any directory
+    bun # Incredibly fast JavaScript runtime
     cloc # Count lines of code
     cloudflared # Cloudflare tunnel
     delta # Syntax-highlighter for git and diff output
