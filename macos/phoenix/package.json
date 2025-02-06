@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "build": "bun build phoenix.ts --outfile ~/.phoenix.js"
+  },
+  "dependencies": {
+    "@types/phoenix": "github:mafredri/phoenix-typings#main"
+  }
+}
