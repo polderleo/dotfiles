@@ -141,11 +141,6 @@ in
     autohide = true; # automatically hide and show the Dock
   };
 
-  system.keyboard = {
-    enableKeyMapping = true;
-    remapCapsLockToEscape = true;
-  };
-
   system.activationScripts.postUserActivation = {
     text = ''
       # Set default shell to fish
