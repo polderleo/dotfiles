@@ -42,6 +42,7 @@ in
     fd # Alternative to find
     ffmpeg_7 # Play, record, convert, and stream audio and video
     gh # GitHub command-line tool
+    git # Version control system
     gitui # Terminal ui for git
     gnused # GNU version of the famous stream editor
     gnutar # GNU version of the tar archiving utility
