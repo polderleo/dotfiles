@@ -43,6 +43,9 @@ in
         pkgs.writeShellScript "nextdns-config-watch" ''
           trap 'kill $(jobs -p); exit' SIGINT
 
+          # Make sure nextdns is activated
+          ${pkgs.nextdns}/bin/nextdns activate
+
           while true; do
             # Start long-running nextdns process in the background
             ${pkgs.nextdns}/bin/nextdns run --config-file=${config.sops.secrets.nextdns-config.path} &
