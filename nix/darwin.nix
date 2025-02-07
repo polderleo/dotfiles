@@ -90,6 +90,7 @@ in
 
   users.users.nik.home = home;
 
+  # Your Terminal emulator might need Full Disk Access to change icons for all applications
   environment.customIcons = {
     enable = true;
     icons = map appicon [
