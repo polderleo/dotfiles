@@ -178,6 +178,8 @@ in
     brews = [
       # Although we already have it in home-manager, this gpg binary is the only one that Fork can find
       "gnupg"
+      # The Bitwarden CLI is currently broken in nix, so we install it from Brew
+      "bitwarden-cli"
     ];
 
     casks = [
@@ -225,6 +227,7 @@ in
       "kitty" # GPU-based terminal emulator
       "logseq" # Privacy-first, open-source platform for knowledge sharing and management
       "macfuse" # File system integration
+      "microsoft-teams" # Team messaging app
       "missive" # Team inbox and chat tool
       "mos" # Smooths scrolling and set mouse scroll directions independently
       "musescore" # Open-source music notation software
@@ -253,6 +256,7 @@ in
       "warp" # Rust-based terminal
       "windsurf" # VSCode-fork with AI integration
       "wireshark" # Network protocol analyzer
+      "yubico-authenticator" # Application for configuring YubiKeys
       "zoom" # Video communication and virtual meeting platform
     ];
   };
