@@ -171,7 +171,8 @@ in
     onActivation = {
       autoUpdate = true;
       upgrade = true;
-      cleanup = "uninstall";
+      # `zap` will move related files of apps that are removed to the trash
+      cleanup = "zap";
       # This will force an overwrite of apps already present
       extraFlags = [ "--force" ];
     };
