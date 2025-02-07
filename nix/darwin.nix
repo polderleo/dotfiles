@@ -167,7 +167,9 @@ in
     onActivation = {
       autoUpdate = true;
       upgrade = true;
-      cleanup = "zap";
+      cleanup = "uninstall";
+      # This will force an overwrite of apps already present
+      extraFlags = [ "--force" ];
     };
 
     taps = [
