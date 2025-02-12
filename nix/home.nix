@@ -255,11 +255,6 @@ in
     ];
   };
 
-  services.gpg-agent = {
-    enable = true;
-    pinentryPackage = if pkgs.stdenv.isDarwin then pkgs.pinentry_mac else pkgs.pinentry;
-  };
-
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
