@@ -224,8 +224,8 @@ in
       "fork" # GIT client
       "ghostty" # Terminal emulator that uses platform-native UI and GPU acceleration
       "httpie" # Testing client for REST, GraphQL, and HTTP APIs
-      "hyperkey" # Converts caps lock key to the hyper key
       "imageoptim" # Tool to optimise images to a smaller size
+      "karabiner-elements" # Keyboard customizer
       "kitty" # GPU-based terminal emulator
       "logseq" # Privacy-first, open-source platform for knowledge sharing and management
       "macfuse" # File system integration
