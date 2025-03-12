@@ -14,7 +14,7 @@ const bindApp = (key: string, appName: string) => {
 };
 
 bindApp(";", "Ghostty");
-bindApp("b", "Arc");
+bindApp("w", "Arc");
 bindApp("e", "Windsurf");
 bindApp("f", "Finder");
 bindApp("c", "Beeper");
