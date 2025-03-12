@@ -17,9 +17,6 @@ let
 in
 {
 
-  # Make sure the nix daemon always runs
-  services.nix-daemon.enable = true;
-
   sops = {
     defaultSopsFile = "${secretsPath}/secrets.yaml";
     age.keyFile = "${home}/.config/sops/age/keys.txt";
