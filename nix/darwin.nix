@@ -207,6 +207,7 @@ in
       "bitwarden" # Desktop password and login vault
       "blackhole-2ch" # Virtual Audio Driver
       "calibre" # E-books management software
+      "chatwise" # AI chat app
       "cyberduck" # Server and cloud storage browser
       "dbngin" # Database version management tool
       "discord" # Voice and text chat software
