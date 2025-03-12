@@ -5,4 +5,9 @@ adjust-cell-height = 10%
 window-padding-x = 20
 window-padding-y = 10
 window-save-state = always
+
+# This allows for terminal software to use Alt as a modifier key
+# I can still use the right option key for umlauts characters like ä, ü, ö of my custom keyboard
+macos-option-as-alt = left
+
 auto-update = off
