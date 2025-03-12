@@ -58,6 +58,7 @@ in
     nodePackages.svgo # Optimize SVGs
     nushell # Modern alternative shell
     pandoc # Document conversion
+    posting # API client for the terminal
     restic # Backup program
     sops # Editor of encrypted files
     tlrc # client for tldr: collaborative cheatsheets for console commands
@@ -96,6 +97,8 @@ in
       ".config/helix/themes/my_theme.toml" = dotfile "helix/my_theme.toml";
       ".config/kitty/kitty.conf" = dotfile "kitty/kitty.conf";
       ".config/nix/nix.conf" = dotfile "nix/nix.conf";
+      ".config/posting/config.yaml" = dotfile "posting/config.yaml";
+      ".local/share/posting/themes/my_theme.yaml" = dotfile "posting/themes/my_theme.yaml";
       ".config/starship.toml" = dotfile "starship/starship.toml";
 
       # Yazi
