@@ -21,3 +21,4 @@ bindApp("c", "Beeper");
 bindApp("a", "Notion Calendar");
 bindApp("m", "Missive");
 bindApp("t", "Microsoft Teams");
+bindApp("g", "Chatwise");
