@@ -218,6 +218,7 @@ in
       "discord" # Voice and text chat software
       "docker" # App to build and share containerised applications and microservices
       "dropbox" # Client for the Dropbox cloud storage service
+      "eloston-chromium" # Chromium based browser
       "figma" # Collaborative team software
       "finicky" # Utility for customizing which browser to start
       "firefox" # Web browser
