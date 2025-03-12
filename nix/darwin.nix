@@ -10,9 +10,10 @@ with lib;
 
 let
   home = "/Users/nik";
+  configDir = "${home}/dotfiles";
   appicon = name: {
     path = "/Applications/${name}.app";
-    icon = "${home}/dotfiles/macos/icons/${name}.icns";
+    icon = "${configDir}/macos/icons/${name}.icns";
   };
 in
 {
@@ -151,6 +152,10 @@ in
 
       # Activate settings so we don't have to restart
       /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+
+      # Install keyboard shortcuts
+      ${pkgs.bun}/bin/bun run --cwd=${configDir}/macos/karabiner/ build
+      ${pkgs.bun}/bin/bun run --cwd=${configDir}/macos/phoenix/ build
     '';
   };
 
