@@ -179,8 +179,6 @@ in
     brews = [
       # Although we already have it in home-manager, this gpg binary is the only one that Fork can find
       "gnupg"
-      # The Bitwarden CLI is currently broken in nix, so we install it from Brew
-      "bitwarden-cli"
     ];
 
     casks = [

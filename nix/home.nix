@@ -35,6 +35,7 @@ in
     act # Run GitHub Actions locally
     age # Secure file encryption
     any-nix-shell # Run nix-shell in any directory
+    bitwarden-cli # CLI for my password manager
     bun # Incredibly fast JavaScript runtime
     claude-code # Claude CLI tool from Anthropic
     cloc # Count lines of code
