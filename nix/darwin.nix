@@ -156,6 +156,9 @@ in
       # Install keyboard shortcuts
       ${pkgs.bun}/bin/bun run --cwd=${configDir}/macos/karabiner/ build
       ${pkgs.bun}/bin/bun run --cwd=${configDir}/macos/phoenix/ build
+
+      # Configure Final Cut to enable timeline rendering during playback
+      defaults write com.apple.FinalCut FFSuspendBGOpsDuringPlay 0
     '';
   };
 
