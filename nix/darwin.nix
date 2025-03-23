@@ -17,6 +17,8 @@ let
   };
 in
 {
+  # Disable management of the nix installation via nix-darwin since I'm using Determinate Nix
+  nix.enable = false;
 
   sops = {
     defaultSopsFile = "${secretsPath}/secrets.yaml";
