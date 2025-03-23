@@ -12,6 +12,7 @@
       url = "github:zhaofengli/nix-homebrew";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nix-darwin.follows = "nix-darwin";
+      inputs.brew-src.url = "github:Homebrew/brew/4.4.25";
     };
     nix-darwin-custom-icons = {
       url = "github:ryanccn/nix-darwin-custom-icons";
