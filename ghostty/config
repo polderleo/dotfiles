@@ -4,7 +4,10 @@ font-size = 14
 adjust-cell-height = 10%
 window-padding-x = 20
 window-padding-y = 10
-window-save-state = always
+
+# Maximize default window
+window-width = 173
+window-height = 43
 
 # This allows for terminal software to use Alt as a modifier key
 # I can still use the right option key for umlauts characters like ä, ü, ö of my custom keyboard
