@@ -157,7 +157,7 @@ in
 
   programs.fish = {
     enable = true;
-    shellInitLast = builtins.readFile ../fish/config.fish;
+    shellInitLast = "source ~/dotfiles/fish/config.fish";
     shellAliases = shellAliases;
     plugins = [
       {
