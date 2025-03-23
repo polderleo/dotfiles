@@ -35,6 +35,7 @@ in
     act # Run GitHub Actions locally
     age # Secure file encryption
     any-nix-shell # Run nix-shell in any directory
+    atuin # Universal history
     bitwarden-cli # CLI for my password manager
     bun # Incredibly fast JavaScript runtime
     claude-code # Claude CLI tool from Anthropic
@@ -236,6 +237,10 @@ in
       bindkey "^[[1;3C" forward-word
       bindkey "^[[1;3D" backward-word
 
+      # Setup Atuin
+      eval "$(ATUIN_NOBIND=true atuin init zsh)"
+      bindkey '^a' atuin-search
+
       # This adds a blank line before each command output for better readability
       function precmd { echo }
     '';
@@ -275,13 +280,6 @@ in
   # Universal prompt
   programs.starship = {
     enable = true;
-  };
-
-  # Universal history
-  programs.atuin = {
-    enable = true;
-    enableFishIntegration = false; # We set it up manually in config.fish
-    flags = [ "--disable-up-arrow" ];
   };
 
   # Modern replacement for 'ls'
