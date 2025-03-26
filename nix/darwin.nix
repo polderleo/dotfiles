@@ -218,6 +218,7 @@ in
       "chatwise" # AI chat app
       "cyberduck" # Server and cloud storage browser
       "dbngin" # Database version management tool
+      "deskpad" # A virtual monitor for screen sharing
       "discord" # Voice and text chat software
       "docker" # App to build and share containerised applications and microservices
       "dropbox" # Client for the Dropbox cloud storage service
