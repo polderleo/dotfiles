@@ -56,11 +56,14 @@ in
             if ! [ -d /run/secrets.d/ ]; then
               echo "Secrets volume not yet mounted. This script will restart when it is."
               /bin/wait4path /run/secrets.d/ &
+            elif ! [ -e /run/secrets/ ]; then
+              echo "Secrets not yet created. Restart the script."
+              exit &
+            else
+              # Monitor symlink and config file in background
+              # fswatch will exit when those paths are modified
+              ${pkgs.fswatch}/bin/fswatch -1 ${config.sops.secrets.nextdns-config.path} > /dev/null &
             fi
-
-            # Monitor symlink and config file in background
-            # fswatch will exit when those paths are modified
-            ${pkgs.fswatch}/bin/fswatch -1 ${config.sops.secrets.nextdns-config.path} > /dev/null &
 
             # Wait for at least one process to exit
             wait -n
