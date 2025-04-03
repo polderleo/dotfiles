@@ -34,6 +34,9 @@ in
   };
 
   services.nextdns.enable = true;
+  # Manually start and stop the nextdns service with:
+  # `sudo launchctl bootout system /Library/LaunchDaemons/org.nixos.nextdns.plist`
+  # `sudo launchctl bootstrap system /Library/LaunchDaemons/org.nixos.nextdns.plist`
   launchd.daemons.nextdns = {
     # Uncomment to enable logging
     # serviceConfig.StandardErrorPath = "/var/log/nextdns.log";
@@ -42,6 +45,9 @@ in
       toString (
         pkgs.writeShellScript "nextdns-config-watch" ''
           trap 'kill $(jobs -p); exit' SIGINT
+
+          # `nextdns activate` depends on `launchctl` and `networksetup`
+          export PATH="/usr/bin:/bin:/usr/sbin:/sbin"
 
           # Make sure nextdns is activated
           ${pkgs.nextdns}/bin/nextdns activate
