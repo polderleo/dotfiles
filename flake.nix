@@ -45,6 +45,8 @@
           config.allowUnfree = true;
           overlays = [
             (import ./nix/overlays/claude.nix)
+            # bitwarden-cli-2025.3.0 had some build issues
+            (final: prev: { bitwarden-cli = inputs.nixpkgs-stable.legacyPackages.${system}.bitwarden-cli; })
           ];
         };
       sharedModules = [
