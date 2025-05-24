@@ -170,6 +170,13 @@ in
 
       # Configure Final Cut to enable timeline rendering during playback
       defaults write com.apple.FinalCut FFSuspendBGOpsDuringPlay 0
+
+      # Disable autoupgrade - Use `brew cu -aqy` to upgrade apps
+      defaults write com.DanPristupov.Fork SUEnableAutomaticChecks -bool false
+      defaults write com.seriflabs.affinitydesigner2 AutoUpdateInterval -bool false
+      defaults write com.seriflabs.affinityphoto2 AutoUpdateInterval -bool false
+      defaults write com.proxyman.NSProxy isUsingSystemStatusBar -bool false
+      defaults write com.proxyman.NSProxy shouldShowUpdatePopup -bool false
     '';
   };
 
@@ -186,7 +193,7 @@ in
     };
 
     taps = [
-      # Upgrade casks with `brew cu -a`
+      # Upgrade casks with `brew cu -aqy`
       "buo/cask-upgrade"
     ];
 
