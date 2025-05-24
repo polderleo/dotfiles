@@ -171,6 +171,12 @@ in
       # Configure Final Cut to enable timeline rendering during playback
       defaults write com.apple.FinalCut FFSuspendBGOpsDuringPlay 0
 
+      # Configure Apple Mail
+      defaults write com.apple.mail ShowCcHeader 0
+      defaults write com.apple.mail EnableContactPhotos  1
+      defaults write com.apple.mail NSFont SFPro-Regular
+      defaults write com.apple.mail NSFontSize 12
+
       # Disable autoupgrade - Use `brew cu -aqy` to upgrade apps
       defaults write com.DanPristupov.Fork SUEnableAutomaticChecks -bool false
       defaults write com.seriflabs.affinitydesigner2 AutoUpdateInterval -bool false
