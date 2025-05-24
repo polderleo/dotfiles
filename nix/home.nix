@@ -14,7 +14,7 @@ let
     man = "batman";
     nix-switch =
       if pkgs.stdenv.isDarwin then
-        "nix run nix-darwin -- switch --flake ~/dotfiles"
+        "darwin-rebuild switch --flake ~/dotfiles"
       else
         "sudo nixos-rebuild switch --flake ~/dotfiles";
     svgo = "svgo --config=$HOME/.svgo.config.js";
