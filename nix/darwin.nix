@@ -203,77 +203,93 @@ in
       "font-lexend"
       "font-montserrat"
       "font-open-sans"
-      "font-poppins"
       "font-palanquin"
+      "font-poppins"
       "font-roboto"
-      "font-space-grotesk"
+      "font-sf-pro"
       "font-source-sans-3"
+      "font-space-grotesk"
 
       # Nerd Fonts
+      "font-anonymous-pro"
+      "font-hack-nerd-font"
       "font-jetbrains-mono-nerd-font"
       "font-sauce-code-pro-nerd-font"
-      "font-hack-nerd-font"
-      "font-anonymous-pro"
 
       # Applications
-      "affinity-designer" # Professional graphic design software
-      "affinity-photo" # Professional image editing software
       "arc" # Chromium based browser
-      "audacity" # Cross-platform audio software
       "beeper" # Universal chat app
       "bitwarden" # Desktop password and login vault
-      "blackhole-2ch" # Virtual Audio Driver
       "calibre" # E-books management software
+      "chatgpt" # ChatGPT macOS app
       "chatwise" # AI chat app
-      "cyberduck" # Server and cloud storage browser
-      "dbngin" # Database version management tool
       "deskpad" # A virtual monitor for screen sharing
-      "discord" # Voice and text chat software
-      "docker" # App to build and share containerised applications and microservices
       "dropbox" # Client for the Dropbox cloud storage service
       "eloston-chromium" # Chromium based browser
-      "figma" # Collaborative team software
       "finicky" # Utility for customizing which browser to start
       "firefox" # Web browser
-      "fork" # GIT client
-      "ghostty" # Terminal emulator that uses platform-native UI and GPU acceleration
-      "httpie" # Testing client for REST, GraphQL, and HTTP APIs
-      "imageoptim" # Tool to optimise images to a smaller size
       "karabiner-elements" # Keyboard customizer
-      "kitty" # GPU-based terminal emulator
-      "logseq" # Privacy-first, open-source platform for knowledge sharing and management
+      "legcord" # Discord client
       "macfuse" # File system integration
-      "microsoft-teams" # Team messaging app
-      "missive" # Team inbox and chat tool
       "mos" # Smooths scrolling and set mouse scroll directions independently
-      "musescore" # Open-source music notation software
-      "nota" # Markdown files editor
-      "notion-calendar" # Calendar by Notion
-      "notion" # App to write, plan, collaborate, and get organised
       "numi" # Calculator and converter application
-      "obsidian" # Knowledge base that works on top of a local folder of plain text Markdown files
       "phoenix" # Window and app manager scriptable with JavaScript
       "protonvpn" # VPN client focusing on security
-      "proxyman" # HTTP debugging proxy
       "qlmarkdown" # Quick Look generator for Markdown files
       "raycast" # Control your tools with a few keystrokes
       "rwts-pdfwriter" # Print driver for printing documents directly to a pdf file
       "signal" # Instant messaging application focusing on security
       "spotify" # Music streaming service
       "stats" # System monitor for the menu bar
-      "tableplus" # Native GUI tool for relational databases
       "telegram" # Messaging app with a focus on speed and security
       "the-unarchiver" # Unpacks archive files
       "timemator" # Automatic time-tracking application
-      "todoist" # To-do list
       "topnotch" # Utility to hide the notch
-      "visual-studio-code" # Open-source code editor
       "vlc" # Multimedia player
+      "yubico-authenticator" # Application for configuring YubiKeys
+      "zoom" # Video communication and virtual meeting platform
+
+      # Graphic & Image Applications
+      "affinity-designer" # Professional graphic design software
+      "affinity-photo" # Professional image editing software
+      "figma" # Collaborative team software
+      "imageoptim" # Tool to optimise images to a smaller size
+
+      # Audio & Music Applications
+      "ableset" # Live setlist manager for Ableton
+      "ableton-live-standard" # Music production software
+      "audacity" # Cross-platform audio software
+      "blackhole-2ch" # Virtual Audio Driver
+      "motu-m-series" # Driver for Motu M-Series audio interfaces
+      "musescore" # Open-source music notation software
+      "native-access" # Installer for Native Instruments products
+
+      # Productivity
+      "anytype" # Local-first and end-to-end encrypted notes app
+      "craft" # Personal knowledge management
+      "missive" # Team inbox and chat tool
+      "nota" # Markdown files editor
+      "notion-calendar" # Calendar by Notion
+      "notion" # App to write, plan, collaborate, and get organised
+      "obsidian" # Knowledge base that works on top of a local folder of plain text Markdown files
+      "raindropio" # Bookmark manager
+
+      # Development
+      "bruno" # API Client
+      "cyberduck" # Server and cloud storage browser
+      "dbngin" # Database version management tool
+      "fork" # GIT client
+      "ghostty" # Terminal emulator that uses platform-native UI and GPU acceleration
+      "httpie" # Testing client for REST, GraphQL, and HTTP APIs
+      "kitty" # GPU-based terminal emulator
+      "orbstack" # Replacement for Docker Desktop
+      "proxyman" # HTTP debugging proxy
+      "tableplus" # Native GUI tool for relational databases
+      "tuple" # Remote pair programming app
+      "visual-studio-code" # Open-source code editor
       "warp" # Rust-based terminal
       "windsurf" # VSCode-fork with AI integration
       "wireshark" # Network protocol analyzer
-      "yubico-authenticator" # Application for configuring YubiKeys
-      "zoom" # Video communication and virtual meeting platform
     ];
   };
 
