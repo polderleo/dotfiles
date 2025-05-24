@@ -17,7 +17,7 @@ bindApp(";", "Ghostty");
 bindApp("w", "Arc");
 bindApp("e", "Windsurf");
 bindApp("f", "Finder");
-bindApp("c", "Beeper");
+bindApp("c", "Beeper Desktop");
 bindApp("a", "Notion Calendar");
 bindApp("m", "Missive");
 bindApp("t", "Microsoft Teams");
