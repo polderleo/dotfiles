@@ -344,6 +344,9 @@ in
           colorArg = "always";
           pager = "delta --paging=never";
         };
+        commit = {
+          autoWrapCommitMessage = false;
+        };
       };
       gui = {
         scrollHeight = 1;
