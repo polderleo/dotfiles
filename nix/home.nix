@@ -108,9 +108,6 @@ in
       ".config/yazi/yazi.toml" = dotfile "yazi/yazi.toml";
       ".config/yazi/keymap.toml" = dotfile "yazi/keymap.toml";
       ".config/yazi/init.lua" = dotfile "yazi/init.lua";
-    }
-    // lib.optionalAttrs pkgs.stdenv.isDarwin {
-      "Library/LaunchAgents/Timemator.restart.plist" = dotfile "macos/Timemator.restart.plist";
     };
 
   # This sets the `XDG_CONFIG_HOME` environment variable to `~/.config`.
@@ -144,12 +141,13 @@ in
 
     }
     // lib.optionalAttrs pkgs.stdenv.isDarwin {
-      copyKeyboardLayout = lib.optionalAttrs pkgs.stdenv.isDarwin (
-        lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-          mkdir -p ~/Library/Keyboard\ Layouts/
-          cp -R ${configDir}/macos/niklas.keylayout ~/Library/Keyboard\ Layouts/
-        ''
-      );
+      copyKeyboardLayout = lib.optionalAttrs pkgs.stdenv.isDarwin ''
+        mkdir -p ~/Library/Keyboard\ Layouts/
+        cp -R ${configDir}/macos/niklas.keylayout ~/Library/Keyboard\ Layouts/
+      '';
+      # I would prefer to symlink this file, but macOS seems to ignore symlinks in LaunchAgents
+      copyTimematorRestart = lib.optionalAttrs pkgs.stdenv.isDarwin
+        ''cp -R ${configDir}/macos/timemator.restart.plist ~/Library/LaunchAgents/'';
     };
 
   # Let Home Manager install and manage itself.
