@@ -6,20 +6,20 @@ Restart Timemator automatically in the background whenever it is closed.
 
 ```sh
 # Load Timerator.restart:
-launchctl load ~/Library/LaunchAgents/Timemator.restart.plist
+launchctl load ~/Library/LaunchAgents/timemator.restart.plist
 
 # Show if Timerator.restart is running: 
-launchctl list | grep Timemator.restart
+launchctl list | grep timemator.restart
 
 # Unload Timerator.restart: 
-launchctl remove Timemator.restart
+launchctl remove timemator.restart
 ```
 -->
 
 <plist version="1.0">
 	<dict>
 		<key>Label</key>
-		<string>Timemator.restart</string>
+		<string>timemator.restart</string>
 
 		<key>ProgramArguments</key>
 		<array>
