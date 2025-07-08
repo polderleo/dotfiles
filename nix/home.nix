@@ -84,7 +84,7 @@ in
     {
       ".env.sh" = dotfile "shell/.env.sh";
 
-      ".finicky.js" = dotfile "finicky/.finicky.js";
+      ".finicky.ts" = dotfile "finicky/.finicky.ts";
       ".gitconfig" = dotfile "git/.gitconfig";
       ".gitignore" = dotfile "git/.gitignore";
       ".ssh/config" = dotfile "ssh/config";
