@@ -277,6 +277,15 @@ in
       "musescore" # Open-source music notation software
       "native-access" # Installer for Native Instruments products
 
+      # Audio Plugins
+      "fabfilter-pro-q" # Equalizer
+      "fabfilter-pro-l" # Limiter
+      "fabfilter-pro-c" # Compressor
+      "fabfilter-pro-mb" # Multi-band compressor
+      "fabfilter-saturn" # Saturation
+      "youlean-loudness-meter" # Loudness Meter
+      "tdr-prism" # Frequency analyzer
+
       # Productivity
       "anytype" # Local-first and end-to-end encrypted notes app
       "craft" # Personal knowledge management
