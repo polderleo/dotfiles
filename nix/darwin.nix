@@ -114,7 +114,6 @@ in
       "Microsoft OneNote"
       "Microsoft Teams"
       "Microsoft Word"
-      "Notion"
       "Spotify"
       "Telegram"
       "Visual Studio Code"
