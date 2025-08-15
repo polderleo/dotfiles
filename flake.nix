@@ -8,12 +8,12 @@
       url = "github:niklasravnsborg/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # nix-homebrew = {
-    #   url = "github:zhaofengli/nix-homebrew";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    #   inputs.nix-darwin.follows = "nix-darwin";
-    #   inputs.brew-src.url = "github:Homebrew/brew/4.4.25";
-    # };
+    nix-homebrew = {
+      url = "github:zhaofengli/nix-homebrew";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nix-darwin.follows = "nix-darwin";
+      inputs.brew-src.url = "github:Homebrew/brew/4.4.25";
+    };
     # nix-darwin-custom-icons = {
     #   url = "github:ryanccn/nix-darwin-custom-icons";
     # };
@@ -63,13 +63,13 @@
           ./nix/darwin.nix
           # inputs.nix-darwin-custom-icons.darwinModules.default
           inputs.home-manager.darwinModules.home-manager
-          # inputs.nix-homebrew.darwinModules.nix-homebrew
+          inputs.nix-homebrew.darwinModules.nix-homebrew
           {
             home-manager = homeManagerConfig;
-            # nix-homebrew = {
-            #   enable = true;
-            #   user = "nik";
-            # };
+            nix-homebrew = {
+              enable = true;
+              user = "ldsr";
+            };
           }
         ];
       };
