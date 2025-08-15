@@ -1,13 +1,14 @@
 [user]
-	name = Niklas Ravnsborg
-	email = niklasravnsborg@gmail.com
-	signingkey = 0C90DD8A0EE993DF8D587AF98360E6C58AE8F3ED
+	name = Leopold Stenger
+	email = leopold.stenger@gmx.de
+	# TODO: add signingkey
+	# signingkey = 0C90DD8A0EE993DF8D587AF98360E6C58AE8F3ED
 [alias]
 	l = log --oneline -n 20
 	st = status -s
 	go = checkout
-[commit]
-	gpgsign = true
+# [commit]
+# 	gpgsign = true
 [core]
 	excludesfile = ~/.gitignore
 	editor = hx

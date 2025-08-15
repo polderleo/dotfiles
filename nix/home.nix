@@ -36,7 +36,7 @@ in
     age # Secure file encryption
     any-nix-shell # Run nix-shell in any directory
     atuin # Universal history
-    bitwarden-cli # CLI for my password manager
+    # bitwarden-cli # CLI for my password manager
     bun # Incredibly fast JavaScript runtime
     claude-code # Claude CLI tool from Anthropic
     cloc # Count lines of code
@@ -62,7 +62,7 @@ in
     pandoc # Document conversion
     posting # API client for the terminal
     restic # Backup program
-    sops # Editor of encrypted files
+    # sops # Editor of encrypted files
     tlrc # client for tldr: collaborative cheatsheets for console commands
     tree # Display directories as trees
     watch # Execute a program periodically
@@ -114,41 +114,41 @@ in
   # For some programs (e.g. `sops`) on macOS this is needed, because they would otherwise look for their config files in `~/Library/Application Support`.
   xdg.enable = true;
 
-  sops = {
-    defaultSopsFile = "${secretsPath}/secrets.yaml";
-    age.keyFile = "${homePath}/.config/sops/age/keys.txt";
-    secrets = {
-      "atuin/username" = { };
-      "atuin/password" = { };
-      "atuin/key" = {
-        path = "${homePath}/.local/share/atuin/key";
-      };
-    };
-  };
+  # sops = {
+  #   defaultSopsFile = "${secretsPath}/secrets.yaml";
+  #   age.keyFile = "${homePath}/.config/sops/age/keys.txt";
+  #   secrets = {
+  #     "atuin/username" = { };
+  #     "atuin/password" = { };
+  #     "atuin/key" = {
+  #       path = "${homePath}/.local/share/atuin/key";
+  #     };
+  #   };
+  # };
 
-  home.activation =
-    {
-      atuinLogin = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-        if [ -e ${homePath}/.local/share/atuin/session ]; then
-          echo "Atuin session exists already"
-        else
-          echo "Logging in to Atuin server"
-          echo | ${pkgs.atuin}/bin/atuin login \
-            -u $(cat ${config.sops.secrets."atuin/username".path}) \
-            -p $(cat ${config.sops.secrets."atuin/password".path})
-        fi
-      '';
+  # home.activation =
+    # {
+    #   atuinLogin = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    #     if [ -e ${homePath}/.local/share/atuin/session ]; then
+    #       echo "Atuin session exists already"
+    #     else
+    #       echo "Logging in to Atuin server"
+    #       echo | ${pkgs.atuin}/bin/atuin login \
+    #         -u $(cat ${config.sops.secrets."atuin/username".path}) \
+    #         -p $(cat ${config.sops.secrets."atuin/password".path})
+    #     fi
+    #   '';
 
-    }
-    // lib.optionalAttrs pkgs.stdenv.isDarwin {
-      copyKeyboardLayout = lib.optionalAttrs pkgs.stdenv.isDarwin ''
-        mkdir -p ~/Library/Keyboard\ Layouts/
-        cp -R ${configDir}/macos/niklas.keylayout ~/Library/Keyboard\ Layouts/
-      '';
-      # I would prefer to symlink this file, but macOS seems to ignore symlinks in LaunchAgents
-      copyTimematorRestart = lib.optionalAttrs pkgs.stdenv.isDarwin
-        ''cp -R ${configDir}/macos/timemator.restart.plist ~/Library/LaunchAgents/'';
-    };
+    # }
+    # // lib.optionalAttrs pkgs.stdenv.isDarwin {
+    #   copyKeyboardLayout = lib.optionalAttrs pkgs.stdenv.isDarwin ''
+    #     mkdir -p ~/Library/Keyboard\ Layouts/
+    #     cp -R ${configDir}/macos/niklas.keylayout ~/Library/Keyboard\ Layouts/
+    #   '';
+    #   # I would prefer to symlink this file, but macOS seems to ignore symlinks in LaunchAgents
+    #   copyTimematorRestart = lib.optionalAttrs pkgs.stdenv.isDarwin
+    #     ''cp -R ${configDir}/macos/timemator.restart.plist ~/Library/LaunchAgents/'';
+    # };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -176,15 +176,15 @@ in
           sha256 = "sha256-MdcZUDRtNJdiyo2l9o5ma7nAX84xEJbGFhAVhK+Zm1w=";
         };
       }
-      {
-        name = "google-cloud-sdk-fish-completion";
-        src = pkgs.fetchFromGitHub {
-          owner = "lgathy";
-          repo = "google-cloud-sdk-fish-completion";
-          rev = "bc24b0bf7da2addca377d89feece4487ca0b1e9c";
-          sha256 = "sha256-BIbzdxAj3mrf340l4hNkXwA13rIIFnC6BxM6YuJ7/w8=";
-        };
-      }
+      # {
+      #   name = "google-cloud-sdk-fish-completion";
+      #   src = pkgs.fetchFromGitHub {
+      #     owner = "lgathy";
+      #     repo = "google-cloud-sdk-fish-completion";
+      #     rev = "bc24b0bf7da2addca377d89feece4487ca0b1e9c";
+      #     sha256 = "sha256-BIbzdxAj3mrf340l4hNkXwA13rIIFnC6BxM6YuJ7/w8=";
+      #   };
+      # }
       {
         name = "autopair.fish";
         src = pkgs.fetchFromGitHub {
@@ -194,15 +194,15 @@ in
           sha256 = "sha256-s1o188TlwpUQEN3X5MxUlD/2CFCpEkWu83U9O+wg3VU=";
         };
       }
-      {
-        name = "grc";
-        src = pkgs.fetchFromGitHub {
-          owner = "orefalo";
-          repo = "grc";
-          rev = "68e4325c1f261dfa5153937e7670fde046a0fe56";
-          sha256 = "sha256-iHlxCEKYyKHlIpyOz4bwTQ6R0lr7FqZb54/wuWfWQfg=";
-        };
-      }
+      # {
+      #   name = "grc";
+      #   src = pkgs.fetchFromGitHub {
+      #     owner = "orefalo";
+      #     repo = "grc";
+      #     rev = "68e4325c1f261dfa5153937e7670fde046a0fe56";
+      #     sha256 = "sha256-iHlxCEKYyKHlIpyOz4bwTQ6R0lr7FqZb54/wuWfWQfg=";
+      #   };
+      # }
       {
         name = "spaced-prompts.fish";
         src = pkgs.fetchFromGitHub {
@@ -376,33 +376,33 @@ in
     };
   };
 
-  dconf.settings = {
-    "org/gnome/desktop/input-sources" = {
-      xkb-options = [ "caps:escape" ];
-    };
+  # dconf.settings = {
+  #   "org/gnome/desktop/input-sources" = {
+  #     xkb-options = [ "caps:escape" ];
+  #   };
 
-    "org/gnome/mutter" = {
-      dynamic-workspaces = true;
-      edge-tiling = true;
-    };
+  #   "org/gnome/mutter" = {
+  #     dynamic-workspaces = true;
+  #     edge-tiling = true;
+  #   };
 
-    "org/gnome/shell/app-switcher" = {
-      current-workspace-only = false;
-    };
+  #   "org/gnome/shell/app-switcher" = {
+  #     current-workspace-only = false;
+  #   };
 
-    "org/gnome/desktop/wm/keybindings" = {
-      maximize = [ "<Control><Super>Return" ];
-    };
+  #   "org/gnome/desktop/wm/keybindings" = {
+  #     maximize = [ "<Control><Super>Return" ];
+  #   };
 
-    "org/gnome/mutter/keybindings" = {
-      toggle-tiled-left = [ "<Control><Super>Left" ];
-      toggle-tiled-right = [ "<Control><Super>Right" ];
-    };
+  #   "org/gnome/mutter/keybindings" = {
+  #     toggle-tiled-left = [ "<Control><Super>Left" ];
+  #     toggle-tiled-right = [ "<Control><Super>Right" ];
+  #   };
 
-    "org/gnome/settings-daemon/plugins/media-keys" = {
-      # This is the shortcut to lock the screen
-      screensaver = [ "<Control><Alt>q" ];
-    };
+  #   "org/gnome/settings-daemon/plugins/media-keys" = {
+  #     # This is the shortcut to lock the screen
+  #     screensaver = [ "<Control><Alt>q" ];
+  #   };
 
-  };
+  # };
 }

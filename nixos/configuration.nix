@@ -74,18 +74,18 @@
   # Enable touchpad support
   services.libinput.enable = true;
 
-  sops = {
-    defaultSopsFile = "${secretsPath}/secrets.yaml";
-    age.keyFile = "${config.users.users.nik.home}/.config/sops/age/keys.txt";
+  # sops = {
+  #   defaultSopsFile = "${secretsPath}/secrets.yaml";
+  #   age.keyFile = "${config.users.users.nik.home}/.config/sops/age/keys.txt";
 
-    # Disable automatic key generation
-    age.sshKeyPaths = [ ];
-    gnupg.sshKeyPaths = [ ];
+  #   # Disable automatic key generation
+  #   age.sshKeyPaths = [ ];
+  #   gnupg.sshKeyPaths = [ ];
 
-    secrets = {
-      nextdns-config = { };
-    };
-  };
+  #   secrets = {
+  #     nextdns-config = { };
+  #   };
+  # };
 
   services.nextdns.enable = true;
   systemd.services.nextdns = {

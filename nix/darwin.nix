@@ -2,14 +2,14 @@
   pkgs,
   lib,
   config,
-  secretsPath,
+  # secretsPath,
   ...
 }:
 
 with lib;
 
 let
-  home = "/Users/nik";
+  home = "/Users/ldsr";
   configDir = "${home}/dotfiles";
   appicon = name: {
     path = "/Applications/${name}.app";
@@ -20,130 +20,130 @@ in
   # Disable management of the nix installation via nix-darwin since I'm using Determinate Nix
   nix.enable = false;
 
-  sops = {
-    defaultSopsFile = "${secretsPath}/secrets.yaml";
-    age.keyFile = "${home}/.config/sops/age/keys.txt";
+  # sops = {
+  #   defaultSopsFile = "${secretsPath}/secrets.yaml";
+  #   age.keyFile = "${home}/.config/sops/age/keys.txt";
 
-    # Disable automatic key generation
-    age.sshKeyPaths = [ ];
-    gnupg.sshKeyPaths = [ ];
+  #   # Disable automatic key generation
+  #   age.sshKeyPaths = [ ];
+  #   gnupg.sshKeyPaths = [ ];
 
-    secrets = {
-      nextdns-config = { };
-    };
-  };
+  #   secrets = {
+  #     nextdns-config = { };
+  #   };
+  # };
 
-  services.nextdns.enable = true;
+  # services.nextdns.enable = true;
   # Manually start and stop the nextdns service with:
   # `sudo launchctl bootout system /Library/LaunchDaemons/org.nixos.nextdns.plist`
   # `sudo launchctl bootstrap system /Library/LaunchDaemons/org.nixos.nextdns.plist`
-  launchd.daemons.nextdns = {
-    # Uncomment to enable logging
-    # serviceConfig.StandardErrorPath = "/var/log/nextdns.log";
-    # serviceConfig.StandardOutPath = "/var/log/nextdns.log";
-    command = mkForce (
-      toString (
-        pkgs.writeShellScript "nextdns-config-watch" ''
-          trap 'kill $(jobs -p); exit' SIGINT
+  # launchd.daemons.nextdns = {
+  #   # Uncomment to enable logging
+  #   # serviceConfig.StandardErrorPath = "/var/log/nextdns.log";
+  #   # serviceConfig.StandardOutPath = "/var/log/nextdns.log";
+  #   command = mkForce (
+  #     toString (
+  #       pkgs.writeShellScript "nextdns-config-watch" ''
+  #         trap 'kill $(jobs -p); exit' SIGINT
 
-          # `nextdns activate` depends on `launchctl` and `networksetup`
-          export PATH="/usr/bin:/bin:/usr/sbin:/sbin"
+  #         # `nextdns activate` depends on `launchctl` and `networksetup`
+  #         export PATH="/usr/bin:/bin:/usr/sbin:/sbin"
 
-          # Make sure nextdns is activated
-          ${pkgs.nextdns}/bin/nextdns activate
+  #         # Make sure nextdns is activated
+  #         ${pkgs.nextdns}/bin/nextdns activate
 
-          while true; do
-            # Start long-running nextdns process in the background
-            ${pkgs.nextdns}/bin/nextdns run --config-file=${config.sops.secrets.nextdns-config.path} &
-            nextdns_pid=$!
+  #         while true; do
+  #           # Start long-running nextdns process in the background
+  #           ${pkgs.nextdns}/bin/nextdns run --config-file=${config.sops.secrets.nextdns-config.path} &
+  #           nextdns_pid=$!
 
-            # If the tmpfs is not yet mounted, the file watchers won't trigger on change
-            # wait4path will exit when the path is mounted
-            if ! [ -d /run/secrets.d/ ]; then
-              echo "Secrets volume not yet mounted. This script will restart when it is."
-              /bin/wait4path /run/secrets.d/ &
-            elif ! [ -e /run/secrets/ ]; then
-              echo "Secrets not yet created. Restart the script."
-              exit &
-            else
-              # Monitor symlink and config file in background
-              # fswatch will exit when those paths are modified
-              ${pkgs.fswatch}/bin/fswatch -1 ${config.sops.secrets.nextdns-config.path} > /dev/null &
-            fi
+  #           # If the tmpfs is not yet mounted, the file watchers won't trigger on change
+  #           # wait4path will exit when the path is mounted
+  #           if ! [ -d /run/secrets.d/ ]; then
+  #             echo "Secrets volume not yet mounted. This script will restart when it is."
+  #             /bin/wait4path /run/secrets.d/ &
+  #           elif ! [ -e /run/secrets/ ]; then
+  #             echo "Secrets not yet created. Restart the script."
+  #             exit &
+  #           else
+  #             # Monitor symlink and config file in background
+  #             # fswatch will exit when those paths are modified
+  #             ${pkgs.fswatch}/bin/fswatch -1 ${config.sops.secrets.nextdns-config.path} > /dev/null &
+  #           fi
 
-            # Wait for at least one process to exit
-            wait -n
-            exit_code=$?
+  #           # Wait for at least one process to exit
+  #           wait -n
+  #           exit_code=$?
 
-            # Check if the nextdns process has exited
-            if ! /bin/ps -p $nextdns_pid > /dev/null; then
-              echo "Process has exited with code $exit_code. Exiting script."
-              exit $exit_code
-            fi
+  #           # Check if the nextdns process has exited
+  #           if ! /bin/ps -p $nextdns_pid > /dev/null; then
+  #             echo "Process has exited with code $exit_code. Exiting script."
+  #             exit $exit_code
+  #           fi
 
-            # Kill all other running processes
-            echo "A monitored file was changed. Restarting."
-            pids=$(jobs -p)
-            kill $pids 2> /dev/null
-            wait $pids
+  #           # Kill all other running processes
+  #           echo "A monitored file was changed. Restarting."
+  #           pids=$(jobs -p)
+  #           kill $pids 2> /dev/null
+  #           wait $pids
 
-            # Before restarting the loop, let's sleep for 100 ms
-            echo "Restarting in 100 ms..."
-            /bin/sleep 0.1
-          done
-        ''
-      )
-    );
-  };
+  #           # Before restarting the loop, let's sleep for 100 ms
+  #           echo "Restarting in 100 ms..."
+  #           /bin/sleep 0.1
+  #         done
+  #       ''
+  #     )
+  #   );
+  # };
 
   # Create sourcings for zsh and fish
   programs.zsh.enable = true;
   programs.fish.enable = true;
 
-  users.users.nik.home = home;
+  users.users.ldsr.home = home;
 
   # Your Terminal emulator might need Full Disk Access to change icons for all applications
-  environment.customIcons = {
-    enable = true;
-    icons = map appicon [
-      "calibre"
-      "ImageOptim"
-      "kitty"
-      "LogSeq"
-      "Microsoft Excel"
-      "Microsoft OneNote"
-      "Microsoft Teams"
-      "Microsoft Word"
-      "Spotify"
-      "Telegram"
-      "Visual Studio Code"
-    ];
-  };
+  # environment.customIcons = {
+  #   enable = true;
+  #   icons = map appicon [
+  #     "calibre"
+  #     "ImageOptim"
+  #     "kitty"
+  #     "LogSeq"
+  #     "Microsoft Excel"
+  #     "Microsoft OneNote"
+  #     "Microsoft Teams"
+  #     "Microsoft Word"
+  #     "Spotify"
+  #     "Telegram"
+  #     "Visual Studio Code"
+  #   ];
+  # };
 
-  system.defaults.finder = {
-    FXPreferredViewStyle = "Nlsv"; # Always open everything in list view
-    ShowStatusBar = true; # Show status bar
-    ShowPathbar = true; # Show path bar
-    _FXSortFoldersFirst = true; # Keep folders on top when sorting by name
-    FXEnableExtensionChangeWarning = false; # Disable the warning when changing a file extension
-    FXDefaultSearchScope = "SCcf"; # When performing a search, search the current folder by default
-  };
+  # system.defaults.finder = {
+  #   FXPreferredViewStyle = "Nlsv"; # Always open everything in list view
+  #   ShowStatusBar = true; # Show status bar
+  #   ShowPathbar = true; # Show path bar
+  #   _FXSortFoldersFirst = true; # Keep folders on top when sorting by name
+  #   FXEnableExtensionChangeWarning = false; # Disable the warning when changing a file extension
+  #   FXDefaultSearchScope = "SCcf"; # When performing a search, search the current folder by default
+  # };
 
-  system.defaults.trackpad = {
-    Clicking = true; # Enable tap to click
-    TrackpadThreeFingerDrag = true; # Enable three finger drag
-  };
+  # system.defaults.trackpad = {
+  #   Clicking = true; # Enable tap to click
+  #   TrackpadThreeFingerDrag = true; # Enable three finger drag
+  # };
 
-  system.defaults.NSGlobalDomain = {
-    # Enable key repeat when pressing and holding a key and set a fast repeat rate
-    ApplePressAndHoldEnabled = false;
-    InitialKeyRepeat = 16;
-    KeyRepeat = 2;
+  # system.defaults.NSGlobalDomain = {
+  #   # Enable key repeat when pressing and holding a key and set a fast repeat rate
+  #   ApplePressAndHoldEnabled = false;
+  #   InitialKeyRepeat = 16;
+  #   KeyRepeat = 2;
 
-    AppleShowAllExtensions = true; # Show all filename extensions in Finder
+  #   AppleShowAllExtensions = true; # Show all filename extensions in Finder
 
-    AppleSpacesSwitchOnActivate = false; # Disable switching to a space when an application is activated
-  };
+  #   AppleSpacesSwitchOnActivate = false; # Disable switching to a space when an application is activated
+  # };
 
   system.defaults.dock = {
     autohide = true; # automatically hide and show the Dock
@@ -152,10 +152,10 @@ in
   system.activationScripts.postUserActivation = {
     text = ''
       # Set default shell to fish
-      sudo chsh -s /run/current-system/sw/bin/fish nik
+      sudo chsh -s /run/current-system/sw/bin/fish ldsr
 
       # Disable "Select the previous input source", because I use Ctrl + Space in Tmux
-      defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 60 '<dict><key>enabled</key><false/></dict>'
+      # defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 60 '<dict><key>enabled</key><false/></dict>'
 
       # Disable "Show Spotlight search", because I use Cmd + Space for Raycast
       defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 64 '<dict><key>enabled</key><false/></dict>'
@@ -165,7 +165,7 @@ in
 
       # Install keyboard shortcuts
       ${pkgs.bun}/bin/bun run --cwd=${configDir}/macos/karabiner/ build
-      ${pkgs.bun}/bin/bun run --cwd=${configDir}/macos/phoenix/ build
+      # ${pkgs.bun}/bin/bun run --cwd=${configDir}/macos/phoenix/ build
 
       # Configure Final Cut to enable timeline rendering during playback
       defaults write com.apple.FinalCut FFSuspendBGOpsDuringPlay 0
@@ -192,7 +192,8 @@ in
       autoUpdate = true;
       upgrade = true;
       # `zap` will move related files of apps that are removed to the trash
-      cleanup = "zap";
+      # TODO: use this later!
+      # cleanup = "zap";
       # This will force an overwrite of apps already present
       extraFlags = [ "--force" ];
     };
@@ -208,109 +209,109 @@ in
     ];
 
     casks = [
-      # Fonts
-      "font-dm-sans"
-      "font-inter"
-      "font-kumbh-sans"
-      "font-lexend"
-      "font-montserrat"
-      "font-open-sans"
-      "font-palanquin"
-      "font-poppins"
-      "font-roboto"
-      "font-sf-pro"
-      "font-source-sans-3"
-      "font-space-grotesk"
+    #   # Fonts
+    #   "font-dm-sans"
+    #   "font-inter"
+    #   "font-kumbh-sans"
+    #   "font-lexend"
+    #   "font-montserrat"
+    #   "font-open-sans"
+    #   "font-palanquin"
+    #   "font-poppins"
+    #   "font-roboto"
+    #   "font-sf-pro"
+    #   "font-source-sans-3"
+    #   "font-space-grotesk"
 
-      # Nerd Fonts
-      "font-anonymous-pro"
-      "font-hack-nerd-font"
-      "font-jetbrains-mono-nerd-font"
-      "font-sauce-code-pro-nerd-font"
+    #   # Nerd Fonts
+    #   "font-anonymous-pro"
+    #   "font-hack-nerd-font"
+    #   "font-jetbrains-mono-nerd-font"
+    #   "font-sauce-code-pro-nerd-font"
 
-      # Applications
-      "arc" # Chromium based browser
-      "beeper" # Universal chat app
-      "bitwarden" # Desktop password and login vault
-      "calibre" # E-books management software
-      "chatgpt" # ChatGPT macOS app
-      "chatwise" # AI chat app
-      "deskpad" # A virtual monitor for screen sharing
-      "dropbox" # Client for the Dropbox cloud storage service
-      "eloston-chromium" # Chromium based browser
-      "finicky" # Utility for customizing which browser to start
-      "firefox" # Web browser
+    #   # Applications
+    #   "arc" # Chromium based browser
+    #   "beeper" # Universal chat app
+    #   "bitwarden" # Desktop password and login vault
+    #   "calibre" # E-books management software
+    #   "chatgpt" # ChatGPT macOS app
+    #   "chatwise" # AI chat app
+    #   "deskpad" # A virtual monitor for screen sharing
+    #   "dropbox" # Client for the Dropbox cloud storage service
+    #   "eloston-chromium" # Chromium based browser
+    #   "finicky" # Utility for customizing which browser to start
+    #   "firefox" # Web browser
       "karabiner-elements" # Keyboard customizer
-      "legcord" # Discord client
-      "macfuse" # File system integration
-      "mos" # Smooths scrolling and set mouse scroll directions independently
-      "numi" # Calculator and converter application
-      "phoenix" # Window and app manager scriptable with JavaScript
-      "protonvpn" # VPN client focusing on security
-      "qlmarkdown" # Quick Look generator for Markdown files
-      "raycast" # Control your tools with a few keystrokes
-      "rwts-pdfwriter" # Print driver for printing documents directly to a pdf file
-      "signal" # Instant messaging application focusing on security
-      "spotify" # Music streaming service
-      "stats" # System monitor for the menu bar
-      "telegram" # Messaging app with a focus on speed and security
-      "the-unarchiver" # Unpacks archive files
-      "timemator" # Automatic time-tracking application
-      "topnotch" # Utility to hide the notch
-      "vlc" # Multimedia player
-      "yubico-authenticator" # Application for configuring YubiKeys
-      "zoom" # Video communication and virtual meeting platform
+    #   "legcord" # Discord client
+    #   "macfuse" # File system integration
+    #   "mos" # Smooths scrolling and set mouse scroll directions independently
+    #   "numi" # Calculator and converter application
+    #   "phoenix" # Window and app manager scriptable with JavaScript
+    #   "protonvpn" # VPN client focusing on security
+    #   "qlmarkdown" # Quick Look generator for Markdown files
+    #   "raycast" # Control your tools with a few keystrokes
+    #   "rwts-pdfwriter" # Print driver for printing documents directly to a pdf file
+    #   "signal" # Instant messaging application focusing on security
+    #   "spotify" # Music streaming service
+    #   "stats" # System monitor for the menu bar
+    #   "telegram" # Messaging app with a focus on speed and security
+    #   "the-unarchiver" # Unpacks archive files
+    #   "timemator" # Automatic time-tracking application
+    #   "topnotch" # Utility to hide the notch
+    #   "vlc" # Multimedia player
+    #   "yubico-authenticator" # Application for configuring YubiKeys
+    #   "zoom" # Video communication and virtual meeting platform
 
-      # Graphic & Image Applications
-      "affinity-designer" # Professional graphic design software
-      "affinity-photo" # Professional image editing software
-      "figma" # Collaborative team software
-      "imageoptim" # Tool to optimise images to a smaller size
+    #   # Graphic & Image Applications
+    #   "affinity-designer" # Professional graphic design software
+    #   "affinity-photo" # Professional image editing software
+    #   "figma" # Collaborative team software
+    #   "imageoptim" # Tool to optimise images to a smaller size
 
-      # Audio & Music Applications
-      "ableset" # Live setlist manager for Ableton
-      "ableton-live-standard" # Music production software
-      "audacity" # Cross-platform audio software
-      "blackhole-2ch" # Virtual Audio Driver
-      "motu-m-series" # Driver for Motu M-Series audio interfaces
-      "musescore" # Open-source music notation software
-      "native-access" # Installer for Native Instruments products
+    #   # Audio & Music Applications
+    #   "ableset" # Live setlist manager for Ableton
+    #   "ableton-live-standard" # Music production software
+    #   "audacity" # Cross-platform audio software
+    #   "blackhole-2ch" # Virtual Audio Driver
+    #   "motu-m-series" # Driver for Motu M-Series audio interfaces
+    #   "musescore" # Open-source music notation software
+    #   "native-access" # Installer for Native Instruments products
 
-      # Audio Plugins
-      "fabfilter-pro-q" # Equalizer
-      "fabfilter-pro-l" # Limiter
-      "fabfilter-pro-c" # Compressor
-      "fabfilter-pro-mb" # Multi-band compressor
-      "fabfilter-saturn" # Saturation
-      "youlean-loudness-meter" # Loudness Meter
-      "tdr-prism" # Frequency analyzer
+    #   # Audio Plugins
+    #   "fabfilter-pro-q" # Equalizer
+    #   "fabfilter-pro-l" # Limiter
+    #   "fabfilter-pro-c" # Compressor
+    #   "fabfilter-pro-mb" # Multi-band compressor
+    #   "fabfilter-saturn" # Saturation
+    #   "youlean-loudness-meter" # Loudness Meter
+    #   "tdr-prism" # Frequency analyzer
 
-      # Productivity
-      "anytype" # Local-first and end-to-end encrypted notes app
-      "craft" # Personal knowledge management
-      "missive" # Team inbox and chat tool
-      "nota" # Markdown files editor
-      "notion-calendar" # Calendar by Notion
-      "notion" # App to write, plan, collaborate, and get organised
-      "obsidian" # Knowledge base that works on top of a local folder of plain text Markdown files
-      "raindropio" # Bookmark manager
+    #   # Productivity
+    #   "anytype" # Local-first and end-to-end encrypted notes app
+    #   "craft" # Personal knowledge management
+    #   "missive" # Team inbox and chat tool
+    #   "nota" # Markdown files editor
+    #   "notion-calendar" # Calendar by Notion
+    #   "notion" # App to write, plan, collaborate, and get organised
+    #   "obsidian" # Knowledge base that works on top of a local folder of plain text Markdown files
+    #   "raindropio" # Bookmark manager
 
-      # Development
-      "bruno" # API Client
-      "cyberduck" # Server and cloud storage browser
-      "dbngin" # Database version management tool
-      "fork" # GIT client
-      "ghostty" # Terminal emulator that uses platform-native UI and GPU acceleration
-      "httpie" # Testing client for REST, GraphQL, and HTTP APIs
-      "kitty" # GPU-based terminal emulator
-      "orbstack" # Replacement for Docker Desktop
-      "proxyman" # HTTP debugging proxy
-      "tableplus" # Native GUI tool for relational databases
-      "tuple" # Remote pair programming app
-      "visual-studio-code" # Open-source code editor
-      "warp" # Rust-based terminal
-      "windsurf" # VSCode-fork with AI integration
-      "wireshark" # Network protocol analyzer
+    #   # Development
+    #   "bruno" # API Client
+    #   "cyberduck" # Server and cloud storage browser
+    #   "dbngin" # Database version management tool
+    #   "fork" # GIT client
+    #   "ghostty" # Terminal emulator that uses platform-native UI and GPU acceleration
+    #   "httpie" # Testing client for REST, GraphQL, and HTTP APIs
+    #   "kitty" # GPU-based terminal emulator
+    #   "orbstack" # Replacement for Docker Desktop
+    #   "proxyman" # HTTP debugging proxy
+    #   "tableplus" # Native GUI tool for relational databases
+    #   "tuple" # Remote pair programming app
+    #   "visual-studio-code" # Open-source code editor
+    #   "warp" # Rust-based terminal
+    #   "windsurf" # VSCode-fork with AI integration
+    #   "wireshark" # Network protocol analyzer
     ];
   };
 
