@@ -26,4 +26,17 @@ function ya
     rm -f -- "$tmp"
 end
 
+# Homebrew completions (after PATH is set in env.fish)
+if test -d /opt/homebrew/share/fish/completions
+    set -p fish_complete_path /opt/homebrew/share/fish/completions
+else if test -d /usr/local/share/fish/completions
+    set -p fish_complete_path /usr/local/share/fish/completions
+end
+
+if test -d /opt/homebrew/share/fish/vendor_completions.d
+    set -p fish_complete_path /opt/homebrew/share/fish/vendor_completions.d
+else if test -d /usr/local/share/fish/vendor_completions.d
+    set -p fish_complete_path /usr/local/share/fish/vendor_completions.d
+end
+
 eval "$(micromamba shell hook --shell fish)"

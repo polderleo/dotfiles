@@ -2,6 +2,11 @@
 # directly with something like `bass` or `plugin-foreign-env` worked, but it it
 # added ~200ms to shell startup time, which is quite a lot.
 
+# Add Homebrew to PATH
+# TODO: Remove this once we're using nix-homebrew again
+set -a PATH /opt/homebrew/bin
+set -a PATH /opt/homebrew/sbin
+
 # Add bun bin
 set -a PATH $HOME/.bun/bin
 

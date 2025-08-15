@@ -14,7 +14,7 @@ let
     man = "batman";
     nix-switch =
       if pkgs.stdenv.isDarwin then
-        "darwin-rebuild switch --flake ~/dotfiles"
+        "sudo darwin-rebuild switch --flake ~/dotfiles"
       else
         "sudo nixos-rebuild switch --flake ~/dotfiles";
     svgo = "svgo --config=$HOME/.svgo.config.js";
@@ -108,6 +108,9 @@ in
       ".config/yazi/yazi.toml" = dotfile "yazi/yazi.toml";
       ".config/yazi/keymap.toml" = dotfile "yazi/keymap.toml";
       ".config/yazi/init.lua" = dotfile "yazi/init.lua";
+
+      # Remove shell-login message
+      ".hushlogin" = dotfile ".hushlogin";
     };
 
   # This sets the `XDG_CONFIG_HOME` environment variable to `~/.config`.
@@ -215,43 +218,43 @@ in
     ];
   };
 
-  programs.zsh = {
-    enable = true;
+  # programs.zsh = {
+  #   enable = true;
 
-    autosuggestion.enable = true;
-    syntaxHighlighting.enable = true;
+  #   autosuggestion.enable = true;
+  #   syntaxHighlighting.enable = true;
 
-    initExtraFirst = ''
-      # Set PATH and environment
-      source ~/.env.sh
-    '';
+  #   initExtraFirst = ''
+  #     # Set PATH and environment
+  #     source ~/.env.sh
+  #   '';
 
-    initExtra = ''
-      # Ignore commands in history that begin with a space
-      # https://dev.to/epranka/hide-the-exported-env-variables-from-the-history-49ni
-      export HISTCONTROL=ignorespace
+  #   initExtra = ''
+  #     # Ignore commands in history that begin with a space
+  #     # https://dev.to/epranka/hide-the-exported-env-variables-from-the-history-49ni
+  #     export HISTCONTROL=ignorespace
 
-      # Bind Alt+Left and Alt+Right to move between words
-      bindkey "^[[1;3C" forward-word
-      bindkey "^[[1;3D" backward-word
+  #     # Bind Alt+Left and Alt+Right to move between words
+  #     bindkey "^[[1;3C" forward-word
+  #     bindkey "^[[1;3D" backward-word
 
-      # Setup Atuin
-      eval "$(ATUIN_NOBIND=true atuin init zsh)"
-      bindkey '^a' atuin-search
+  #     # Setup Atuin
+  #     eval "$(ATUIN_NOBIND=true atuin init zsh)"
+  #     bindkey '^a' atuin-search
 
-      # This adds a blank line before each command output for better readability
-      function precmd { echo }
-    '';
+  #     # This adds a blank line before each command output for better readability
+  #     function precmd { echo }
+  #   '';
 
-    shellAliases = shellAliases;
+  #   shellAliases = shellAliases;
 
-    antidote = {
-      enable = true;
-      plugins = [
-        "wintermi/zsh-gcloud"
-      ];
-    };
-  };
+  #   antidote = {
+  #     enable = true;
+  #     plugins = [
+  #       "wintermi/zsh-gcloud"
+  #     ];
+  #   };
+  # };
 
   programs.gpg = {
     enable = true;

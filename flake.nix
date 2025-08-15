@@ -3,17 +3,16 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/release-24.05";
+    # nixpkgs-stable.url = "github:nixos/nixpkgs/release-25.05";
     nix-darwin = {
-      url = "github:niklasravnsborg/nix-darwin";
+      url = "github:/nix-darwin/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-homebrew = {
-      url = "github:zhaofengli/nix-homebrew";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nix-darwin.follows = "nix-darwin";
-      inputs.brew-src.url = "github:Homebrew/brew/4.4.25";
-    };
+    # nix-homebrew = {
+    #   url = "github:zhaofengli/nix-homebrew";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    #   inputs.nix-darwin.follows = "nix-darwin";
+    # };
     # nix-darwin-custom-icons = {
     #   url = "github:ryanccn/nix-darwin-custom-icons";
     # };
@@ -60,16 +59,29 @@
           pkgs = myNixpkgs systems.darwin;
         };
         modules = [
+          # inputs.nix-homebrew.darwinModules.nix-homebrew  # Commented out due to permission issues
           ./nix/darwin.nix
-          # inputs.nix-darwin-custom-icons.darwinModules.default
           inputs.home-manager.darwinModules.home-manager
-          inputs.nix-homebrew.darwinModules.nix-homebrew
+          # inputs.nix-darwin-custom-icons.darwinModules.default
           {
             home-manager = homeManagerConfig;
-            nix-homebrew = {
-              enable = true;
-              user = "ldsr";
-            };
+            # nix-homebrew = {  # Commented out due to permission issues
+            #   enable = true;
+            #   user = "ldsr";
+            #   enableRosetta = true;  # Apple Silicon
+            #   autoMigrate = true;
+            #   
+            #   # Declarative tap management
+            #   taps = {
+            #     "homebrew/homebrew-core" = inputs.homebrew-core;
+            #     "homebrew/homebrew-cask" = inputs.homebrew-cask;
+            #     "buo/cask-upgrade" = inputs.homebrew-buo-cask-upgrade;
+            #   };
+            #   
+            #   # Optional: Enable fully-declarative tap management
+            #   # With mutableTaps disabled, taps can no longer be added imperatively with `brew tap`
+            #   mutableTaps = true;  # Changed to true to avoid permission issues
+            # };
           }
         ];
       };
@@ -92,7 +104,7 @@
     in
     {
 
-      formatter.aarch64-darwin = inputs.legacyPackages.aarch64-darwin.nixfmt-rfc-style;
+      formatter.aarch64-darwin = inputs.nixpkgs.legacyPackages.aarch64-darwin.nixfmt-rfc-style;
 
       darwinConfigurations."Leopolds-MacBook-Pro" = darwinSystem;
       # nixosConfigurations."Quastenflosser" = nixosSystem;

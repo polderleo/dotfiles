@@ -120,6 +120,23 @@ in
   #   ];
   # };
 
+  system.primaryUser = "ldsr";
+
+  # Disable startup chime (the startup sound)
+  system.startup.chime = false;
+
+  system.defaults = {
+    # Disable sound effects
+    # TODO: Find way to set "play user interface sound effects disable" 
+    NSGlobalDomain = {
+      "com.apple.sound.beep.volume" = 0.0;
+      "com.apple.sound.beep.feedback" = 0;
+    };
+    dock = {
+      autohide = true; # automatically hide and show the Dock
+    };
+  };
+
   # system.defaults.finder = {
   #   FXPreferredViewStyle = "Nlsv"; # Always open everything in list view
   #   ShowStatusBar = true; # Show status bar
@@ -145,45 +162,41 @@ in
   #   AppleSpacesSwitchOnActivate = false; # Disable switching to a space when an application is activated
   # };
 
-  system.defaults.dock = {
-    autohide = true; # automatically hide and show the Dock
-  };
+  # system.activationScripts.postUserActivation = {
+  #   text = ''
+  #     # Set default shell to fish
+  #     sudo chsh -s /run/current-system/sw/bin/fish ldsr
 
-  system.activationScripts.postUserActivation = {
-    text = ''
-      # Set default shell to fish
-      sudo chsh -s /run/current-system/sw/bin/fish ldsr
+  #     # Disable "Select the previous input source", because I use Ctrl + Space in Tmux
+  #     # defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 60 '<dict><key>enabled</key><false/></dict>'
 
-      # Disable "Select the previous input source", because I use Ctrl + Space in Tmux
-      # defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 60 '<dict><key>enabled</key><false/></dict>'
+  #     # Disable "Show Spotlight search", because I use Cmd + Space for Raycast
+  #     defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 64 '<dict><key>enabled</key><false/></dict>'
 
-      # Disable "Show Spotlight search", because I use Cmd + Space for Raycast
-      defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 64 '<dict><key>enabled</key><false/></dict>'
+  #     # Activate settings so we don't have to restart
+  #     /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
 
-      # Activate settings so we don't have to restart
-      /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+  #     # Install keyboard shortcuts
+  #     ${pkgs.bun}/bin/bun run --cwd=${configDir}/macos/karabiner/ build
+  #     # ${pkgs.bun}/bin/bun run --cwd=${configDir}/macos/phoenix/ build
 
-      # Install keyboard shortcuts
-      ${pkgs.bun}/bin/bun run --cwd=${configDir}/macos/karabiner/ build
-      # ${pkgs.bun}/bin/bun run --cwd=${configDir}/macos/phoenix/ build
+  #     # Configure Final Cut to enable timeline rendering during playback
+  #     defaults write com.apple.FinalCut FFSuspendBGOpsDuringPlay 0
 
-      # Configure Final Cut to enable timeline rendering during playback
-      defaults write com.apple.FinalCut FFSuspendBGOpsDuringPlay 0
+  #     # Configure Apple Mail
+  #     defaults write com.apple.mail ShowCcHeader 0
+  #     defaults write com.apple.mail EnableContactPhotos  1
+  #     defaults write com.apple.mail NSFont SFPro-Regular
+  #     defaults write com.apple.mail NSFontSize 12
 
-      # Configure Apple Mail
-      defaults write com.apple.mail ShowCcHeader 0
-      defaults write com.apple.mail EnableContactPhotos  1
-      defaults write com.apple.mail NSFont SFPro-Regular
-      defaults write com.apple.mail NSFontSize 12
-
-      # Disable autoupgrade - Use `brew cu -aqy` to upgrade apps
-      defaults write com.DanPristupov.Fork SUEnableAutomaticChecks -bool false
-      defaults write com.seriflabs.affinitydesigner2 AutoUpdateInterval -bool false
-      defaults write com.seriflabs.affinityphoto2 AutoUpdateInterval -bool false
-      defaults write com.proxyman.NSProxy isUsingSystemStatusBar -bool false
-      defaults write com.proxyman.NSProxy shouldShowUpdatePopup -bool false
-    '';
-  };
+  #     # Disable autoupgrade - Use `brew cu -aqy` to upgrade apps
+  #     defaults write com.DanPristupov.Fork SUEnableAutomaticChecks -bool false
+  #     defaults write com.seriflabs.affinitydesigner2 AutoUpdateInterval -bool false
+  #     defaults write com.seriflabs.affinityphoto2 AutoUpdateInterval -bool false
+  #     defaults write com.proxyman.NSProxy isUsingSystemStatusBar -bool false
+  #     defaults write com.proxyman.NSProxy shouldShowUpdatePopup -bool false
+  #   '';
+  # };
 
   homebrew = {
     enable = true;
@@ -192,12 +205,10 @@ in
       autoUpdate = true;
       upgrade = true;
       # `zap` will move related files of apps that are removed to the trash
-      # TODO: use this later!
-      # cleanup = "zap";
+      cleanup = "zap";
       # This will force an overwrite of apps already present
-      extraFlags = [ "--force" ];
+      # extraFlags = [ "--force" ];
     };
-
     taps = [
       # Upgrade casks with `brew cu -aqy`
       "buo/cask-upgrade"
@@ -206,112 +217,29 @@ in
     brews = [
       # Although we already have it in home-manager, this gpg binary is the only one that Fork can find
       "gnupg"
+      "batt"
+      "speedtest-cli"
     ];
 
     casks = [
-    #   # Fonts
-    #   "font-dm-sans"
-    #   "font-inter"
-    #   "font-kumbh-sans"
-    #   "font-lexend"
-    #   "font-montserrat"
-    #   "font-open-sans"
-    #   "font-palanquin"
-    #   "font-poppins"
-    #   "font-roboto"
-    #   "font-sf-pro"
-    #   "font-source-sans-3"
-    #   "font-space-grotesk"
-
-    #   # Nerd Fonts
-    #   "font-anonymous-pro"
-    #   "font-hack-nerd-font"
-    #   "font-jetbrains-mono-nerd-font"
-    #   "font-sauce-code-pro-nerd-font"
-
-    #   # Applications
-    #   "arc" # Chromium based browser
-    #   "beeper" # Universal chat app
-    #   "bitwarden" # Desktop password and login vault
-    #   "calibre" # E-books management software
-    #   "chatgpt" # ChatGPT macOS app
-    #   "chatwise" # AI chat app
-    #   "deskpad" # A virtual monitor for screen sharing
-    #   "dropbox" # Client for the Dropbox cloud storage service
-    #   "eloston-chromium" # Chromium based browser
-    #   "finicky" # Utility for customizing which browser to start
-    #   "firefox" # Web browser
+      "1password" # Password manager
+      "beeper" # Universal chat app
+      "chatgpt" # ChatGPT macOS app
+      "cursor" # AI-powered code editor
+      "ghostty" # Terminal emulator that uses platform-native UI and GPU acceleration
+      "google-chrome" # Web browser
+      "google-drive" # Client for Google Drive cloud storage
       "karabiner-elements" # Keyboard customizer
-    #   "legcord" # Discord client
-    #   "macfuse" # File system integration
-    #   "mos" # Smooths scrolling and set mouse scroll directions independently
-    #   "numi" # Calculator and converter application
-    #   "phoenix" # Window and app manager scriptable with JavaScript
-    #   "protonvpn" # VPN client focusing on security
-    #   "qlmarkdown" # Quick Look generator for Markdown files
-    #   "raycast" # Control your tools with a few keystrokes
-    #   "rwts-pdfwriter" # Print driver for printing documents directly to a pdf file
-    #   "signal" # Instant messaging application focusing on security
-    #   "spotify" # Music streaming service
-    #   "stats" # System monitor for the menu bar
-    #   "telegram" # Messaging app with a focus on speed and security
-    #   "the-unarchiver" # Unpacks archive files
-    #   "timemator" # Automatic time-tracking application
-    #   "topnotch" # Utility to hide the notch
-    #   "vlc" # Multimedia player
-    #   "yubico-authenticator" # Application for configuring YubiKeys
-    #   "zoom" # Video communication and virtual meeting platform
-
-    #   # Graphic & Image Applications
-    #   "affinity-designer" # Professional graphic design software
-    #   "affinity-photo" # Professional image editing software
-    #   "figma" # Collaborative team software
-    #   "imageoptim" # Tool to optimise images to a smaller size
-
-    #   # Audio & Music Applications
-    #   "ableset" # Live setlist manager for Ableton
-    #   "ableton-live-standard" # Music production software
-    #   "audacity" # Cross-platform audio software
-    #   "blackhole-2ch" # Virtual Audio Driver
-    #   "motu-m-series" # Driver for Motu M-Series audio interfaces
-    #   "musescore" # Open-source music notation software
-    #   "native-access" # Installer for Native Instruments products
-
-    #   # Audio Plugins
-    #   "fabfilter-pro-q" # Equalizer
-    #   "fabfilter-pro-l" # Limiter
-    #   "fabfilter-pro-c" # Compressor
-    #   "fabfilter-pro-mb" # Multi-band compressor
-    #   "fabfilter-saturn" # Saturation
-    #   "youlean-loudness-meter" # Loudness Meter
-    #   "tdr-prism" # Frequency analyzer
-
-    #   # Productivity
-    #   "anytype" # Local-first and end-to-end encrypted notes app
-    #   "craft" # Personal knowledge management
-    #   "missive" # Team inbox and chat tool
-    #   "nota" # Markdown files editor
-    #   "notion-calendar" # Calendar by Notion
-    #   "notion" # App to write, plan, collaborate, and get organised
-    #   "obsidian" # Knowledge base that works on top of a local folder of plain text Markdown files
-    #   "raindropio" # Bookmark manager
-
-    #   # Development
-    #   "bruno" # API Client
-    #   "cyberduck" # Server and cloud storage browser
-    #   "dbngin" # Database version management tool
-    #   "fork" # GIT client
-    #   "ghostty" # Terminal emulator that uses platform-native UI and GPU acceleration
-    #   "httpie" # Testing client for REST, GraphQL, and HTTP APIs
-    #   "kitty" # GPU-based terminal emulator
-    #   "orbstack" # Replacement for Docker Desktop
-    #   "proxyman" # HTTP debugging proxy
-    #   "tableplus" # Native GUI tool for relational databases
-    #   "tuple" # Remote pair programming app
-    #   "visual-studio-code" # Open-source code editor
-    #   "warp" # Rust-based terminal
-    #   "windsurf" # VSCode-fork with AI integration
-    #   "wireshark" # Network protocol analyzer
+      "keepassxc" # Cross-platform password manager
+      "macmediakeyforwarder" # Forward media keys to specific applications
+      "notion" # App to write, plan, collaborate, and get organised
+      "notion-calendar" # Calendar by Notion
+      "raycast" # Control your tools with a few keystrokes
+      "readdle-spark" # Email client
+      "scroll-reverser" # Reverse the direction of scrolling
+      "zed" # High-performance, multiplayer code editor
+      "spotify" # Music streaming service
+      "gitkraken" # Git client
     ];
   };
 
