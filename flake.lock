@@ -1,39 +1,5 @@
 {
   "nodes": {
-    "brew-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1742457334,
-        "narHash": "sha256-Gn7ruyb3NDFr+SsHBfA2NsJI8YkkWdECqLRj/xcjt+E=",
-        "owner": "Homebrew",
-        "repo": "brew",
-        "rev": "f3bd91d3afe086824d24708230e1f0c7f943135a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Homebrew",
-        "ref": "4.4.25",
-        "repo": "brew",
-        "type": "github"
-      }
-    },
-    "dotfiles-secrets": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1741440266,
-        "narHash": "sha256-n8OxfMWJ9q6AvjTDZhkKUqhXbAiKYtnaReS59/9ScI4=",
-        "ref": "refs/heads/main",
-        "rev": "543ec105705fd49a4f2b300507a89ed0035036dd",
-        "shallow": true,
-        "type": "git",
-        "url": "ssh://git@github.com/niklasravnsborg/dotfiles-secrets"
-      },
-      "original": {
-        "shallow": true,
-        "type": "git",
-        "url": "ssh://git@github.com/niklasravnsborg/dotfiles-secrets"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -74,45 +40,6 @@
         "type": "github"
       }
     },
-    "nix-darwin-custom-icons": {
-      "locked": {
-        "lastModified": 1719071371,
-        "narHash": "sha256-SPazmoL3Pls4QTiZ2CRtavecNJgzpL4GeiwafTmtdJ8=",
-        "owner": "ryanccn",
-        "repo": "nix-darwin-custom-icons",
-        "rev": "ad3e8cf49ef0b276ccf67410f544ff33d965d821",
-        "type": "github"
-      },
-      "original": {
-        "owner": "ryanccn",
-        "repo": "nix-darwin-custom-icons",
-        "type": "github"
-      }
-    },
-    "nix-homebrew": {
-      "inputs": {
-        "brew-src": "brew-src",
-        "nix-darwin": [
-          "nix-darwin"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1744563914,
-        "narHash": "sha256-0exTKCXDE/8G7gZQ9Gk3EcZBAL7lwzxhD7DtUBsnlGI=",
-        "owner": "zhaofengli",
-        "repo": "nix-homebrew",
-        "rev": "53507607d69c88efc816e806b8139607c7257285",
-        "type": "github"
-      },
-      "original": {
-        "owner": "zhaofengli",
-        "repo": "nix-homebrew",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1744536153,
@@ -147,34 +74,10 @@
     },
     "root": {
       "inputs": {
-        "dotfiles-secrets": "dotfiles-secrets",
         "home-manager": "home-manager",
         "nix-darwin": "nix-darwin",
-        "nix-darwin-custom-icons": "nix-darwin-custom-icons",
-        "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs",
-        "nixpkgs-stable": "nixpkgs-stable",
-        "sops-nix": "sops-nix"
-      }
-    },
-    "sops-nix": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1744669848,
-        "narHash": "sha256-pXyanHLUzLNd3MX9vsWG+6Z2hTU8niyphWstYEP3/GU=",
-        "owner": "Mic92",
-        "repo": "sops-nix",
-        "rev": "61154300d945f0b147b30d24ddcafa159148026a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Mic92",
-        "repo": "sops-nix",
-        "type": "github"
+        "nixpkgs-stable": "nixpkgs-stable"
       }
     }
   },
