@@ -1,6 +1,7 @@
-theme = Ayu Mirage
+# theme = Ayu Mirage
+theme = Abernathy
 font-thicken = true
-font-size = 14
+font-size = 16
 adjust-cell-height = 10%
 window-padding-x = 20
 window-padding-y = 10
