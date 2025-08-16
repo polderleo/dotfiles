@@ -21,6 +21,7 @@ let
     wifi = "nextdns deactivate; open http://neverssl.com; read -P 'Continue? '; nextdns activate";
     ffmpeg = "ffmpeg -hide_banner";
     cat = "bat -p";
+    cd = "z";
   };
   homePath = config.home.homeDirectory;
   configDir = "${homePath}/dotfiles";
@@ -310,7 +311,8 @@ in
   # Modern replacement for 'cd'
   programs.zoxide = {
     enable = true;
-    options = [ "--cmd cd" ];
+    # using shellAliases instead
+    # options = [ "--cmd cd" ];
   };
 
   # Modern replacement for 'cat'
