@@ -22,6 +22,7 @@ let
     ffmpeg = "ffmpeg -hide_banner";
     cat = "bat -p";
     cd = "z";
+    vim = "nvim";
   };
   homePath = config.home.homeDirectory;
   configDir = "${homePath}/dotfiles";
@@ -52,6 +53,7 @@ in
     gnutar # GNU version of the tar archiving utility
     google-cloud-sdk # Manage resources and applications hosted on Google Cloud
     helix # Post-modern modal text editor
+    neovim # Modern vim
     htop # Improved top (interactive process viewer)
     httpie # User-friendly HTTP client
     imagemagick # Manipulate images in many formats
