@@ -83,38 +83,38 @@ in
     (import ../tmux/tmux.nix { inherit pkgs configDir; })
   ];
 
-  home.file =
-    {
-      ".env.sh" = dotfile "shell/.env.sh";
+  home.file = {
+    ".env.sh" = dotfile "shell/.env.sh";
 
-      ".finicky.ts" = dotfile "finicky/.finicky.ts";
-      ".gitconfig" = dotfile "git/.gitconfig";
-      ".gitignore" = dotfile "git/.gitignore";
-      ".ssh/config" = dotfile "ssh/config";
-      ".svgo.config.js" = dotfile "svgo/.svgo.config.js";
-      ".vimrc" = dotfile "vim/.vimrc";
+    ".finicky.ts" = dotfile "finicky/.finicky.ts";
+    ".gitconfig" = dotfile "git/.gitconfig";
+    ".gitignore" = dotfile "git/.gitignore";
+    ".ssh/config" = dotfile "ssh/config";
+    ".svgo.config.js" = dotfile "svgo/.svgo.config.js";
+    ".vimrc" = dotfile "vim/.vimrc";
 
-      ".config/atuin/config.toml" = dotfile "atuin/config.toml";
-      ".config/ghostty/config" = dotfile "ghostty/config";
-      ".config/gitui/key_bindings.ron" = dotfile "gitui/key_bindings.ron";
-      ".config/gitui/theme.ron" = dotfile "gitui/theme.ron";
-      ".config/helix/config.toml" = dotfile "helix/config.toml";
-      ".config/helix/themes/my_theme.toml" = dotfile "helix/my_theme.toml";
-      ".config/kitty/kitty.conf" = dotfile "kitty/kitty.conf";
-      ".config/nix/nix.conf" = dotfile "nix/nix.conf";
-      ".config/posting/config.yaml" = dotfile "posting/config.yaml";
-      ".local/share/posting/themes/my_theme.yaml" = dotfile "posting/themes/my_theme.yaml";
-      ".config/starship.toml" = dotfile "starship/starship.toml";
+    ".config/atuin/config.toml" = dotfile "atuin/config.toml";
+    ".config/ghostty/config" = dotfile "ghostty/config";
+    ".config/gitui/key_bindings.ron" = dotfile "gitui/key_bindings.ron";
+    ".config/gitui/theme.ron" = dotfile "gitui/theme.ron";
+    ".config/helix/config.toml" = dotfile "helix/config.toml";
+    ".config/helix/themes/my_theme.toml" = dotfile "helix/my_theme.toml";
+    ".config/kitty/kitty.conf" = dotfile "kitty/kitty.conf";
+    ".config/nix/nix.conf" = dotfile "nix/nix.conf";
+    ".config/posting/config.yaml" = dotfile "posting/config.yaml";
+    ".local/share/posting/themes/my_theme.yaml" = dotfile "posting/themes/my_theme.yaml";
+    ".config/starship.toml" = dotfile "starship/starship.toml";
+    ".config/zed" = dotfile "zed";
 
-      # Yazi
-      ".config/yazi/theme.toml" = dotfile "yazi/theme.toml";
-      ".config/yazi/yazi.toml" = dotfile "yazi/yazi.toml";
-      ".config/yazi/keymap.toml" = dotfile "yazi/keymap.toml";
-      ".config/yazi/init.lua" = dotfile "yazi/init.lua";
+    # Yazi
+    ".config/yazi/theme.toml" = dotfile "yazi/theme.toml";
+    ".config/yazi/yazi.toml" = dotfile "yazi/yazi.toml";
+    ".config/yazi/keymap.toml" = dotfile "yazi/keymap.toml";
+    ".config/yazi/init.lua" = dotfile "yazi/init.lua";
 
-      # Remove shell-login message
-      ".hushlogin" = dotfile ".hushlogin";
-    };
+    # Remove shell-login message
+    ".hushlogin" = dotfile ".hushlogin";
+  };
 
   # This sets the `XDG_CONFIG_HOME` environment variable to `~/.config`.
   # For some programs (e.g. `sops`) on macOS this is needed, because they would otherwise look for their config files in `~/Library/Application Support`.
@@ -133,28 +133,28 @@ in
   # };
 
   # home.activation =
-    # {
-    #   atuinLogin = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    #     if [ -e ${homePath}/.local/share/atuin/session ]; then
-    #       echo "Atuin session exists already"
-    #     else
-    #       echo "Logging in to Atuin server"
-    #       echo | ${pkgs.atuin}/bin/atuin login \
-    #         -u $(cat ${config.sops.secrets."atuin/username".path}) \
-    #         -p $(cat ${config.sops.secrets."atuin/password".path})
-    #     fi
-    #   '';
+  # {
+  #   atuinLogin = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+  #     if [ -e ${homePath}/.local/share/atuin/session ]; then
+  #       echo "Atuin session exists already"
+  #     else
+  #       echo "Logging in to Atuin server"
+  #       echo | ${pkgs.atuin}/bin/atuin login \
+  #         -u $(cat ${config.sops.secrets."atuin/username".path}) \
+  #         -p $(cat ${config.sops.secrets."atuin/password".path})
+  #     fi
+  #   '';
 
-    # }
-    # // lib.optionalAttrs pkgs.stdenv.isDarwin {
-    #   copyKeyboardLayout = lib.optionalAttrs pkgs.stdenv.isDarwin ''
-    #     mkdir -p ~/Library/Keyboard\ Layouts/
-    #     cp -R ${configDir}/macos/niklas.keylayout ~/Library/Keyboard\ Layouts/
-    #   '';
-    #   # I would prefer to symlink this file, but macOS seems to ignore symlinks in LaunchAgents
-    #   copyTimematorRestart = lib.optionalAttrs pkgs.stdenv.isDarwin
-    #     ''cp -R ${configDir}/macos/timemator.restart.plist ~/Library/LaunchAgents/'';
-    # };
+  # }
+  # // lib.optionalAttrs pkgs.stdenv.isDarwin {
+  #   copyKeyboardLayout = lib.optionalAttrs pkgs.stdenv.isDarwin ''
+  #     mkdir -p ~/Library/Keyboard\ Layouts/
+  #     cp -R ${configDir}/macos/niklas.keylayout ~/Library/Keyboard\ Layouts/
+  #   '';
+  #   # I would prefer to symlink this file, but macOS seems to ignore symlinks in LaunchAgents
+  #   copyTimematorRestart = lib.optionalAttrs pkgs.stdenv.isDarwin
+  #     ''cp -R ${configDir}/macos/timemator.restart.plist ~/Library/LaunchAgents/'';
+  # };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
