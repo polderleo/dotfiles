@@ -23,6 +23,24 @@ let
     cat = "bat -p";
     cd = "z";
     vim = "nvim";
+
+    # Git
+    ga = "git add .";
+    gam = "git add . && git commit";
+    gd = "git diff";
+    gds = "git diff --staged";
+    gl = "git log";
+    glo = "git log --pretty=format:\"%h%x09%an%x09%ad%x09%s\"";
+    gls = "git log --stat";
+    gm = "git commit";
+    gma = "git commit --amend";
+    gp = "git push";
+    gpl = "git pull";
+    gro = "git restore";
+    gs = "git status";
+
+    # clear
+    c = "clear";
   };
   homePath = config.home.homeDirectory;
   configDir = "${homePath}/dotfiles";
