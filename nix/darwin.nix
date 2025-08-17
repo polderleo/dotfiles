@@ -244,6 +244,7 @@ in
       "spotify" # Music streaming service
       "gitkraken" # Git client
       "logi-options+" # Logitech Options for MX Master 3S
+      "teamviewer" # Remote desktop software
     ];
   };
 
