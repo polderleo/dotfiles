@@ -127,7 +127,7 @@ in
 
   system.defaults = {
     # Disable sound effects
-    # TODO: Find way to set "play user interface sound effects disable" 
+    # TODO: Find way to set "play user interface sound effects disable"
     NSGlobalDomain = {
       "com.apple.sound.beep.volume" = 0.0;
       "com.apple.sound.beep.feedback" = 0;
@@ -240,6 +240,7 @@ in
       "zed" # High-performance, multiplayer code editor
       "spotify" # Music streaming service
       "gitkraken" # Git client
+      "logi-options+" # Logitech Options for MX Master 3S
     ];
   };
 
