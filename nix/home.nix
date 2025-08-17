@@ -42,6 +42,9 @@ let
     # clear
     c = "clear";
 
+    # open here
+    o = "open .";
+
     # fast dotfile editing
     dot = "cursor ~/dotfiles";
   };
