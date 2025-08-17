@@ -292,7 +292,7 @@ in
     enable = true;
     publicKeys = [
       {
-        source = ../gpg/niklasravnsborg.asc;
+        source = ../gpg/leopold-gpg-public.asc;
         trust = 5;
       }
     ];
