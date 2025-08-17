@@ -67,6 +67,7 @@ in
     delta # Syntax-highlighter for git and diff output
     fd # Alternative to find
     ffmpeg_7 # Play, record, convert, and stream audio and video
+    fnm # Node version manager
     gh # GitHub command-line tool
     git # Version control system
     gitui # Terminal ui for git
@@ -83,6 +84,7 @@ in
     ngrok # Reverse proxy, secure tunnels to localhost
     nodePackages.svgo # Optimize SVGs
     nushell # Modern alternative shell
+    nixfmt-rfc-style # Format nix files
     pandoc # Document conversion
     posting # API client for the terminal
     restic # Backup program
