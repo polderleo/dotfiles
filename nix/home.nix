@@ -41,6 +41,9 @@ let
 
     # clear
     c = "clear";
+
+    # fast dotfile editing
+    dot = "cursor ~/dotfiles";
   };
   homePath = config.home.homeDirectory;
   configDir = "${homePath}/dotfiles";
