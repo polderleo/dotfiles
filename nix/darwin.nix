@@ -246,6 +246,10 @@ in
       "logi-options+" # Logitech Options for MX Master 3S
       "teamviewer" # Remote desktop software
     ];
+
+    masApps = {
+      "Bitwarden" = 1352778147;
+    };
   };
 
   system.stateVersion = 5;
