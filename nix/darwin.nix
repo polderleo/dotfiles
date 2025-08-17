@@ -135,16 +135,20 @@ in
     dock = {
       autohide = true; # automatically hide and show the Dock
     };
-  };
+    # Disable that windows move away when clicking on the Desktop
+    WindowManager = {
+      EnableStandardClickToShowDesktop = false; # false means “Only in Stage Manager”
+    };
+    finder = {
+      FXPreferredViewStyle = "Nlsv"; # Always open everything in list view
+      ShowStatusBar = true; # Show status bar
+      ShowPathbar = true; # Show path bar
+      _FXSortFoldersFirst = true; # Keep folders on top when sorting by name
+      FXEnableExtensionChangeWarning = false; # Disable the warning when changing a file extension
+      FXDefaultSearchScope = "SCcf"; # When performing a search, search the current folder by default
+    };
 
-  # system.defaults.finder = {
-  #   FXPreferredViewStyle = "Nlsv"; # Always open everything in list view
-  #   ShowStatusBar = true; # Show status bar
-  #   ShowPathbar = true; # Show path bar
-  #   _FXSortFoldersFirst = true; # Keep folders on top when sorting by name
-  #   FXEnableExtensionChangeWarning = false; # Disable the warning when changing a file extension
-  #   FXDefaultSearchScope = "SCcf"; # When performing a search, search the current folder by default
-  # };
+  };
 
   # system.defaults.trackpad = {
   #   Clicking = true; # Enable tap to click
@@ -196,7 +200,6 @@ in
   #     defaults write com.proxyman.NSProxy isUsingSystemStatusBar -bool false
   #     defaults write com.proxyman.NSProxy shouldShowUpdatePopup -bool false
   #   '';
-  # };
 
   homebrew = {
     enable = true;
