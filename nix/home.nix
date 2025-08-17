@@ -125,6 +125,9 @@ in
     ".config/posting/config.yaml" = dotfile "posting/config.yaml";
     ".local/share/posting/themes/my_theme.yaml" = dotfile "posting/themes/my_theme.yaml";
     ".config/starship.toml" = dotfile "starship/starship.toml";
+
+    # Editors
+    ".cursor" = dotfile "cursor";
     ".config/zed" = dotfile "zed";
 
     # Yazi
