@@ -88,7 +88,6 @@ in
     nixfmt-rfc-style # Format nix files
     nodePackages.svgo # Optimize SVGs
     nushell # Modern alternative shell
-    ollama # Run large language models locally
     pandoc # Document conversion
     posting # API client for the terminal
     restic # Backup program

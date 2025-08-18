@@ -70,19 +70,21 @@
             #   user = "ldsr";
             #   enableRosetta = true;  # Apple Silicon
             #   autoMigrate = true;
-            #   
+            #
             #   # Declarative tap management
             #   taps = {
             #     "homebrew/homebrew-core" = inputs.homebrew-core;
             #     "homebrew/homebrew-cask" = inputs.homebrew-cask;
             #     "buo/cask-upgrade" = inputs.homebrew-buo-cask-upgrade;
             #   };
-            #   
+            #
             #   # Optional: Enable fully-declarative tap management
             #   # With mutableTaps disabled, taps can no longer be added imperatively with `brew tap`
             #   mutableTaps = true;  # Changed to true to avoid permission issues
             # };
           }
+          # Ollama service
+          ./nix/ollama.nix
         ];
       };
       # nixosSystem = inputs.nixpkgs.lib.nixosSystem {

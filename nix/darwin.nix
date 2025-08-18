@@ -261,4 +261,9 @@ in
   };
 
   system.stateVersion = 5;
+
+  # Ollama service
+  services.ollama = {
+    enable = true;
+  };
 }
