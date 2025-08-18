@@ -1,2 +1,5 @@
 .direnv/
 result/
+
+# Cursor mcp.json (contains API key)
+cursor/mcp.json
