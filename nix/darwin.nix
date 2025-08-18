@@ -252,6 +252,7 @@ in
       "gitkraken" # Git client
       "logi-options+" # Logitech Options for MX Master 3S
       "teamviewer" # Remote desktop software
+      "orbstack" # Docker desktop alternative
     ];
 
     masApps = {
