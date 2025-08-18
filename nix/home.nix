@@ -78,16 +78,17 @@ in
     gnutar # GNU version of the tar archiving utility
     google-cloud-sdk # Manage resources and applications hosted on Google Cloud
     helix # Post-modern modal text editor
-    neovim # Modern vim
     htop # Improved top (interactive process viewer)
     httpie # User-friendly HTTP client
     imagemagick # Manipulate images in many formats
     less # Pager program
     micromamba # Environment manager
+    neovim # Modern vim
     ngrok # Reverse proxy, secure tunnels to localhost
+    nixfmt-rfc-style # Format nix files
     nodePackages.svgo # Optimize SVGs
     nushell # Modern alternative shell
-    nixfmt-rfc-style # Format nix files
+    ollama # Run large language models locally
     pandoc # Document conversion
     posting # API client for the terminal
     restic # Backup program
