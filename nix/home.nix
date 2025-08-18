@@ -82,6 +82,7 @@ in
     httpie # User-friendly HTTP client
     imagemagick # Manipulate images in many formats
     less # Pager program
+    micro # Modern terminal-based text editor
     micromamba # Environment manager
     neovim # Modern vim
     ngrok # Reverse proxy, secure tunnels to localhost
