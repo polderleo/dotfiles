@@ -150,6 +150,13 @@ in
 
   };
 
+  # Enable Touch ID for sudo
+  security.pam.services.sudo_local = {
+    enable = true;
+    touchIdAuth = true;
+    reattach = true; # Fixes Touch ID for sudo inside tmux and screen
+  };
+
   # system.defaults.trackpad = {
   #   Clicking = true; # Enable tap to click
   #   TrackpadThreeFingerDrag = true; # Enable three finger drag
