@@ -17,6 +17,9 @@ bind \ca _atuin_search
 # Config any-nix-shell
 any-nix-shell fish | source
 
+# fnm
+fnm env --use-on-cd --shell fish | source
+
 function ya
     set tmp (mktemp -t "yazi-cwd.XXXXX")
     yazi $argv --cwd-file="$tmp"
