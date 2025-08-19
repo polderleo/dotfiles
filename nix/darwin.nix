@@ -255,6 +255,8 @@ in
       "orbstack" # Docker desktop alternative
       "timemator" # Time tracking software
       "visual-studio-code" # Code editor
+      "figma" # Design tool
+      "adobe-acrobat-reader" # PDF reader
     ];
 
     masApps = {
