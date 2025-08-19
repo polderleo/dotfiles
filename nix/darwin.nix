@@ -253,6 +253,8 @@ in
       "logi-options+" # Logitech Options for MX Master 3S
       "teamviewer" # Remote desktop software
       "orbstack" # Docker desktop alternative
+      "timemator" # Time tracking software
+      "visual-studio-code" # Code editor
     ];
 
     masApps = {
