@@ -39,6 +39,13 @@ let
     gro = "git restore";
     gs = "git status";
 
+    # Eza (defaults set by home-manager eza enable)
+    # la = "eza -a";
+    # ll = "eza -l";
+    # lla = "eza -la";
+    # ls = "eza";
+    # lt = "eza --tree";
+
     # clear
     c = "clear";
 
@@ -131,10 +138,6 @@ in
     ".config/posting/config.yaml" = dotfile "posting/config.yaml";
     ".local/share/posting/themes/my_theme.yaml" = dotfile "posting/themes/my_theme.yaml";
     ".config/starship.toml" = dotfile "starship/starship.toml";
-
-    # Editors
-    ".cursor" = dotfile "cursor";
-    ".config/zed" = dotfile "zed";
 
     # Yazi
     ".config/yazi/theme.toml" = dotfile "yazi/theme.toml";
@@ -338,6 +341,8 @@ in
       "--time-style"
       "long-iso"
     ];
+    # would disable the default aliases
+    # enableFishIntegration = false;
   };
 
   # Modern replacement for 'cd'
