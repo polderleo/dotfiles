@@ -10,7 +10,7 @@
 	gpgsign = true
 [core]
 	excludesfile = ~/.gitignore
-	editor = hx
+	editor = nvim
 	pager = delta --side-by-side
 [init]
 	defaultBranch = main
@@ -35,3 +35,5 @@
 	pager = less --mouse
 [interactive]
 	diffFilter = delta --color-only
+[push]
+	autoSetupRemote = true

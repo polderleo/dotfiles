@@ -80,7 +80,7 @@ in
     fnm # Node version manager
     gh # GitHub command-line tool
     git # Version control system
-    gitui # Terminal ui for git
+    # gitui # Terminal ui for git (temporarily disabled due to build failure with assembly code)
     gnused # GNU version of the famous stream editor
     gnutar # GNU version of the tar archiving utility
     google-cloud-sdk # Manage resources and applications hosted on Google Cloud
@@ -90,7 +90,7 @@ in
     imagemagick # Manipulate images in many formats
     less # Pager program
     micro # Modern terminal-based text editor
-    micromamba # Environment manager
+    # micromamba # Environment manager (temporarily disabled due to build failure with fmt)
     neovim # Modern vim
     ngrok # Reverse proxy, secure tunnels to localhost
     nixfmt-rfc-style # Format nix files
@@ -147,6 +147,8 @@ in
 
     # Remove shell-login message
     ".hushlogin" = dotfile ".hushlogin";
+
+    # Fish functions are managed via fish configuration, not symlinks
   };
 
   # This sets the `XDG_CONFIG_HOME` environment variable to `~/.config`.
@@ -196,6 +198,12 @@ in
     enable = true;
     shellInitLast = "source ~/dotfiles/fish/config.fish";
     shellAliases = shellAliases;
+    interactiveShellInit = ''
+      # Set dotfiles functions directory as the default functions directory
+      set -g fish_function_path ~/dotfiles/fish/functions $fish_function_path
+      set -g fish_functions_dir ~/dotfiles/fish/functions
+    '';
+
     plugins = [
       {
         name = "fzf.fish";

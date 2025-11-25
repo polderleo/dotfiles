@@ -84,7 +84,7 @@
             # };
           }
           # Ollama service
-          ./nix/ollama.nix
+          # ./nix/ollama.nix
         ];
       };
       # nixosSystem = inputs.nixpkgs.lib.nixosSystem {
