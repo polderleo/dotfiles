@@ -257,6 +257,14 @@ in
       "visual-studio-code" # Code editor
       "figma" # Design tool
       "adobe-acrobat-reader" # PDF reader
+      "whatsapp" # Messanger
+      "capacities"
+      "signal" # Messanger,
+      "protonvpn"
+      "ngrok"
+      
+      "steam"
+
     ];
 
     masApps = {

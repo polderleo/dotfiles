@@ -3,6 +3,10 @@
 # This won't be added again if you remove it.
 Include ~/.orbstack/ssh/config
 
+Host 202.61.229.23
+  HostName 202.61.229.23
+  User ldsr
+
 Host *
   IgnoreUnknown UseKeychain
   UseKeychain yes

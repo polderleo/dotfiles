@@ -10,6 +10,21 @@ end
 # Add correct new lines for starship prompt
 _spaced_prompts
 
+# Set functions directory to dotfiles
+set -U fish_function_path ~/dotfiles/fish/functions $fish_function_path
+set -U fish_functions_dir ~/dotfiles/fish/functions
+
+# Helper function to save functions to dotfiles
+function dotsave --description 'Save current function to dotfiles'
+    set funcname (echo $history[1] | string match -r 'function\s+(\w+)' | string replace 'function ' '' | string replace ' ' '')
+    if test -n "$funcname"
+        funcsave ~/dotfiles/fish/functions/$funcname
+        echo "Function '$funcname' saved to dotfiles"
+    else
+        echo "Could not determine function name from history"
+    end
+end
+
 # Init Atuin
 ATUIN_NOBIND=true atuin init fish | source
 bind \ca _atuin_search
@@ -42,4 +57,5 @@ else if test -d /usr/local/share/fish/vendor_completions.d
     set -p fish_complete_path /usr/local/share/fish/vendor_completions.d
 end
 
-eval "$(micromamba shell hook --shell fish)"
+# Temporarily disabled due to micromamba build failure
+# eval "$(micromamba shell hook --shell fish)"
