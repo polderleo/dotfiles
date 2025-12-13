@@ -262,6 +262,7 @@ in
       "signal" # Messanger,
       "protonvpn"
       "ngrok"
+      "Bruno" # Insomnia alternative API client (https://www.usebruno.com/)
       
       "steam"
 

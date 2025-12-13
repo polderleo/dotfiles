@@ -1,9 +1,5 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+# src: https://github.com/nix-darwin/nix-darwin/pull/972
+{ config, lib, pkgs, ... }:
 
 with lib;
 
@@ -11,8 +7,7 @@ let
 
   cfg = config.services.ollama;
 
-in
-{
+in {
   meta.maintainers = [ "velnbur" ];
 
   options = {
@@ -84,19 +79,13 @@ in
       serviceConfig = {
         KeepAlive = true;
         RunAtLoad = true;
-        ProgramArguments = [
-          "${cfg.package}/bin/ollama"
-          "serve"
-        ];
+        ProgramArguments = [ "${cfg.package}/bin/ollama" "serve" ];
 
-        EnvironmentVariables =
-          cfg.environmentVariables
-          // {
-            OLLAMA_HOST = "${cfg.host}:${toString cfg.port}";
-          }
-          // (optionalAttrs (cfg.models != null) {
-            OLLAMA_MODELS = cfg.models;
-          });
+        EnvironmentVariables = cfg.environmentVariables // {
+          OLLAMA_HOST = "${cfg.host}:${toString cfg.port}";
+        } // (optionalAttrs (cfg.models != null) {
+          OLLAMA_MODELS = cfg.models;
+        });
       };
     };
   };
