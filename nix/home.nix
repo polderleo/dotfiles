@@ -104,6 +104,7 @@ in
     tree # Display directories as trees
     watch # Execute a program periodically
     yq # Process YAML, JSON, XML, CSV and properties documents
+    go # Go programming language
 
     # Fun
     asciiquarium # Aquarium animation
@@ -388,10 +389,12 @@ in
     settings = {
       promptToReturnFromSubprocess = false;
       git = {
-        paging = {
-          colorArg = "always";
-          pager = "delta --paging=never";
-        };
+        pagers = [
+          {
+            fcolorArg = "always";
+            pager = "delta --paging=never";
+          }
+        ];
         commit = {
           autoWrapCommitMessage = false;
         };
