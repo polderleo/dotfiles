@@ -70,6 +70,7 @@ in
     any-nix-shell # Run nix-shell in any directory
     atuin # Universal history
     # bitwarden-cli # CLI for my password manager
+    btop # Resource monitor
     bun # Incredibly fast JavaScript runtime
     claude-code # Claude CLI tool from Anthropic
     cloc # Count lines of code
@@ -83,6 +84,7 @@ in
     # gitui # Terminal ui for git (temporarily disabled due to build failure with assembly code)
     gnused # GNU version of the famous stream editor
     gnutar # GNU version of the tar archiving utility
+    go # Go programming language
     google-cloud-sdk # Manage resources and applications hosted on Google Cloud
     helix # Post-modern modal text editor
     htop # Improved top (interactive process viewer)
@@ -104,7 +106,6 @@ in
     tree # Display directories as trees
     watch # Execute a program periodically
     yq # Process YAML, JSON, XML, CSV and properties documents
-    go # Go programming language
 
     # Fun
     asciiquarium # Aquarium animation
