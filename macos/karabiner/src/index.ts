@@ -16,4 +16,10 @@ writeToProfile("Default profile", [
     ]),
   ]),
 
+  rule("Keyboard backlight").manipulators([
+    withModifier("option")([
+      map("f1").to("illumination_decrement"),
+      map("f2").to("illumination_increment"),
+    ]),
+  ]),
 ]);
