@@ -95,7 +95,7 @@ in
     # micromamba # Environment manager (temporarily disabled due to build failure with fmt)
     neovim # Modern vim
     ngrok # Reverse proxy, secure tunnels to localhost
-    nixfmt-rfc-style # Format nix files
+    nixfmt # Format nix files
     nodePackages.svgo # Optimize SVGs
     nushell # Modern alternative shell
     pandoc # Document conversion

@@ -53,12 +53,12 @@
       pkgs = inputs.nixpkgs.legacyPackages.${darwinSystem};
     in
     {
-      formatter.${darwinSystem} = pkgs.nixfmt-rfc-style;
+      formatter.${darwinSystem} = pkgs.nixfmt;
 
       devShells.${darwinSystem}.default = pkgs.mkShell {
         packages = with pkgs; [
           nixd
-          nixfmt-rfc-style
+          nixfmt
         ];
       };
 
