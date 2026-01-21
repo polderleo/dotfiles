@@ -99,6 +99,7 @@ in
     nodePackages.svgo # Optimize SVGs
     nushell # Modern alternative shell
     pandoc # Document conversion
+    postgresql # Database server
     posting # API client for the terminal
     restic # Backup program
     # sops # Editor of encrypted files
@@ -113,6 +114,7 @@ in
     cowsay # Talking cow
     lolcat # Rainbow colors
     sl # Steam locomotive
+    neofetch # System information tool
   ];
 
   imports = [

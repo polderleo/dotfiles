@@ -263,9 +263,9 @@ in
       "protonvpn"
       "ngrok"
       "Bruno" # Insomnia alternative API client (https://www.usebruno.com/)
-      
-      "steam"
-
+      "parsec" # Remote desktop software
+      "steam" # Game platform
+      "daisydisk" # Disk usage analyzer
     ];
 
     masApps = {
