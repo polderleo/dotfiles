@@ -266,6 +266,7 @@ in
       "parsec" # Remote desktop software
       "steam" # Game platform
       "daisydisk" # Disk usage analyzer
+      "codex" # Codex tool
     ];
 
     masApps = {

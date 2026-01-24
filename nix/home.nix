@@ -124,6 +124,8 @@ in
   home.file = {
     ".env.sh" = dotfile "shell/.env.sh";
 
+    ".codex/config.toml" = dotfile "codex/config.toml";
+
     ".finicky.ts" = dotfile "finicky/.finicky.ts";
     ".gitconfig" = dotfile "git/.gitconfig";
     ".gitignore" = dotfile "git/.gitignore";
