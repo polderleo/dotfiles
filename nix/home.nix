@@ -312,6 +312,33 @@ in
         trust = 5;
       }
     ];
+    settings = {
+      # Use GPG agent
+      "use-agent" = true;
+      
+      # Cipher and digest algorithms
+      "cipher-algo" = "AES256";
+      "digest-algo" = "SHA512";
+      
+      # Enable AEAD (Authenticated Encryption with Associated Data)
+      "aead-algo" = "OCB";
+      
+      # Disable compression (security best practice)
+      "compress-algo" = "none";
+      
+      # Personal preferences
+      "personal-cipher-preferences" = "AES256";
+      "personal-digest-preferences" = "SHA512";
+      "personal-compress-preferences" = "none";
+      
+      # Disable weak/obsolete algorithms
+      "disable-cipher-algo" = [ "3DES" "CAST5" "IDEA" "BLOWFISH" ];
+      
+      # S2K (String-to-Key) settings for password-based encryption
+      "s2k-mode" = "3";
+      "s2k-digest-algo" = "SHA512";
+      "s2k-count" = "65011712";
+    };
   };
 
   services.gpg-agent = {
