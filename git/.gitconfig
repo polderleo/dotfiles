@@ -23,6 +23,7 @@
 	cmd = code --wait $MERGED
 [rerere]
 	enabled = true
+	autoupdate = true
 [diff]
 	colorMoved = default
 [delta]
