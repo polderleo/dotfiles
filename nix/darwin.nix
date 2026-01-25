@@ -162,6 +162,12 @@ in
     FirstClickThreshold = 0; # Enable small tip/light clicking (0 = light, 1 = medium, 2 = firm)
   };
 
+  system.activationScripts.postActivation.text = ''
+    # Following line should allow us to avoid a logout/login cycle
+    # Run as user since activation now runs as root
+    sudo -u ${config.system.primaryUser} /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+  '';
+
   # system.defaults.NSGlobalDomain = {
   #   # Enable key repeat when pressing and holding a key and set a fast repeat rate
   #   ApplePressAndHoldEnabled = false;
