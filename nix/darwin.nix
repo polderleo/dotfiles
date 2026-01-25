@@ -157,10 +157,10 @@ in
     reattach = true; # Fixes Touch ID for sudo inside tmux and screen
   };
 
-  # system.defaults.trackpad = {
-  #   Clicking = true; # Enable tap to click
-  #   TrackpadThreeFingerDrag = true; # Enable three finger drag
-  # };
+  system.defaults.trackpad = {
+    Clicking = true; # Enable tap to click
+    FirstClickThreshold = 0; # Enable small tip/light clicking (0 = light, 1 = medium, 2 = firm)
+  };
 
   # system.defaults.NSGlobalDomain = {
   #   # Enable key repeat when pressing and holding a key and set a fast repeat rate
