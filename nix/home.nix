@@ -125,6 +125,7 @@ in
     ".env.sh" = dotfile "shell/.env.sh";
 
     ".codex/config.toml" = dotfile "codex/config.toml";
+    ".codex/AGENTS.md" = dotfile "codex/AGENTS.md";
 
     ".finicky.ts" = dotfile "finicky/.finicky.ts";
     ".gitconfig" = dotfile "git/.gitconfig";
