@@ -19,3 +19,15 @@ set smarttab              " use tabs at the start of a line, spaces elsewhere
 set nowrap                " don't wrap text
 set relativenumber        " show relative line numbers
 set belloff=all           " disable bell sound
+set clipboard=unnamedplus " use system clipboard for yank and paste
+set mouse=a               " enable mouse support
+set cursorline            " highlight current line
+set cursorcolumn          " highlight current column
+set colorcolumn=80        " highlight column 80
+set numberwidth=1         " set number width to 1
+set signcolumn=yes        " show sign column
+set scrolloff=5           " keep 5 lines above and below the cursor
+set sidescrolloff=5       " keep 5 characters to the left and right of the cursor
+set backspace=indent,eol,start " allow backspacing over everything in insert mode
+set showmatch             " show matching brackets
+set matchtime=2           " show matching brackets for 2 seconds

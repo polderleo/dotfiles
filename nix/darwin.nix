@@ -1,3 +1,4 @@
+
 {
   pkgs,
   lib,
@@ -33,68 +34,6 @@ in
   #   };
   # };
 
-  # services.nextdns.enable = true;
-  # Manually start and stop the nextdns service with:
-  # `sudo launchctl bootout system /Library/LaunchDaemons/org.nixos.nextdns.plist`
-  # `sudo launchctl bootstrap system /Library/LaunchDaemons/org.nixos.nextdns.plist`
-  # launchd.daemons.nextdns = {
-  #   # Uncomment to enable logging
-  #   # serviceConfig.StandardErrorPath = "/var/log/nextdns.log";
-  #   # serviceConfig.StandardOutPath = "/var/log/nextdns.log";
-  #   command = mkForce (
-  #     toString (
-  #       pkgs.writeShellScript "nextdns-config-watch" ''
-  #         trap 'kill $(jobs -p); exit' SIGINT
-
-  #         # `nextdns activate` depends on `launchctl` and `networksetup`
-  #         export PATH="/usr/bin:/bin:/usr/sbin:/sbin"
-
-  #         # Make sure nextdns is activated
-  #         ${pkgs.nextdns}/bin/nextdns activate
-
-  #         while true; do
-  #           # Start long-running nextdns process in the background
-  #           ${pkgs.nextdns}/bin/nextdns run --config-file=${config.sops.secrets.nextdns-config.path} &
-  #           nextdns_pid=$!
-
-  #           # If the tmpfs is not yet mounted, the file watchers won't trigger on change
-  #           # wait4path will exit when the path is mounted
-  #           if ! [ -d /run/secrets.d/ ]; then
-  #             echo "Secrets volume not yet mounted. This script will restart when it is."
-  #             /bin/wait4path /run/secrets.d/ &
-  #           elif ! [ -e /run/secrets/ ]; then
-  #             echo "Secrets not yet created. Restart the script."
-  #             exit &
-  #           else
-  #             # Monitor symlink and config file in background
-  #             # fswatch will exit when those paths are modified
-  #             ${pkgs.fswatch}/bin/fswatch -1 ${config.sops.secrets.nextdns-config.path} > /dev/null &
-  #           fi
-
-  #           # Wait for at least one process to exit
-  #           wait -n
-  #           exit_code=$?
-
-  #           # Check if the nextdns process has exited
-  #           if ! /bin/ps -p $nextdns_pid > /dev/null; then
-  #             echo "Process has exited with code $exit_code. Exiting script."
-  #             exit $exit_code
-  #           fi
-
-  #           # Kill all other running processes
-  #           echo "A monitored file was changed. Restarting."
-  #           pids=$(jobs -p)
-  #           kill $pids 2> /dev/null
-  #           wait $pids
-
-  #           # Before restarting the loop, let's sleep for 100 ms
-  #           echo "Restarting in 100 ms..."
-  #           /bin/sleep 0.1
-  #         done
-  #       ''
-  #     )
-  #   );
-  # };
 
   # Create sourcings for zsh and fish
   programs.zsh.enable = true;
@@ -122,34 +61,6 @@ in
 
   system.primaryUser = "ldsr";
 
-  # Disable startup chime (the startup sound)
-  system.startup.chime = false;
-
-  system.defaults = {
-    # Disable sound effects
-    # TODO: Find way to set "play user interface sound effects disable"
-    NSGlobalDomain = {
-      "com.apple.sound.beep.volume" = 0.0;
-      "com.apple.sound.beep.feedback" = 0;
-    };
-    dock = {
-      autohide = true; # automatically hide and show the Dock
-    };
-    # Disable that windows move away when clicking on the Desktop
-    WindowManager = {
-      EnableStandardClickToShowDesktop = false; # false means “Only in Stage Manager”
-    };
-    finder = {
-      FXPreferredViewStyle = "Nlsv"; # Always open everything in list view
-      ShowStatusBar = true; # Show status bar
-      ShowPathbar = true; # Show path bar
-      _FXSortFoldersFirst = true; # Keep folders on top when sorting by name
-      FXEnableExtensionChangeWarning = false; # Disable the warning when changing a file extension
-      FXDefaultSearchScope = "SCcf"; # When performing a search, search the current folder by default
-    };
-
-  };
-
   # Enable Touch ID for sudo
   security.pam.services.sudo_local = {
     enable = true;
@@ -157,62 +68,84 @@ in
     reattach = true; # Fixes Touch ID for sudo inside tmux and screen
   };
 
-  system.defaults.trackpad = {
-    Clicking = true; # Enable tap to click
-    FirstClickThreshold = 0; # Enable small tip/light clicking (0 = light, 1 = medium, 2 = firm)
+  system.defaults.WindowManager.StandardHideWidgets = true;
+
+  system.defaults.finder = {
+    FXPreferredViewStyle = "Nlsv"; # Always open everything in list view
+    ShowStatusBar = true; # Show status bar
+    ShowPathbar = true; # Show path bar
+    _FXSortFoldersFirst = true; # Keep folders on top when sorting by name
+    FXEnableExtensionChangeWarning = false; # Disable the warning when changing a file extension
+    FXDefaultSearchScope = "SCcf"; # When performing a search, search the current folder by default
   };
 
-  system.activationScripts.postActivation.text = ''
-    # Following line should allow us to avoid a logout/login cycle
-    # Run as user since activation now runs as root
-    sudo -u ${config.system.primaryUser} /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
-  '';
+  system.defaults.trackpad = {
+    Clicking = true; # Enable tap to click
+    TrackpadThreeFingerDrag = true; # Enable three finger drag (Highlight text)
+    TrackpadCornerSecondaryClick = 2; # Enable Right Click on the trackpad corner\
+    ActuationStrength = 0; # Quiet Click enabled (Silent click)
+    ForceSuppressed = true; # Suppress force click (Force click disabled)
+  };
 
-  # system.defaults.NSGlobalDomain = {
-  #   # Enable key repeat when pressing and holding a key and set a fast repeat rate
-  #   ApplePressAndHoldEnabled = false;
-  #   InitialKeyRepeat = 16;
-  #   KeyRepeat = 2;
+  system.defaults.NSGlobalDomain = {
+    # Enable key repeat when pressing and holding a key and set a fast repeat rate
+    ApplePressAndHoldEnabled = false;
+    InitialKeyRepeat = 16;
+    KeyRepeat = 2;
 
-  #   AppleShowAllExtensions = true; # Show all filename extensions in Finder
+    AppleShowAllExtensions = true; # Show all filename extensions in Finder
 
-  #   AppleSpacesSwitchOnActivate = false; # Disable switching to a space when an application is activated
-  # };
+    AppleSpacesSwitchOnActivate = false; # Disable switching to a space when an application is activated
+  };
 
-  # system.activationScripts.postUserActivation = {
-  #   text = ''
-  #     # Set default shell to fish
-  #     sudo chsh -s /run/current-system/sw/bin/fish ldsr
+  system.defaults.CustomUserPreferences.NSGlobalDomain."com.apple.trackpad.scaling" = 1.0;
+  system.defaults.CustomUserPreferences.NSGlobalDomain."com.apple.mouse.scaling" = 2.0;
 
-  #     # Disable "Select the previous input source", because I use Ctrl + Space in Tmux
-  #     # defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 60 '<dict><key>enabled</key><false/></dict>'
+  system.defaults.dock = {
+    autohide = true; # automatically hide and show the Dock
+  };
 
-  #     # Disable "Show Spotlight search", because I use Cmd + Space for Raycast
-  #     defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 64 '<dict><key>enabled</key><false/></dict>'
+  system.defaults.screensaver = {
+    askForPasswordDelay = 0;
+  };
 
-  #     # Activate settings so we don't have to restart
-  #     /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+  system.activationScripts.postActivation = {
+    text = ''
+      # Set default shell to fish
+      sudo chsh -s /run/current-system/sw/bin/fish ldsr
 
-  #     # Install keyboard shortcuts
-  #     ${pkgs.bun}/bin/bun run --cwd=${configDir}/macos/karabiner/ build
-  #     # ${pkgs.bun}/bin/bun run --cwd=${configDir}/macos/phoenix/ build
+      # Run the following script as user ldsr
+      sudo -i -u ldsr bash <<'EOF'
 
-  #     # Configure Final Cut to enable timeline rendering during playback
-  #     defaults write com.apple.FinalCut FFSuspendBGOpsDuringPlay 0
+      # Disable 'Select the previous input source', because I use Ctrl + Space in Tmux
+      defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 60 '<dict><key>enabled</key><false/></dict>'
 
-  #     # Configure Apple Mail
-  #     defaults write com.apple.mail ShowCcHeader 0
-  #     defaults write com.apple.mail EnableContactPhotos  1
-  #     defaults write com.apple.mail NSFont SFPro-Regular
-  #     defaults write com.apple.mail NSFontSize 12
+      # Disable 'Show Spotlight search', because I use Cmd + Space for Raycast
+      defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 64 '<dict><key>enabled</key><false/></dict>'
 
-  #     # Disable autoupgrade - Use `brew cu -aqy` to upgrade apps
-  #     defaults write com.DanPristupov.Fork SUEnableAutomaticChecks -bool false
-  #     defaults write com.seriflabs.affinitydesigner2 AutoUpdateInterval -bool false
-  #     defaults write com.seriflabs.affinityphoto2 AutoUpdateInterval -bool false
-  #     defaults write com.proxyman.NSProxy isUsingSystemStatusBar -bool false
-  #     defaults write com.proxyman.NSProxy shouldShowUpdatePopup -bool false
-  #   '';
+      # Move focus to next window: Option + ` (default is Cmd + `; hotkey id 27)
+      defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 27 '<dict><key>enabled</key><true/><key>value</key><dict><key>type</key><string>standard</string><key>parameters</key><array><integer>96</integer><integer>50</integer><integer>524288</integer></array></dict></dict>'
+
+      # Disable 'Save picture of screen as file' (hotkey 28) — would also be Cmd + Shift + 3
+      defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 28 '<dict><key>enabled</key><false/></dict>'
+
+      # Copy picture of selected area to clipboard: Cmd + Shift + 2 (hotkey id 31)
+      defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 31 '<dict><key>enabled</key><true/><key>value</key><dict><key>type</key><string>standard</string><key>parameters</key><array><integer>50</integer><integer>19</integer><integer>1179648</integer></array></dict></dict>'
+
+      # Save picture of selected area as file: Cmd + Shift + 3 (hotkey id 30)
+      defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 30 '<dict><key>enabled</key><true/><key>value</key><dict><key>type</key><string>standard</string><key>parameters</key><array><integer>51</integer><integer>20</integer><integer>1179648</integer></array></dict></dict>'
+
+      # Screenshot and recording options (toolbar): Cmd + Shift + 4 (hotkey id 184; default is Cmd + Shift + 5)
+      defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 184 '<dict><key>enabled</key><true/><key>value</key><dict><key>type</key><string>standard</string><key>parameters</key><array><integer>52</integer><integer>21</integer><integer>1179648</integer></array></dict></dict>'
+
+      # Activate settings so we don't have to restart
+      /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+
+      # Install keyboard shortcuts
+      ${pkgs.bun}/bin/bun run --cwd=${configDir}/macos/karabiner/ build
+      EOF
+    '';
+  };
 
   homebrew = {
     enable = true;
@@ -222,8 +155,8 @@ in
       upgrade = true;
       # `zap` will move related files of apps that are removed to the trash
       cleanup = "zap";
-      # This will force an overwrite of apps already present
-      # extraFlags = [ "--force" ];
+
+      extraFlags = [ "--force --verbose" ];
     };
     taps = [
       # Upgrade casks with `brew cu -aqy`
@@ -252,7 +185,6 @@ in
       "notion-calendar" # Calendar by Notion
       "raycast" # Control your tools with a few keystrokes
       "readdle-spark" # Email client
-      "scroll-reverser" # Reverse the direction of scrolling
       "zed" # High-performance, multiplayer code editor
       "spotify" # Music streaming service
       "gitkraken" # Git client
@@ -273,10 +205,32 @@ in
       "steam" # Game platform
       "daisydisk" # Disk usage analyzer
       "codex" # Codex tool
+      "codex-app" # Codex app
+      "wispr-flow" # The voice-to-text AI that turns speech into clear, polished writing in every app.
+      "utm" # Virtualization tool
+      "crystalfetch" # easy way to fetch latest Windows
+      "tor-browser" # Tor Browser
+      "mos"
     ];
 
     masApps = {
       "Bitwarden" = 1352778147;
+    };
+  };
+
+  launchd.daemons.batt = {
+    path = [ "/opt/homebrew/bin" ];
+    serviceConfig = {
+      ProgramArguments = [
+        "/opt/homebrew/bin/batt"
+        "daemon"
+        "--always-allow-non-root-access"
+      ];
+      RunAtLoad = true;
+      KeepAlive = true;
+      UserName = "root";
+      StandardOutPath = "/tmp/batt.log";
+      StandardErrorPath = "/tmp/batt.err";
     };
   };
 

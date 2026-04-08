@@ -18,7 +18,6 @@ let
       else
         "sudo nixos-rebuild switch --flake ~/dotfiles";
     svgo = "svgo --config=$HOME/.svgo.config.js";
-    wifi = "nextdns deactivate; open http://neverssl.com; read -P 'Continue? '; nextdns activate";
     ffmpeg = "ffmpeg -hide_banner";
     cat = "bat -p";
     cd = "z";
@@ -38,6 +37,8 @@ let
     gpl = "git pull";
     gro = "git restore";
     gs = "git status";
+
+    gh-clone = "gh repo list --limit 50 | fzf --header 'Select a repo to clone' | awk '{print $1}' | xargs gh repo clone";
 
     # Eza (defaults set by home-manager eza enable)
     # la = "eza -a";
@@ -62,7 +63,7 @@ let
   };
 in
 {
-  home.stateVersion = "23.11";
+  home.stateVersion = "26.05";
 
   home.packages = with pkgs; [
     act # Run GitHub Actions locally
@@ -96,8 +97,11 @@ in
     neovim # Modern vim
     ngrok # Reverse proxy, secure tunnels to localhost
     nixfmt # Format nix files
-    nodePackages.svgo # Optimize SVGs
+    svgo # Optimize SVGs
     nushell # Modern alternative shell
+
+    opencode # AI coding agent built for the terminal
+
     pandoc # Document conversion
     postgresql # Database server
     posting # API client for the terminal
@@ -114,7 +118,6 @@ in
     cowsay # Talking cow
     lolcat # Rainbow colors
     sl # Steam locomotive
-    neofetch # System information tool
   ];
 
   imports = [
@@ -126,6 +129,9 @@ in
 
     ".codex/config.toml" = dotfile "codex/config.toml";
     ".codex/AGENTS.md" = dotfile "codex/AGENTS.md";
+
+    ".config/opencode/opencode.jsonc" = dotfile "opencode/opencode.jsonc";
+    ".config/opencode/plugin/my-plugins.ts" = dotfile "opencode/plugin/my-plugins.ts";
 
     ".finicky.ts" = dotfile "finicky/.finicky.ts";
     ".gitconfig" = dotfile "git/.gitconfig";
@@ -174,32 +180,36 @@ in
   #   };
   # };
 
-  # home.activation =
-  # {
-  #   atuinLogin = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-  #     if [ -e ${homePath}/.local/share/atuin/session ]; then
-  #       echo "Atuin session exists already"
-  #     else
-  #       echo "Logging in to Atuin server"
-  #       echo | ${pkgs.atuin}/bin/atuin login \
-  #         -u $(cat ${config.sops.secrets."atuin/username".path}) \
-  #         -p $(cat ${config.sops.secrets."atuin/password".path})
-  #     fi
-  #   '';
-
-  # }
-  # // lib.optionalAttrs pkgs.stdenv.isDarwin {
-  #   copyKeyboardLayout = lib.optionalAttrs pkgs.stdenv.isDarwin ''
-  #     mkdir -p ~/Library/Keyboard\ Layouts/
-  #     cp -R ${configDir}/macos/niklas.keylayout ~/Library/Keyboard\ Layouts/
-  #   '';
-  #   # I would prefer to symlink this file, but macOS seems to ignore symlinks in LaunchAgents
-  #   copyTimematorRestart = lib.optionalAttrs pkgs.stdenv.isDarwin
-  #     ''cp -R ${configDir}/macos/timemator.restart.plist ~/Library/LaunchAgents/'';
-  # };
+  home.activation =
+    { }
+    # {
+    #   atuinLogin = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    #     if [ -e ${homePath}/.local/share/atuin/session ]; then
+    #       echo "Atuin session exists already"
+    #     else
+    #       echo "Logging in to Atuin server"
+    #       echo | ${pkgs.atuin}/bin/atuin login \
+    #         -u $(cat ${config.sops.secrets."atuin/username".path}) \
+    #         -p $(cat ${config.sops.secrets."atuin/password".path})
+    #     fi
+    #   '';
+    # }
+    // lib.optionalAttrs pkgs.stdenv.isDarwin {
+      copyKeyboardLayout = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+        mkdir -p ~/Library/Keyboard\ Layouts/
+        rm -rf ~/Library/Keyboard\ Layouts/Roman.bundle
+        cp -R ${configDir}/macos/Roman.bundle ~/Library/Keyboard\ Layouts/
+      ''; 
+    # I would prefer to symlink this file, but macOS seems to ignore symlinks in LaunchAgents
+    # copyTimematorRestart = lib.optionalAttrs pkgs.stdenv.isDarwin
+    #   ''cp -R ${configDir}/macos/timemator.restart.plist ~/Library/LaunchAgents/'';
+  };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  # Disable man cache generation since we're not using a custom man package
+  programs.man.generateCaches = false;
 
   programs.fish = {
     enable = true;
@@ -257,15 +267,7 @@ in
       #     sha256 = "sha256-iHlxCEKYyKHlIpyOz4bwTQ6R0lr7FqZb54/wuWfWQfg=";
       #   };
       # }
-      {
-        name = "spaced-prompts.fish";
-        src = pkgs.fetchFromGitHub {
-          owner = "niklasravnsborg";
-          repo = "spaced-prompts.fish";
-          rev = "0.1.1";
-          sha256 = "sha256-J0RdvUwn+r39jNFNus9XYDjwhf8Qh/nZqtRo/BpShh4=";
-        };
-      }
+
     ];
   };
 
@@ -422,9 +424,10 @@ in
     settings = {
       promptToReturnFromSubprocess = false;
       git = {
+        overrideGpg = true;
         pagers = [
           {
-            fcolorArg = "always";
+            colorArg = "always";
             pager = "delta --paging=never";
           }
         ];

@@ -1,5 +1,9 @@
 # theme = Ayu Mirage
 theme = Abernathy
+# theme = ayu_light
+#font-family = Monaspace argon
+#font-family = Monaspace radon
+font-family = GeistMono Nerd Font Mono
 font-thicken = true
 font-size = 15
 adjust-cell-height = 10%

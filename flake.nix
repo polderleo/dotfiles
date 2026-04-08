@@ -26,6 +26,7 @@
             (final: prev: {
               ollama = inputs.nixpkgs-stable.legacyPackages.${system}.ollama;
             })
+            (import ./nix/overlays/claude.nix)
           ];
         };
 
@@ -62,6 +63,6 @@
         ];
       };
 
-      darwinConfigurations."Leopolds-MacBook-Pro" = darwinSystemConfig;
+      darwinConfigurations."Leopolds-MacBook-Air" = darwinSystemConfig;
     };
 }

@@ -1,0 +1,27 @@
+model = "gpt-5.4"
+model_reasoning_effort = "medium"
+tool_output_token_limit = 25000
+model_auto_compact_token_limit = 233000
+personality = "pragmatic"
+web_search = "live"
+
+[features]
+ghost_commit = false
+unified_exec = true
+apply_patch_freeform = true
+skills = true
+shell_snapshot = true
+steer = true
+multi_agent = true
+apps = true
+prevent_idle_sleep = true
+
+[notice.model_migrations]
+"gpt-5.1-codex-mini" = "gpt-5.2-codex"
+"gpt-5.3-codex" = "gpt-5.4"
+
+[tui]
+status_line = [ "model-with-reasoning", "git-branch", "five-hour-limit", "weekly-limit" ]
+
+[plugins."github@openai-curated"]
+enabled = true

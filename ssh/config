@@ -1,0 +1,6 @@
+Host *
+  IgnoreUnknown UseKeychain
+  UseKeychain yes
+  AddKeysToAgent yes
+  # Prevent timeout https://www.simplified.guide/ssh/disable-timeout
+  ServerAliveInterval 30
